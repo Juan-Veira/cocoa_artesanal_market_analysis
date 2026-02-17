@@ -1,0 +1,113 @@
+"Nomenclature","ReporterCode","ReporterISO3","ReporterName","ProductCode","PartnerCode","PartnerISO3","PartnerName","Year","TradeFlowName","TradeValue in 1000 USD"
+"H5","024","AGO","Angola","180631","000","WLD","World",2019,"Gross Exports",8.602205
+"H5","031","AZE","Azerbaijan","180631","000","WLD","World",2019,"Gross Exports",18.53
+"H5","032","ARG","Argentina","180631","000","WLD","World",2019,"Gross Exports",1053.76761
+"H5","036","AUS","Australia","180631","000","WLD","World",2019,"Gross Exports",22264.5885060078
+"H5","040","AUT","Austria","180631","000","WLD","World",2019,"Gross Exports",159751.333521627
+"H5","048","BHR","Bahrain","180631","000","WLD","World",2019,"Gross Exports",9.27957
+"H5","051","ARM","Armenia","180631","000","WLD","World",2019,"Gross Exports",186.08145
+"H5","052","BRB","Barbados","180631","000","WLD","World",2019,"Gross Exports",262.585
+"H5","056","BEL","Belgium","180631","000","WLD","World",2019,"Gross Exports",88295.7743169634
+"H5","068","BOL","Bolivia","180631","000","WLD","World",2019,"Gross Exports",395.49687
+"H5","070","BIH","Bosnia Herzg","180631","000","WLD","World",2019,"Gross Exports",110.16601
+"H5","072","BWA","Botswana","180631","000","WLD","World",2019,"Gross Exports",0.191529
+"H5","076","BRA","Brazil","180631","000","WLD","World",2019,"Gross Exports",10520.146
+"H5","097","EUN","European Union","180631","000","WLD","World",2019,"Gross Exports",776248.960928
+"H5","100","BGR","Bulgaria","180631","000","WLD","World",2019,"Gross Exports",40794.303401219
+"H5","112","BLR","Belarus","180631","000","WLD","World",2019,"Gross Exports",28676.9
+"H5","120","CMR","Cameroon","180631","000","WLD","World",2019,"Gross Exports",128.5397
+"H5","124","CAN","Canada","180631","000","WLD","World",2019,"Gross Exports",212785.288569
+"H5","132","CPV","Cape Verde","180631","000","WLD","World",2019,"Gross Exports",52.480512
+"H5","144","LKA","Sri Lanka","180631","000","WLD","World",2019,"Gross Exports",338.22096599622
+"H5","152","CHL","Chile","180631","000","WLD","World",2019,"Gross Exports",5142.24395869577
+"H5","156","CHN","China","180631","000","WLD","World",2019,"Gross Exports",55014.973
+"H5","170","COL","Colombia","180631","000","WLD","World",2019,"Gross Exports",5474.45929
+"H5","178","COG","Congo","180631","000","WLD","World",2019,"Gross Exports",10.2934940129
+"H5","188","CRI","Costa Rica","180631","000","WLD","World",2019,"Gross Exports",1897.76215
+"H5","191","HRV","Croatia","180631","000","WLD","World",2019,"Gross Exports",86767.452
+"H5","196","CYP","Cyprus","180631","000","WLD","World",2019,"Gross Exports",53.938425
+"H5","203","CZE","Czech Rep","180631","000","WLD","World",2019,"Gross Exports",43730.965
+"H5","208","DNK","Denmark","180631","000","WLD","World",2019,"Gross Exports",34009.565041
+"H5","214","DOM","Dominican Rp","180631","000","WLD","World",2019,"Gross Exports",445.705917
+"H5","218","ECU","Ecuador","180631","000","WLD","World",2019,"Gross Exports",123.18423
+"H5","222","SLV","El Salvador","180631","000","WLD","World",2019,"Gross Exports",31.92387
+"H5","233","EST","Estonia","180631","000","WLD","World",2019,"Gross Exports",2017.22006465
+"H5","246","FIN","Finland","180631","000","WLD","World",2019,"Gross Exports",7220.59355533691
+"H5","251","FRA","France+Monac","180631","000","WLD","World",2019,"Gross Exports",77353.8023289974
+"H5","258","PYF","Fr.Polynesia","180631","000","WLD","World",2019,"Gross Exports",36.51332243177
+"H5","268","GEO","Georgia","180631","000","WLD","World",2019,"Gross Exports",513.48509
+"H5","276","DEU","Germany","180631","000","WLD","World",2019,"Gross Exports",1110333.608486
+"H5","288","GHA","Ghana","180631","000","WLD","World",2019,"Gross Exports",2.563578520738
+"H5","300","GRC","Greece","180631","000","WLD","World",2019,"Gross Exports",3692.27259555
+"H5","320","GTM","Guatemala","180631","000","WLD","World",2019,"Gross Exports",54.151
+"H5","340","HND","Honduras","180631","000","WLD","World",2019,"Gross Exports",11.53069
+"H5","344","HKG","Hong Kong","180631","000","WLD","World",2019,"Gross Exports",12462.65235478
+"H5","348","HUN","Hungary","180631","000","WLD","World",2019,"Gross Exports",60788.831
+"H5","352","ISL","Iceland","180631","000","WLD","World",2019,"Gross Exports",314.51210836155
+"H5","360","IDN","Indonesia","180631","000","WLD","World",2019,"Gross Exports",2219.798071
+"H5","364","IRN","Iran-Islam.R","180631","000","WLD","World",2019,"Gross Exports",57.463
+"H5","372","IRL","Ireland","180631","000","WLD","World",2019,"Gross Exports",26234.2607632
+"H5","376","ISR","Israel","180631","000","WLD","World",2019,"Gross Exports",575
+"H5","380","ITA","Italy","180631","000","WLD","World",2019,"Gross Exports",161167.41705977
+"H5","384","CIV","Cote Divoire","180631","000","WLD","World",2019,"Gross Exports",1.80647918103
+"H5","388","JAM","Jamaica","180631","000","WLD","World",2019,"Gross Exports",1.08918625443634
+"H5","392","JPN","Japan","180631","000","WLD","World",2019,"Gross Exports",22699.3229547
+"H5","398","KAZ","Kazakhstan","180631","000","WLD","World",2019,"Gross Exports",2548.5567
+"H5","400","JOR","Jordan","180631","000","WLD","World",2019,"Gross Exports",1506.842569958
+"H5","404","KEN","Kenya","180631","000","WLD","World",2019,"Gross Exports",153.39267
+"H5","410","KOR","Korea Rep.","180631","000","WLD","World",2019,"Gross Exports",5115.6
+"H5","414","KWT","Kuwait","180631","000","WLD","World",2019,"Gross Exports",1599.657
+"H5","417","KGZ","Kyrgyzstan","180631","000","WLD","World",2019,"Gross Exports",164.098
+"H5","422","LBN","Lebanon","180631","000","WLD","World",2019,"Gross Exports",15057.97544
+"H5","428","LVA","Latvia","180631","000","WLD","World",2019,"Gross Exports",8224.442263
+"H5","440","LTU","Lithuania","180631","000","WLD","World",2019,"Gross Exports",38502.164
+"H5","442","LUX","Luxemberg","180631","000","WLD","World",2019,"Gross Exports",1738.1030835383
+"H5","450","MDG","Madagascar","180631","000","WLD","World",2019,"Gross Exports",28.902473
+"H5","458","MYS","Malaysia","180631","000","WLD","World",2019,"Gross Exports",46615.2896341866
+"H5","470","MLT","Malta","180631","000","WLD","World",2019,"Gross Exports",615.6343013512
+"H5","480","MUS","Mauritius","180631","000","WLD","World",2019,"Gross Exports",52.791325717
+"H5","490","OAS","Asia Othr.ns","180631","000","WLD","World",2019,"Gross Exports",2103.56456
+"H5","496","MNG","Mongolia","180631","000","WLD","World",2019,"Gross Exports",0.30046
+"H5","499","MNT","Montenegro","180631","000","WLD","World",2019,"Gross Exports",8.934895132456
+"H5","504","MAR","Morocco","180631","000","WLD","World",2019,"Gross Exports",457.4124828307
+"H5","508","MOZ","Mozambique","180631","000","WLD","World",2019,"Gross Exports",7.78579
+"H5","512","OMN","Oman","180631","000","WLD","World",2019,"Gross Exports",13912.583923
+"H5","516","NAM","Namibia","180631","000","WLD","World",2019,"Gross Exports",21.113541
+"H5","528","NLD","Netherlands","180631","000","WLD","World",2019,"Gross Exports",833569.825067334
+"H5","554","NZL","New Zealand","180631","000","WLD","World",2019,"Gross Exports",7235.071292
+"H5","558","NIC","Nicaragua","180631","000","WLD","World",2019,"Gross Exports",3.34112
+"H5","579","NOR","Norway,Sb,JM","180631","000","WLD","World",2019,"Gross Exports",2863.77015218031
+"H5","591","PAN","Panama","180631","000","WLD","World",2019,"Gross Exports",4207.302
+"H5","598","PNG","Papua N.Guin","180631","000","WLD","World",2019,"Gross Exports",6.913264
+"H5","600","PRY","Paraguay","180631","000","WLD","World",2019,"Gross Exports",3.053
+"H5","604","PER","Peru","180631","000","WLD","World",2019,"Gross Exports",967.92607
+"H5","608","PHL","Philippines","180631","000","WLD","World",2019,"Gross Exports",279.999
+"H5","616","POL","Poland","180631","000","WLD","World",2019,"Gross Exports",196750.072
+"H5","620","PRT","Portugal","180631","000","WLD","World",2019,"Gross Exports",3464.1758545065
+"H5","642","ROM","Romania","180631","000","WLD","World",2019,"Gross Exports",26528.15046
+"H5","643","RUS","Russian Fed","180631","000","WLD","World",2019,"Gross Exports",158216.13388
+"H5","686","SEN","Senegal","180631","000","WLD","World",2019,"Gross Exports",92.048484
+"H5","688","SER","Yugoslavia","180631","000","WLD","World",2019,"Gross Exports",15236.319
+"H5","699","IND","India","180631","000","WLD","World",2019,"Gross Exports",4783.59493272702
+"H5","702","SGP","Singapore","180631","000","WLD","World",2019,"Gross Exports",48555.9340909874
+"H5","703","SVK","Slovakia","180631","000","WLD","World",2019,"Gross Exports",25413.198617
+"H5","704","VNM","Viet Nam","180631","000","WLD","World",2019,"Gross Exports",144.47845
+"H5","705","SVN","Slovenia","180631","000","WLD","World",2019,"Gross Exports",3317.74214
+"H5","710","ZAF","South Africa","180631","000","WLD","World",2019,"Gross Exports",15542.1296695902
+"H5","716","ZWE","Zimbabwe","180631","000","WLD","World",2019,"Gross Exports",23.33854
+"H5","724","ESP","Spain","180631","000","WLD","World",2019,"Gross Exports",80867.841051
+"H5","748","SWZ","Swaziland","180631","000","WLD","World",2019,"Gross Exports",2511.33602
+"H5","752","SWE","Sweden","180631","000","WLD","World",2019,"Gross Exports",90929.8254282
+"H5","757","CHE","Switz.Liecht","180631","000","WLD","World",2019,"Gross Exports",42604.7860731426
+"H5","764","THA","Thailand","180631","000","WLD","World",2019,"Gross Exports",28150.599516
+"H5","768","TGO","Togo","180631","000","WLD","World",2019,"Gross Exports",19.605203
+"H5","784","ARE","Untd Arab Em","180631","000","WLD","World",2019,"Gross Exports",67429.0778510105
+"H5","788","TUN","Tunisia","180631","000","WLD","World",2019,"Gross Exports",8636.15313880648
+"H5","792","TUR","Turkey","180631","000","WLD","World",2019,"Gross Exports",104904.53
+"H5","800","UGA","Uganda","180631","000","WLD","World",2019,"Gross Exports",22.29458
+"H5","807","MKD","TFYR Macedna","180631","000","WLD","World",2019,"Gross Exports",1912.3705
+"H5","826","GBR","Untd.Kingdom","180631","000","WLD","World",2019,"Gross Exports",134689.016123825
+"H5","834","TZA","Tanzania","180631","000","WLD","World",2019,"Gross Exports",24.74674
+"H5","842","USA","USA,PR,USVI","180631","000","WLD","World",2019,"Gross Exports",148973.978
+"H5","858","URY","Uruguay","180631","000","WLD","World",2019,"Gross Exports",0.355
+"H5","860","UZB","Uzbekistan","180631","000","WLD","World",2019,"Gross Exports",185.35996

@@ -1,0 +1,113 @@
+"Nomenclature","ReporterCode","ReporterISO3","ReporterName","ProductCode","PartnerCode","PartnerISO3","PartnerName","Year","TradeFlowName","TradeValue in 1000 USD"
+"H5","008","ALB","Albania","180632","000","WLD","World",2023,"Gross Exports",153.351608
+"H5","020","AND","Andorra","180632","000","WLD","World",2023,"Gross Exports",44.148237
+"H5","024","AGO","Angola","180632","000","WLD","World",2023,"Gross Exports",101.754983
+"H5","031","AZE","Azerbaijan","180632","000","WLD","World",2023,"Gross Exports",5
+"H5","032","ARG","Argentina","180632","000","WLD","World",2023,"Gross Exports",8110.21197
+"H5","036","AUS","Australia","180632","000","WLD","World",2023,"Gross Exports",17800.93013
+"H5","040","AUT","Austria","180632","000","WLD","World",2023,"Gross Exports",245714.141823
+"H5","048","BHR","Bahrain","180632","000","WLD","World",2023,"Gross Exports",986.155973
+"H5","051","ARM","Armenia","180632","000","WLD","World",2023,"Gross Exports",491.04398
+"H5","052","BRB","Barbados","180632","000","WLD","World",2023,"Gross Exports",70.9245
+"H5","056","BEL","Belgium","180632","000","WLD","World",2023,"Gross Exports",306403.411037
+"H5","068","BOL","Bolivia","180632","000","WLD","World",2023,"Gross Exports",71.56312
+"H5","070","BIH","Bosnia Herzg","180632","000","WLD","World",2023,"Gross Exports",3867.815097
+"H5","072","BWA","Botswana","180632","000","WLD","World",2023,"Gross Exports",0.062884
+"H5","076","BRA","Brazil","180632","000","WLD","World",2023,"Gross Exports",29314.286
+"H5","096","BRN","Brunei Darsm","180632","000","WLD","World",2023,"Gross Exports",39.655058
+"H5","097","EUN","European Union","180632","000","WLD","World",2023,"Gross Exports",1638961.918167
+"H5","100","BGR","Bulgaria","180632","000","WLD","World",2023,"Gross Exports",93654.280638
+"H5","116","KHM","Cambodia","180632","000","WLD","World",2023,"Gross Exports",68.6529
+"H5","124","CAN","Canada","180632","000","WLD","World",2023,"Gross Exports",323003.704302
+"H5","132","CPV","Cape Verde","180632","000","WLD","World",2023,"Gross Exports",10.338409
+"H5","144","LKA","Sri Lanka","180632","000","WLD","World",2023,"Gross Exports",13.034114
+"H5","152","CHL","Chile","180632","000","WLD","World",2023,"Gross Exports",3208.0476
+"H5","156","CHN","China","180632","000","WLD","World",2023,"Gross Exports",35560.954
+"H5","170","COL","Colombia","180632","000","WLD","World",2023,"Gross Exports",21968.10723
+"H5","188","CRI","Costa Rica","180632","000","WLD","World",2023,"Gross Exports",2872.54986
+"H5","191","HRV","Croatia","180632","000","WLD","World",2023,"Gross Exports",87479.651
+"H5","196","CYP","Cyprus","180632","000","WLD","World",2023,"Gross Exports",193.726574
+"H5","203","CZE","Czech Rep","180632","000","WLD","World",2023,"Gross Exports",63087.979
+"H5","208","DNK","Denmark","180632","000","WLD","World",2023,"Gross Exports",23760.751479
+"H5","214","DOM","Dominican Rp","180632","000","WLD","World",2023,"Gross Exports",5594.751608
+"H5","218","ECU","Ecuador","180632","000","WLD","World",2023,"Gross Exports",1495.8749
+"H5","222","SLV","El Salvador","180632","000","WLD","World",2023,"Gross Exports",1887.439
+"H5","233","EST","Estonia","180632","000","WLD","World",2023,"Gross Exports",4957.02236
+"H5","246","FIN","Finland","180632","000","WLD","World",2023,"Gross Exports",11852.280565
+"H5","251","FRA","France+Monac","180632","000","WLD","World",2023,"Gross Exports",273360.712074
+"H5","266","GAB","Gabon","180632","000","WLD","World",2023,"Gross Exports",0.616038
+"H5","268","GEO","Georgia","180632","000","WLD","World",2023,"Gross Exports",2060.638234
+"H5","276","DEU","Germany","180632","000","WLD","World",2023,"Gross Exports",1720365.987228
+"H5","288","GHA","Ghana","180632","000","WLD","World",2023,"Gross Exports",55.743059
+"H5","300","GRC","Greece","180632","000","WLD","World",2023,"Gross Exports",15616.448029
+"H5","320","GTM","Guatemala","180632","000","WLD","World",2023,"Gross Exports",455.218
+"H5","328","GUY","Guyana","180632","000","WLD","World",2023,"Gross Exports",0.001439
+"H5","340","HND","Honduras","180632","000","WLD","World",2023,"Gross Exports",10.76644
+"H5","344","HKG","Hong Kong","180632","000","WLD","World",2023,"Gross Exports",8053.567818
+"H5","348","HUN","Hungary","180632","000","WLD","World",2023,"Gross Exports",21364.968
+"H5","352","ISL","Iceland","180632","000","WLD","World",2023,"Gross Exports",791.414738
+"H5","360","IDN","Indonesia","180632","000","WLD","World",2023,"Gross Exports",1315.387973
+"H5","372","IRL","Ireland","180632","000","WLD","World",2023,"Gross Exports",157486.301989
+"H5","376","ISR","Israel","180632","000","WLD","World",2023,"Gross Exports",1241.162
+"H5","380","ITA","Italy","180632","000","WLD","World",2023,"Gross Exports",128738.630489
+"H5","384","CIV","Cote Divoire","180632","000","WLD","World",2023,"Gross Exports",334.860054
+"H5","388","JAM","Jamaica","180632","000","WLD","World",2023,"Gross Exports",12.56857
+"H5","392","JPN","Japan","180632","000","WLD","World",2023,"Gross Exports",54635.337889
+"H5","398","KAZ","Kazakhstan","180632","000","WLD","World",2023,"Gross Exports",16963.21386
+"H5","400","JOR","Jordan","180632","000","WLD","World",2023,"Gross Exports",1725.571896
+"H5","404","KEN","Kenya","180632","000","WLD","World",2023,"Gross Exports",193.71717
+"H5","410","KOR","Korea Rep.","180632","000","WLD","World",2023,"Gross Exports",5938.711
+"H5","414","KWT","Kuwait","180632","000","WLD","World",2023,"Gross Exports",244.921274
+"H5","417","KGZ","Kyrgyzstan","180632","000","WLD","World",2023,"Gross Exports",7.762
+"H5","422","LBN","Lebanon","180632","000","WLD","World",2023,"Gross Exports",228.019
+"H5","428","LVA","Latvia","180632","000","WLD","World",2023,"Gross Exports",12334.048449
+"H5","440","LTU","Lithuania","180632","000","WLD","World",2023,"Gross Exports",46320.938
+"H5","442","LUX","Luxemberg","180632","000","WLD","World",2023,"Gross Exports",503.459668
+"H5","450","MDG","Madagascar","180632","000","WLD","World",2023,"Gross Exports",3055.000619
+"H5","458","MYS","Malaysia","180632","000","WLD","World",2023,"Gross Exports",97256.079535
+"H5","470","MLT","Malta","180632","000","WLD","World",2023,"Gross Exports",0.538472
+"H5","484","MEX","Mexico","180632","000","WLD","World",2023,"Gross Exports",124780.013
+"H5","490","OAS","Asia Othr.ns","180632","000","WLD","World",2023,"Gross Exports",1376.258068
+"H5","498","MDA","Rep.Moldova","180632","000","WLD","World",2023,"Gross Exports",181.094
+"H5","499","MNT","Montenegro","180632","000","WLD","World",2023,"Gross Exports",509.80965
+"H5","504","MAR","Morocco","180632","000","WLD","World",2023,"Gross Exports",1525.127095
+"H5","512","OMN","Oman","180632","000","WLD","World",2023,"Gross Exports",34.340702
+"H5","516","NAM","Namibia","180632","000","WLD","World",2023,"Gross Exports",24.571275
+"H5","528","NLD","Netherlands","180632","000","WLD","World",2023,"Gross Exports",183880.669107
+"H5","554","NZL","New Zealand","180632","000","WLD","World",2023,"Gross Exports",75031.556786
+"H5","558","NIC","Nicaragua","180632","000","WLD","World",2023,"Gross Exports",82.09093
+"H5","579","NOR","Norway,Sb,JM","180632","000","WLD","World",2023,"Gross Exports",5964.229715
+"H5","586","PAK","Pakistan","180632","000","WLD","World",2023,"Gross Exports",213.433424
+"H5","604","PER","Peru","180632","000","WLD","World",2023,"Gross Exports",32700.49279
+"H5","608","PHL","Philippines","180632","000","WLD","World",2023,"Gross Exports",580.709
+"H5","616","POL","Poland","180632","000","WLD","World",2023,"Gross Exports",346455.952
+"H5","620","PRT","Portugal","180632","000","WLD","World",2023,"Gross Exports",26486.003553
+"H5","642","ROM","Romania","180632","000","WLD","World",2023,"Gross Exports",14831.71464
+"H5","678","STP","Sao Tome Prn","180632","000","WLD","World",2023,"Gross Exports",109.834894
+"H5","682","SAU","Saudi Arabia","180632","000","WLD","World",2023,"Gross Exports",378.613857
+"H5","686","SEN","Senegal","180632","000","WLD","World",2023,"Gross Exports",262.233916
+"H5","688","SER","Yugoslavia","180632","000","WLD","World",2023,"Gross Exports",24124.358
+"H5","699","IND","India","180632","000","WLD","World",2023,"Gross Exports",13030.35345
+"H5","702","SGP","Singapore","180632","000","WLD","World",2023,"Gross Exports",65114.195541
+"H5","703","SVK","Slovakia","180632","000","WLD","World",2023,"Gross Exports",49687.833162
+"H5","704","VNM","Viet Nam","180632","000","WLD","World",2023,"Gross Exports",4433.589421
+"H5","705","SVN","Slovenia","180632","000","WLD","World",2023,"Gross Exports",14983.644675
+"H5","710","ZAF","South Africa","180632","000","WLD","World",2023,"Gross Exports",9863.325995
+"H5","724","ESP","Spain","180632","000","WLD","World",2023,"Gross Exports",213943.208889
+"H5","748","SWZ","Swaziland","180632","000","WLD","World",2023,"Gross Exports",1.21217
+"H5","752","SWE","Sweden","180632","000","WLD","World",2023,"Gross Exports",82149.360219
+"H5","757","CHE","Switz.Liecht","180632","000","WLD","World",2023,"Gross Exports",566079.080072
+"H5","764","THA","Thailand","180632","000","WLD","World",2023,"Gross Exports",3544.969861
+"H5","768","TGO","Togo","180632","000","WLD","World",2023,"Gross Exports",161.848602
+"H5","784","ARE","Untd Arab Em","180632","000","WLD","World",2023,"Gross Exports",136230.84834
+"H5","788","TUN","Tunisia","180632","000","WLD","World",2023,"Gross Exports",17630.568219
+"H5","792","TUR","Turkey","180632","000","WLD","World",2023,"Gross Exports",105980.186
+"H5","800","UGA","Uganda","180632","000","WLD","World",2023,"Gross Exports",76.18881
+"H5","804","UKR","Ukraine","180632","000","WLD","World",2023,"Gross Exports",55656.05628
+"H5","807","MKD","TFYR Macedna","180632","000","WLD","World",2023,"Gross Exports",2558.208111
+"H5","818","EGY","Egypt","180632","000","WLD","World",2023,"Gross Exports",17864.818298
+"H5","826","GBR","Untd.Kingdom","180632","000","WLD","World",2023,"Gross Exports",159927.41433
+"H5","842","USA","USA,PR,USVI","180632","000","WLD","World",2023,"Gross Exports",174168.617
+"H5","858","URY","Uruguay","180632","000","WLD","World",2023,"Gross Exports",3.032
+"H5","860","UZB","Uzbekistan","180632","000","WLD","World",2023,"Gross Exports",1425.19692
+"H5","894","ZMB","Zambia","180632","000","WLD","World",2023,"Gross Exports",6.942557

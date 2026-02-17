@@ -1,0 +1,134 @@
+/* ===============================================
+   Base Typography
+   =============================================== */
+
+body {
+  font-size: 16px;
+  line-height: 2;
+  /* 2× font size for comfortable reading */
+}
+
+
+/* ===============================================
+   Vertical Spacing
+   =============================================== */
+
+/* Document title */
+.title {
+  margin: 2.75em 0 0.75em;
+}
+
+/* Section headings */
+.section h1 {
+  margin: 2.5em 0 0.75em;
+}
+
+.section h2,
+.section h3,
+.section h4,
+.section h5,
+.section h6 {
+  padding-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+
+/* ===============================================
+   Layout Adjustments
+   =============================================== */
+
+/* Add space between TOC and main content on large screens */
+@media (min-width: 992px) {
+  .col-md-9 {
+    width: 75%;
+    padding-left: 5em;
+  }
+}
+
+/* Reduce excessive white space at page end */
+.tocify-extend-page {
+  height: 100px;
+}
+
+
+/* ===============================================
+   Table of Contents (TOC)
+   =============================================== */
+
+.tocify {
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+}
+
+.tocify ul {
+  border-right: 1px solid #eee;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.tocify ul,
+.tocify li {
+  line-height: 1.6;
+}
+
+/* Base styling - ensures proper text wrapping and indentation */
+.tocify .list-group-item {
+  padding: 8px 10px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  text-indent: 0 !important;
+}
+
+/* Ensure text within strong tags wraps correctly */
+.tocify .list-group-item strong {
+  display: inline;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Links styling (if present) */
+.tocify .list-group-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Nested indentation levels */
+/* Level 2 - H2 headings (##) */
+ul.tocify-subheader[data-tag="2"]>.tocify-item {
+  padding-left: 28px !important;
+  background-color: #fcfcfc;
+  font-weight: 400;
+}
+
+/* Level 3 - H3 headings (###) */
+ul.tocify-subheader[data-tag="3"]>.tocify-item {
+  padding-left: 46px !important;
+  background-color: #fcfcfc;
+}
+
+/* Level 4 - H4 headings (####) */
+ul.tocify-subheader[data-tag="4"]>.tocify-item {
+  padding-left: 64px !important;
+  background-color: #fcfcfc;
+}
+
+/* Active section highlight */
+.tocify .list-group-item.active {
+  background-color: #4e7fad !important;
+  border-color: #4e7fad !important;
+  color: #fff !important;
+}
+
+.tocify .list-group-item.active strong {
+  color: #fff !important;
+}
+
+.tocify .list-group-item.active a {
+  color: #fff !important;
+}
+
+/* Hover state (excluding active items) */
+.tocify .list-group-item:not(.active):hover {
+  background-color: #f5f5f5;
+}
