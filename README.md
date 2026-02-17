@@ -43,6 +43,7 @@ To bridge the gap between data and strategy, the project includes a **conceptual
 Using **STL Decomposition** to find the market's heartbeat.
 
 **Visual Insight:**
+
 ![STL Decomposition](docs/Images/stl_decomposition.png)
 
 * **Key Finding:** A dominant October-December surge aligns with global holiday gift-giving, though "market noise" remains the primary driver of monthly volatility.
@@ -52,6 +53,7 @@ Using **STL Decomposition** to find the market's heartbeat.
 Analysis of the **Producer Price Index (PPI)** vs. **Global Prices**.
 
 **Visual Insight:**
+
 ![STL Decomposition](docs/Images/colombian_exports_&_global_cocoa.png)
 
 * **Key Finding:** A clear "three-month lag" exists where the industry absorbs costs gradually.
@@ -61,6 +63,7 @@ Analysis of the **Producer Price Index (PPI)** vs. **Global Prices**.
 * **Key Finding:** The statistical evidence suggests that the industrial sector does not react instantly to raw material spikes; instead, it absorbs costs gradually.
 
 **Visual Insight:**
+
 ![STL Decomposition](docs/Images/global_cocoa_&_chocolate_ppi.png)
 
 #### **4. The Currency Myth: Exports vs. TRM**
@@ -68,6 +71,7 @@ Analysis of the **Producer Price Index (PPI)** vs. **Global Prices**.
 A multiple regression analysis on the **Exchange Rate (TRM)** and **Export Values**.
 
 **Visual Insight:**
+
 ![STL Decomposition](docs/Images/trm_&_colombia_cocoa.png)
 
 * **Key Finding:** Colombian chocolate exports are "Currency Neutral." Success is driven by quality and market positioning, not a cheap Peso.
