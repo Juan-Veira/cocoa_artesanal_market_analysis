@@ -1901,13 +1901,12 @@ datasets produced later in the pipeline.</p>
 <p>I imported the CSV files previously audited in Excel and SQL into R
 using the <code>readr</code> package. This ensures that data types are
 correctly guessed while providing a fast loading speed.</p>
-<p><em>Pending - Remove local routes before uploading</em></p>
-<pre class="r"><code># Importing pricing and economic indicators
+<pre class="r"><code># Importing pricing and economic indicators using relative paths
 raw_global_cocoa_price &lt;- read_csv(&quot;datasets/Cleaned_Global_Cacao.csv&quot;)
 raw_colombian_cocoa_price &lt;- read_csv(&quot;datasets/Monthly_Colombian_Cacao.csv&quot;)
-raw_chocolate_producer_price &lt;- read_csv(&quot;datasetsCleaned_Chocolate_Producer_Price.csv&quot;)
+raw_chocolate_producer_price &lt;- read_csv(&quot;datasets/Cleaned_Chocolate_Producer_Price.csv&quot;)
 
-# Importing specific trade flow data (HS Codes 180631 and 180632)
+# Importing specific trade flow data
 raw_chocolate_exports_180631 &lt;- read_csv(&quot;datasets/raw_comtrade_180631.csv&quot;)
 raw_chocolate_exports_180632 &lt;- read_csv(&quot;datasets/raw_comtrade_180632.csv&quot;)
 raw_chocolate_exports_comtrade &lt;- read_csv(&quot;datasets/Raw_ComTrade.csv&quot;)</code></pre>
@@ -2065,7 +2064,7 @@ project files under:
 <div id="technical-summary" class="section level4">
 <h4><strong>Technical Summary</strong></h4>
 <p>This pre-processing phase addressed the core <strong>Currency and
-Unit Inconsistencies</strong> and <strong>Time Granularity
+Unit</strong> Inconsistencies and <strong>Time Granularity
 Mismatches</strong> identified in the initial audit. However, I chose to
 maintain a <strong>multi-stage cleaning workflow</strong>: while Excel
 was used for initial standardization and manual log-changes, I
