@@ -80,6 +80,16 @@ I monitored price fluctuations and inflationary pressures using three primary le
 -   **Colombian Cocoa Prices:** Obtained from **Agronet (Ministry of Agriculture)** to track how national purchase prices align with global trends.
 -   **Economic Drivers:** To account for currency volatility and manufacturing costs, I integrated the **Market Representative Rate (TRM)** from **Banrep** and the **Producer Price Index (PPI)** for chocolate manufacturing from the **U.S. Bureau of Labor Statistics**.
 
+### **Defining Variables**
+
+One of the initial challenges I faced was selecting a data source that effectively measured chocolate market behavior from a business perspective. My original intent was to utilize internal sales data; however, obtaining such datasets proved difficult, likely due to confidentiality constraints and the competitive nature of the industry.
+
+Early in the process, I identified export and import data as a strong alternative. Although trade flows differ from direct retail sales, they provide a reliable proxy for analyzing the broader market trends this project aims to evaluate. After selecting this source, I focused on identifying the specific product classifications required, which led me to the following HS codes aligned with the artisanal chocolate products:
+
+* **180631**: Chocolate and other food preparations containing cocoa — filled (e.g., pralines, filled bars).
+* **180632**: Chocolate and other food preparations containing cocoa — not filled (e.g., standard chocolate bars, chips).
+
+
 ### **Solving for Granularity**
 
 A key challenge in this project was finding the right level of detail for trade movements. While **WITS (World Bank)** provided an excellent high-level overview of annual exports, I pivoted to the **UN Comtrade Database** to access monthly trade flows. This increased granularity allowed for a more nuanced analysis of seasonality and short-term market shifts for Colombian chocolate exports (HS Codes 180631 and 180632).
@@ -460,7 +470,7 @@ At this point, the datasets are processed. I have standardized dates, a linear i
 
 ## **Analysis: The SQL & R Hybrid Approach**
 
-To ensure the robustness of my findings, I initiated the analysis phase using a hybrid workflow. By leveraging **SQL** for preliminary data interrogation and **R** for complex modeling, I was able to cross-validate insights and ensure the integrity of the results.
+To ensure reliable results, I began the analysis using a hybrid workflow. I used SQL for initial data exploration and R for more advanced modeling. This approach allowed me to validate insights from different angles and strengthen the overall integrity of the findings.
 
 ### **Leveraging SQLite for Preliminary Insights**
 
@@ -502,7 +512,7 @@ With the database populated and the tables indexed, the environment is now ready
 
 #### **What is the top three months with the lowest Colombian Cocoa Price until December 2024?**
 
-To understand the cyclical nature of the Colombian cocoa market, I executed a seasonal analysis to identify which months consistently yield the lowest purchase prices. This insight is vital for stakeholders looking to optimize procurement timing.
+To understand the cyclical nature of the Colombian cocoa market, I executed a seasonal analysis to identify which months consistently yield the lowest purchase prices.
 
 ```{sql, connection=sql_con}
 WITH ranked AS (
@@ -560,7 +570,7 @@ The data confirms a remarkably stable pattern: July has been the month of the lo
 
 #### **How much cheaper is Colombian cocoa compared to the World price per year?**
 
-To determine Colombia's competitive standing in the global market, I developed a multi-stage SQL query to compare domestic prices against the global benchmark. This analysis quantifies the "arbitrage" opportunity the price gap that makes Colombian cocoa attractive to international buyers and competitive for domestic chocolate producers.
+To assess Colombia’s position in the global market, I developed a multi-stage SQL query to compare domestic prices with the international market. This analysis measures the price gap or “arbitrage” opportunity that makes Colombian cocoa attractive to international buyers and competitive for local chocolate producers.
 
 ```{sql, connection=sql_con}
 /* Query: Calculating Annual Price Variance (Local vs. Global) */
@@ -612,7 +622,7 @@ This persistent price gap represents a significant competitive advantage for Col
 
 #### **Which months typically see the highest consumer demand based on Producer Price Index (PPI) for Chocolate?**
 
-To provide a better view of the market, I analyzed the Producer Price Index (PPI) for chocolate. While cocoa prices tell us about supply costs, the PPI serves as a proxy for industrial demand and manufacturer pricing power. Identifying when prices are at their highest helps determine the peak commercial windows.
+To better understand market dynamics, I analyzed the Producer Price Index (PPI) for chocolate. While cocoa prices reflect supply costs, the PPI acts as an indicator of industrial demand and manufacturers’ pricing power. Identifying peak price periods helps highlight the strongest commercial opportunities.
 
 ```{sql, connection=sql_con}
 WITH ranked AS (
@@ -645,7 +655,7 @@ The results indicate that industrial chocolate prices tend to peak at the very e
 
 #### **Which three months show the highest global trade value for Chocolate consumer goods?**
 
-To translate price and demand indices into actionable business intelligence, I analyzed the **UN Comtrade** dataset (HS Codes 180631 and 180632). This step helps me understand market behavior by highlighting the industry’s operational “high season.”
+To turn price and demand data into actionable insights, I analyzed the **UN Comtrade** dataset (HS codes 180631 and 180632). This step helped identify the industry’s operational “high season” and better understand market behavior.
 
 ```{sql, connection=sql_con}
 /* Query: Identifying the most frequent Top-3 export months per year */
@@ -672,11 +682,12 @@ LIMIT 3
 
 ```
 
-The results provide a look at global supply chain timing:
 
--   **October (5 occurrences):** The data suggests that October may represent a key inflection point for price pressure. This pattern could reflect global pre-holiday logistics activity, as supply chains begin to adjust ahead of peak seasonal demand.
--   **June (4 occurrences):** The repeated peaks observed in June point to a possible mid-year seasonal adjustment, potentially linked to production cycles, inventory rebalancing, or changes in trade dynamics.
--   **September (3 occurrences):** Price increases in September may indicate that momentum sometimes builds earlier in the year, possibly driven by early holiday demand forecasts or shifts in global shipping capacity.
+The results offer insight into global supply chain timing:
+
+* **October (5 occurrences):** October appears to be a key turning point for price pressure. This pattern may reflect pre-holiday logistics activity, as supply chains adjust ahead of peak seasonal demand.
+* **June (4 occurrences):** Recurring peaks in June suggest a mid-year seasonal adjustment, probably linked to production cycles, inventory rebalancing, or shifts in trade activity.
+* **September (3 occurrences):** Price increases in September indicate that upward momentum can begin earlier in the year, possibly driven by early holiday forecasts or changes in global shipping capacity.
 
 ## **Summary statistics**
 
