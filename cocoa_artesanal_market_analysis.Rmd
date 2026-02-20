@@ -84,10 +84,12 @@ I monitored price fluctuations and inflationary pressures using three primary le
 
 One of the initial challenges I faced was selecting a data source that effectively measured chocolate market behavior from a business perspective. My original intent was to utilize internal sales data; however, obtaining such datasets proved difficult, likely due to confidentiality constraints and the competitive nature of the industry.
 
-Early in the process, I identified export and import data as a strong alternative. Although trade flows differ from direct retail sales, they provide a reliable proxy for analyzing the broader market trends this project aims to evaluate. After selecting this source, I focused on identifying the specific product classifications required, which led me to the following HS codes aligned with the artisanal chocolate products:
+Early in the process, I identified export and import data as a strong alternative data source. While trade flows are not the same as direct retail sales, they offer a reliable proxy for analyzing the broader market trends this project aims to evaluate.
 
-* **180631**: Chocolate and other food preparations containing cocoa — filled (e.g., pralines, filled bars).
-* **180632**: Chocolate and other food preparations containing cocoa — not filled (e.g., standard chocolate bars, chips).
+After selecting this dataset, I identified the relevant product classifications, which led me to the following **HS codes (Harmonized System)** an internationally recognized and standardized system for classifying traded goods aligned with Artisanal chocolate products:
+
+* **HS 180631**: Chocolate and other food preparations containing cocoa — filled (e.g., pralines, filled bars).
+* **HS 180632**: Chocolate and other food preparations containing cocoa — not filled (e.g., standard chocolate bars, chips).
 
 
 ### **Solving for Granularity**
