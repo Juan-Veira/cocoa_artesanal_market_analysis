@@ -151,10 +151,13 @@ To ensure the project is scalable and reproducible, I utilized a specialized sui
 
 ### **The Toolkit**
 
--   **The Tidyverse Ecosystem:** Used for core data manipulation, cleaning, and visualization via `dplyr`, `tidyr`, and `ggplot2`.
+-   **The Tidyverse Ecosystem:** I Used for core data manipulation, cleaning, and visualization via `dplyr`, `tidyr`, and `ggplot2`.
 -   **Data Auditing & Cleaning:** I used `janitor` for consistent column naming and `skim` for comprehensive summary statistics to catch missing values early.
 -   **Time-Series Framework:** Because this analysis tracks cocoa prices and trade over time, I leveraged the **tidyverts** framework (`tsibble`, `feasts`, and `forecast`) to handle seasonal decomposition and trend analysis.
+-   **Database Connectivity:** I used DBI as the database interface to handle the connection between the raw data storage and the R environment, ensuring an efficient data pipeline.
 -   **Refining the Output:** `scales` and `magrittr` were used to ensure the final visualizations and pipe operations are clean and professional.
+
+
 
 ### **Package Installation**
 
@@ -836,15 +839,15 @@ chocolate_exports_180632 %>%
 
 This finding is key for my analysis because it highlights where the real money is moving. While both categories are part of the "Chocolate" umbrella, the filled product market appears to be the primary engine of export growth.
 
-## **Plotting a few explorations**
+## **Plotting a few Explorations**
 
 ### **Colombia Cocoa Price**
 
 To identify long-term patterns in how Colombian cocoa prices behave, I applied a linear regression model. This allows me to quantify the overall trend over time and provides a statistical basis for interpreting how the local market has evolved.
 
-#### **Linear Regression Model: what Is the trend?**
+#### **Linear Regression Model: What is the trend?**
 
-I used the `lm()` function to test if time (represented by a monthly index) is a significant predictor of the cocoa price in USD.
+I used the `lm()` function to test if time **represented by a monthly index** is a significant predictor of the cocoa price in USD.
 
 ```{r}
 # Linear regression: Price as a function of time
@@ -860,7 +863,7 @@ qf(0.95, df1 = 1, df2 = 136)
 The results of the model suggest a very clear story, but one that requires a careful look at the details:
 
 -   **Evidence of Growth:** The **t-value (5.510)** and the extremely small **p-value (1.74e-07)** indicate a highly significant trend. It appears that time is positively associated with cocoa prices. In practical terms, the model suggests that prices have been increasing by approximately **USD 14.83 per month**.
--   **The Power of the Model:** The **F-statistic (30.36)** is much higher than the critical value (\~3.91), which provides strong evidence that this model fits the data better than a simple average would. It supports our earlier observations that local prices are rising over time, which aligns with global inflationary pressures.
+-   **The Power of the Model:** The **F-statistic (30.36)** is much higher than the **critical value (\~3.91)**, which provides strong evidence that this model fits the data better than a simple average would. It supports our earlier observations that local prices are rising over time, which aligns with global inflationary pressures.
 -   **The Missing Pieces:** However, the **R² value of 0.1825** is quite revealing. It suggests that **time alone explains only about 18% of the variation** in Colombian cocoa prices.
 
 ##### **How should I interpret these findings?**
@@ -928,11 +931,34 @@ While the annual view shows us that prices are currently high and unstable, it d
 
 #### **Local Seasonality Analysis: When is the most affordable time to buy?**
 
-To ensure my analysis is consistent and reliable, I decided to focus the Colombian cocoa price dataset on the period between January 2014 and December 2024. Although the raw data begins in July 2013, including only half of that year might create asymmetry and introduce statistical distortions. By using full years, I can also align the local data better with the global benchmarks for a more accurate comparison later on.
+To keep the analysis consistent, I focused on the period from January 2014 to December 2024. Although the dataset starts in July 2013, including only half a year could distort the results. Using full calendar years also helps align the local data with global benchmarks for later comparison.
 
-After applying the filter, I calculated the average price for each month to identify the recurring "price floors" in the Colombian market.
+After filtering the data, I calculated the average price for each month to identify seasonal patterns in the Colombian market.
 
 ```{r}
+# Average Colombian Cocoa Price by Month
+colombian_cocoa_price %>%
+  filter(date >= "2014-01-01" & date < "2025-01-01") %>%
+  mutate(month = month(date, label = TRUE)) %>%
+  group_by(month) %>%
+  summarise(avg_price = mean(price_usd_metric_ton, na.rm = TRUE)) %>%
+  arrange(avg_price) %>%
+  mutate(month = fct_reorder(month, avg_price)) %>%
+  ggplot(aes(x = month, y = avg_price)) +
+  geom_col(fill = "steelblue", width = 0.7) +
+  scale_y_continuous(labels = label_dollar()) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 0, hjust = 0.5)
+  ) +
+  labs(
+    title = "Average Colombian Cocoa Price by Month (2014-2024)",
+    x = NULL,
+    y = "Average Price (USD/MT)"
+  )
+
 # Calculating monthly average prices (2014-2024)
 colombian_cocoa_price %>%
   filter(date >= "2014-01-01" & date < "2025-01-01") %>%
@@ -940,16 +966,17 @@ colombian_cocoa_price %>%
   group_by(month) %>%
   summarise(avg_price = mean(price_usd_metric_ton, na.rm = TRUE)) %>%
   arrange(avg_price)
+
 ```
 
 The results suggest that the most cost-effective window for purchasing cocoa in Colombia tends to occur during the first quarter of the year:
 
--   **The Early-Year Dip:** I noticed that **February** ( USD/ton), **January** ( USD/ton), and **March** ( USD/ton) represent the lowest averages in the selected time window.
+-   **The Early-Year Dip:** I noticed that **February (2382.6 USD/ton)**, **January(2416.7 USD/ton)**, and **March (2560.9 USD/ton)** represent the lowest averages in the selected time window.
 -   **Harvest Alignment:** This pattern could be interpreted as a reflection of the main harvest cycles in Colombia. It aligns with the idea that an increase in supply during these months might be putting downward pressure on prices.
 
 #### **What does this mean for a business strategy?**
 
-Identifying these months as the "seasonal floor" is a vital insight. It suggests that a company looking to maximize its margins might find it beneficial to secure its raw material contracts during this first quarter.
+Identifying these months as the **"seasonal floor"** is a vital insight. It suggests that a company looking to maximize its margins might find it beneficial to secure its raw material contracts during this first quarter.
 
 #### **Executive Summary: Colombia Cocoa Price**
 
@@ -963,17 +990,17 @@ In this phase, I analyzed how Colombian cocoa prices have evolved over the last 
 
 **What This Means for Decisions:**
 
-1.  **Budgeting for Growth:** The upward trend is statistically "real," so long-term financial planning should account for steadily increasing raw material costs.
+1.  **Budgeting for Growth:** The evidence suggests a sustained upward trend, meaning long-term financial planning should incorporate progressively higher raw material costs.
 2.  **Strategic Sourcing:** There is a clear opportunity to maximize margins by securing contracts or increasing inventory during the **February-March window**, before prices typically begin to climb later in the year.
 3.  **Risk Management:** Because the market has become significantly more volatile since 2023, the "old rules" of price stability no longer apply. It suggests that the business needs more flexible pricing or hedging strategies to handle sudden jumps.
 
 ### **Global Cocoa Price**
 
-To understand the broader context, I applied the same linear regression model to the global cocoa market. This allows me to identify long-term trends and, more importantly, see how they compare to the Colombian behavior I analyzed earlier.
+To understand the broader context, I applied the same linear regression model to the global cocoa market. This allows me to identify long-term trends and, more importantly, see how they compare to the Colombian cocoa price behavior I analyzed earlier.
 
 #### **Linear Regression Model: What Is the trend?**
 
-As with the previous dataset, I used the lm() function to evaluate the relationship between time and the global cocoa price per metric ton.
+As with the previous dataset, I used the lm() function to evaluate the relationship between **time** and the **global cocoa price per metric ton**.
 
 ```{r}
 # Linear regression: Global price as a function of time
@@ -1014,7 +1041,8 @@ ggplot(data = global_cocoa_price, aes(x = observation_date, y = price_cocoa_usd_
 
 -   **Parallel Movements:** I noticed that the global cocoa price series shows a pronounced long-term upward movement that **mirrors the trend** I observed in the Colombian market. It aligns with the idea that the local market is a subset of this larger global reality.
 -   **Cyclical Oscillations:** The data reveals recurrent multi-year "waves" periods where prices rise steadily and then gradually decline. This suggests that Colombia’s price behavior is **strongly shaped** by these broader global cycles rather than moving in isolation.
--   **The Recent Break from Tradition:** In the most recent window (2022–2024), the points show sharp spikes that sit far above the trendline. This could be interpreted as a **fundamental break** from historical patterns. It may be that we are no longer looking at a "normal" cycle, but rather at major supply shocks and market disruptions that have changed the rules of the game.
+-   **Recent Structural Shift:** In the 2022–2024 period, prices show sharp spikes well above the historical trendline. This suggests a possible structural break from past patterns, consistent with the recent behavior observed in the Colombian cocoa market.
+
 
 ##### **What does this mean for a business strategy?**
 
@@ -1025,7 +1053,7 @@ Seeing the global market behave so aggressively in recent years helps us refine 
 
 #### **Boxplot Analysis: How has global price instability evolved?**
 
-By breaking the global data into annual snapshots, I can identify when the market shifted from its historical cycles into the current state of extreme volatility.
+By dividing the global data into annual snapshots, I can identify when the market moved away from its historical cycles into the current phase of heightened volatility and compare this shift with the patterns previously observed in the Colombian cocoa market.
 
 ```{r}
 # Global Price Distribution by Year
@@ -1048,14 +1076,37 @@ ggplot(global_cocoa_price, aes(x = factor(year(observation_date)), y = price_coc
 
 ##### **What does this mean for a business strategy?**
 
--   **Global Driver Identification:** The statistical evidence suggests that the "Colombian price" is effectively a passenger of the "Global price." For an exporter, this means that tracking local harvest volumes alone is no longer enough to predict cost.
+-   **Global Driver Identification:** The statistical evidence indicates that Colombian prices closely follow global price movements. For exporters, this implies that monitoring local harvest volumes alone is insufficient to anticipate cost dynamics.
 -   **A New Baseline:** The 2024 outliers suggest that we have entered a "new normal." It aligns with the idea that historical price floors may no longer be relevant for long-term budgeting.
 
 #### **Global Seasonality Analysis: Identifying Market Alignment**
 
-To maintain a balanced comparison with the Colombian data, I filtered the global dataset to the 2014–2024 period. This identifies whether the "buy low" window is a local phenomenon or part of a worldwide trend.
+To maintain a balanced comparison with the Colombian Cacao Price data, I filtered the global dataset to the 2014–2024 period. This identifies whether the "buy low" window is a local phenomenon or part of a worldwide trend.
 
 ```{r}
+# Average Global Cocoa Price by Month
+global_cocoa_price %>%
+  filter(observation_date >= "2014-01-01" & observation_date < "2025-01-01") %>%
+  mutate(month = month(observation_date, label = TRUE)) %>%
+  group_by(month) %>%
+  summarise(avg_price = mean(price_cocoa_usd_metric_ton, na.rm = TRUE)) %>%
+  arrange(avg_price) %>%
+  mutate(month = fct_reorder(month, avg_price)) %>%
+  ggplot(aes(x = month, y = avg_price)) +
+  geom_col(fill = "#4682B4", width = 0.7) +
+  scale_y_continuous(labels = label_dollar()) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 0, hjust = 0.5)
+  ) +
+  labs(
+    title = "Average Global Cocoa Price by Month (2014-2024)",
+    x = NULL,
+    y = "Average Price (USD/MT)"
+  )
+
 # Global Monthly Averages (2014-2024)
 global_cocoa_price %>%
   filter(observation_date >= "2014-01-01" & observation_date < "2025-01-01") %>%
@@ -1067,14 +1118,15 @@ global_cocoa_price %>%
 
 ##### **What does the global seasonality suggest?**
 
--   **Shared "First Quarter" Lows:** I noticed that **January** ( USD), **February** ( USD), and **March** ( USD) represent the global price floors. This broadly aligns with the Colombian market, where the same months were also the most affordable.
--   **Price Disparity:** It could be interpreted that the Colombian price sits lower than the global average during these months. For instance, in February, the Colombian average ( USD) is significantly lower than the global USD.
--   **Independent Local Dynamics:** While the windows align, the internal ranking differs (Global lows start in January, Colombian lows peak in February). This suggests that while global forces set the general seasonal "tide," local factors like harvest peaks and logistics still shape the exact monthly behavior in Colombia.
+-   **Shared "First Quarter" Lows:** I noticed that **January (2685.7 USD)**, **February (2832.8 USD)**, and **March (2999.3 USD)** represent the global price floors. This broadly aligns with the Colombian market, where the same months were also the most affordable.
+-   **Price Disparity:** It could be interpreted that the Colombian Cocoa price sits lower than the global average during these months. For instance, in February, the Colombian average **(2383 USD)** is significantly lower than the global **(2832 USD)**.
+-   **Independent Local Dynamics:** Although the seasonal windows align, the monthly rankings differ (global lows begin in January, while Colombian lows occur in February). This indicates that while global forces set the overall seasonal trend, local factors such as harvest timing and logistics still influence the precise monthly price behavior in Colombia.
 
 ##### **What does this mean for a business strategy?**
 
--   **A Unified Procurement Window:** The statistical evidence suggests that the first quarter is a globally recognized period of lower prices. It aligns with a strategy of "buying the dip" on a massive scale between January and March.
--   **Colombian Advantage:** Since Colombian prices appear to be even lower than the global benchmark during this period, it could be interpreted that sourcing from Colombia during Q1 offers a double advantage: seasonal lows combined with a competitive local price point.
+-   **A Unified Procurement Window:** The evidence suggests that the first quarter consistently reflects lower prices at the global level, supporting a procurement strategy focused on January through March.
+-   **Colombian Advantage:** Colombian Advantage: During this same period, Colombian prices appear to sit below the global benchmark. This indicates a potential double advantage: seasonal lows combined with a comparatively competitive local price.
+
 
 #### **Executive Summary: Global Cocoa Price**
 
@@ -1082,10 +1134,10 @@ This section shifts the focus to the global stage to determine how much of the C
 
 ##### **Key Strategic Insights**
 
--   **Global-Local Synchronization:** The statistical evidence suggests that Colombian cocoa prices closely mirror global trends. While the global price rises more steadily (explaining **44%** of its own movement), both markets share the same long-term upward trajectory, confirming that global shocks dictate local reality.
--   **The "New Normal" of Volatility:** Much like the Colombian data, global prices remained predictable for decades (1990–2022) before a structural "break" in **2023–2024**. This recent surge represents a move away from historical cycles toward a period of extreme, unprecedented price instability.
--   **A Unified Global "Buying Window":** I noticed that the global "price floor" aligns perfectly with the Colombian one. **January, February, and March** are the most affordable months worldwide, identifying a clear, evidence-based window for global procurement.
--   **The Colombian Price Advantage:** While the timing is the same, Colombian prices consistently sit **lower than the global average** during this first-quarter dip. The statistical evidence suggests that sourcing from Colombia during **Q1** offers a double benefit: a seasonal low price combined with a competitive local discount against global benchmarks.
+-   **Global-Local Synchronization:** The evidence suggests that Colombian cocoa prices closely follow global trends. Although the global price shows a steadier upward movement **(explaining 44% of its own variation)**, both markets share the same long-term trajectory, indicating that global shocks strongly influence local price dynamics.
+-   **The "New Normal" of Volatility:** Similar to the Colombian data, global prices followed relatively stable historical cycles between 1990 and 2022 before showing a structural shift in **2023–2024**. This recent surge suggests a departure from past patterns toward a period of heightened and unusually strong price volatility.
+-   **A Unified Global "Buying Window":** The global seasonal price floor aligns with the Colombian pattern. **January, February, and March** consistently show the lowest average prices, identifying a clear window for strategic procurement.
+-   **The Colombian Price Advantage:** While the timing is the same, Colombian prices consistently sit **lower than the global average** during this first-quarter dip.
 
 **What This Means for Decisions:**
 
