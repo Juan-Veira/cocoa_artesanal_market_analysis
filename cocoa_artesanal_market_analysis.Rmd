@@ -94,7 +94,7 @@ After selecting this dataset, I identified the relevant product classifications,
 
 ### **Solving for Granularity**
 
-A key challenge in this project was finding the right level of detail for trade movements. While **WITS (World Bank)** provided an excellent high-level overview of annual exports, I pivoted to the **UN Comtrade Database** to access monthly trade flows. This increased granularity allowed for a more nuanced analysis of seasonality and short-term market shifts for Colombian chocolate exports (HS Codes 180631 and 180632).
+Another key challenge in this project was finding the right level of detail for trade movements. While **WITS (World Bank)** provided an excellent high-level overview of annual exports, I pivoted to the **UN Comtrade Database** to access monthly trade flows. This increased granularity allowed for a more nuanced analysis of seasonality and short-term market shifts for Colombian chocolate exports (HS Codes 180631 and 180632).
 
 ### **Detailed Source Reference**
 
@@ -712,43 +712,11 @@ colombian_cocoa_price %>%
 
 #### **What do these variables suggest?**
 
--   **Average Monthly Volume (`avg_month`):** I noticed that the mean (9,124 USD/ton) is considerably higher than the median (7,579 USD/ton). This gap **suggests a right-skewed distribution**, which could be interpreted as the result of specific months with unusually high activity. It may be that certain peak seasons are pulling the average up, which makes it important to investigate potential outliers later with a time serie and boxplot.
+-   **Average Monthly Volume (avg_month):** I noticed that the mean (9,124 USD/ton) is considerably higher than the median (7,579 USD/ton). This gap **suggests a right-skewed distribution**, which could be interpreted as the result of specific months with unusually high activity. It may be that certain peak seasons are pulling the average up, which makes it important to investigate potential outliers later with a time serie and boxplot.
 
--   **The Exchange Rate (`trm_usd`):** The data clearly shows a significant depreciation of the Colombian peso. With a range between min (1,858 Cop) and max (4,927 Cop) COP per dollar, it is evident that the local currency has lost substantial value.
+-   **The Exchange Rate (trm_usd):** The data clearly shows a significant depreciation of the Colombian peso. With a range between min (1,858 Cop) and max (4,927 Cop) COP per dollar, it is evident that the local currency has lost substantial value.
 
--   **Cocoa Price in USD (`price_usd_metric_ton`):** The prices show a wide spread, with a minimum of 1,616 and a maximum of 8,672. These fluctuations **could be shaped** by prices (in COP) and exchange rate (TRM) variations.
-
-#### **Does the exchange rate drive the price of cocoa?**
-
-One of the most important questions is whether the dollar's strength is the main driver of cocoa prices in Colombia. To explore this, I calculated the correlation between the exchange rate (TRM) and the price in USD with the cor() function.
-
-```{r}
-# Calculating Correlation
-cor(colombian_cocoa_price$price_usd_metric_ton,
-  colombian_cocoa_price$trm_usd,
-  use = "complete.obs"
-)
-```
-
-Understanding that:
-
--   **+1 (Strong Positive):** The variables move together in the same direction.
-
--   **-1 (Strong Negative):** They move in opposite directions.
-
--   **0 (No Relationship):** The variables don't seem to affect each other at all.
-
-The resulting correlation of **0.26** indicates what could be described as a **weak positive relationship**.
-
-#### **What could this finding mean?**
-
-This result is quite revealing. Because the relationship is not strong, it **suggests that the Colombian cocoa price is not just a reflection of the exchange rate**. Instead, it might be interpreted that the price is being shaped more by:
-
--   Global supply and demand dynamics.
--   International production shortages.
--   Domestic harvest cycles and export trends.
-
-It aligns with the idea that cocoa is a global commodity; while the local currency matters, the "world price" and market fundamentals seem to have a more significant influence on the final value in USD
+-   **Cocoa Price in USD (price_usd_metric_ton):** The prices show a wide spread, with a minimum of 1,616 and a maximum of 8,672. These fluctuations **could be shaped** by prices (in COP) and exchange rate (TRM) variations.
 
 ### **Global Cocoa Market Dataset**
 
@@ -763,7 +731,7 @@ global_cocoa_price %>%
 
 #### **What do the numbers suggest?**
 
--   **A Skewed Reality:** The mean price (2,157 USD/ton) is higher than the median (1,986 USD/ton). This difference **could be interpreted** as a right-skewed distribution, where the average is being pulled upward by a few extreme price spikes rather than a steady, uniform increase.
+-   **A Skewed Reality:** The mean price (2,157 USD/ton) is higher than the median (1,986 USD/ton). This difference could be interpreted as a right-skewed distribution, where the average is being pulled upward by a few extreme price spikes rather than a steady, uniform increase.
 
 -   **Massive Volatility:** The range is truly striking, moving from a minimum of 860,7 to a historical maximum of 10,412 USD/ton.
 
@@ -798,7 +766,7 @@ This steady climb aligns with the idea that while raw cocoa prices can spike and
 
 ### **Chocolate Exports Data Set**
 
-To understand the scale of Colombian chocolate in the global market, I analyzed two specific categories of the Harmonized System (HS) codes: **180631** (filled chocolate blocks/bars) and **180632** (unfilled blocks/bars). These codes represent the majority of Colombia's value-added cocoa exports.
+To understand the scale of Colombian chocolate in the global market, I analyzed the two specific categories of the Harmonized System (HS) codes: **180631** (filled chocolate blocks/bars) and **180632** (unfilled blocks/bars) mentioned before. These codes represent the majority of Colombia's value-added cocoa exports.
 
 #### **Ensuring Data Integrity Identifying the "Zero-Weight" Outlier**
 
@@ -843,7 +811,7 @@ chocolate_exports_180632 %>%
   filter(net_wgt == 0)
 ```
 
-By fixing this single outlier, I ensured that my future visualizations of "Price per KG" and "Total Export Volume" are not distorted by artificial spikes. It aligns with a professional data auditing process: identifying a problem, suggesting a logical cause (entry error), and applying a statistically sound fix.
+By fixing this single outlier, I ensured that my future visualizations of **Price per KG** and **Total Export Volume** are not distorted by artificial spikes. It aligns with a professional data auditing process: identifying a problem, suggesting a logical cause (entry error), and applying a statistically sound fix.
 
 With the outlier resolved, I can now clearly compare the two main types of chocolate products Colombia sends to the world. By looking at the cleaned summaries for both HS 180631 (filled chocolate) and HS 180632 (unfilled chocolate), I can suggest which sector holds more weight in the national export strategy.
 
@@ -860,13 +828,13 @@ chocolate_exports_180632 %>%
 
 ##### **What does the data suggest?**
 
--   **Value Leadership:** I noticed that filled chocolate products (HS 180631) generate significantly more revenue. With a mean export value of approximately **\$1.04M** per period, it is nearly triple the mean value of unfilled products (**\$0.36M**).
+-   **Value Leadership:** I noticed that filled chocolate products HS 180631 (filled chocolate) generate significantly more revenue than HS 180632 (unfilled chocolate). With a mean export value of approximately **\$1.04M** per period, it is nearly triple the mean value of unfilled products (**\$0.36M**).
 
 -   **Volume Disparity:** The net weight follows a similar pattern, where the average volume for filled products (**243,259 kg**) far exceeds that of unfilled items (**49,464 kg**). This suggests that the production and logistics infrastructure in Colombia is likely more focused on the 180631 category.
 
 ##### **Why is this distinction important?**
 
-This finding is key for my analysis because it highlights where the real money is moving. While both categories are part of the "Chocolate" umbrella, the filled product market appears to be the primary engine of export growth. It suggests that any strategic insights I find regarding the "July discount" or "October peak" might have a much larger financial impact on the filled chocolate sector.
+This finding is key for my analysis because it highlights where the real money is moving. While both categories are part of the "Chocolate" umbrella, the filled product market appears to be the primary engine of export growth.
 
 ## **Plotting a few explorations**
 
@@ -2214,6 +2182,38 @@ In this section, I analyzed whether the value of Colombian chocolate exports is 
 **Strategic Takeaway:** Colombian chocolate exports are **price-independent**. For a stakeholder, this means that a "global price boom" is not a strategy for export growth. Instead, success in the international market appears to depend on **demand-side dynamics** and commercial relationships. Your export strategy should focus on marketing and seasonal cycles rather than waiting for favorable global price shifts.
 
 ### **Economic Analysis**
+
+#### **Does the exchange rate drive the price of cocoa?**
+
+One of the most important questions is whether the dollar's strength is the main driver of cocoa prices in Colombia. To explore this, I calculated the correlation between the exchange rate (TRM) and the price in USD with the cor() function.
+
+```{r}
+# Calculating Correlation
+cor(colombian_cocoa_price$price_usd_metric_ton,
+  colombian_cocoa_price$trm_usd,
+  use = "complete.obs"
+)
+```
+
+Understanding that:
+
+-   **+1 (Strong Positive):** The variables move together in the same direction.
+
+-   **-1 (Strong Negative):** They move in opposite directions.
+
+-   **0 (No Relationship):** The variables don't seem to affect each other at all.
+
+The resulting correlation of **0.26** indicates what could be described as a **weak positive relationship**.
+
+#### **What could this finding mean?**
+
+This result is quite revealing. Because the relationship is not strong, it **suggests that the Colombian cocoa price is not just a reflection of the exchange rate**. Instead, it might be interpreted that the price is being shaped more by:
+
+-   Global supply and demand dynamics.
+-   International production shortages.
+-   Domestic harvest cycles and export trends.
+
+It aligns with the idea that cocoa is a global commodity; while the local currency matters, the "world price" and market fundamentals seem to have a more significant influence on the final value in USD.
 
 #### **TRM Only Regression: Does the Exchange Rate Drive Exports?**
 
