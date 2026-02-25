@@ -1160,15 +1160,15 @@ qf(0.95, df1 = 1, df2 = 161)
 
 ##### **What does the industrial data suggest?**
 
--   **A Highly Predictable Trend:** The of **0.7388** is the highest we have seen so far. It suggests that time explains nearly **74% of the variation** in chocolate producer prices. Unlike raw cocoa, which is prone to sudden shocks, the industrial index moves in a much more linear and stable upward path.
--   **Strong Statistical Support:** An **F-statistic of 438.3** (far exceeding the critical value of 3.90) and a **p-value \< 2e-16** provide strong evidence of a consistent monthly increase of approximately **0.22 units**.
--   **Low Residual Noise:** The low residual standard error (6.11) could be interpreted as a sign of price "stickiness." It aligns with the idea that manufacturers don't change their prices as rapidly as the raw commodity market fluctuates.
+-   **A Highly Predictable Trend:** The **R² values** (0.738) is the highest we have seen so far. It suggests that time explains nearly **74% of the variation** in chocolate producer prices. Unlike raw cocoa, which is prone to sudden shocks, the industrial index moves in a much more linear and stable upward path.
+-   **Strong Statistical Support:** An **F-statistic of 438.3** (far exceeding the critical value of 3.90) and a (p = \< 2e-16) provide strong evidence of a consistent monthly increase of approximately **0.22 units**.
+-   **Low Residual Noise:** The low **residual standard error (6.11)** could be interpreted as a sign of price "stickiness." It aligns with the idea that manufacturers don't change their prices as rapidly as the raw commodity market fluctuates.
 
 ##### **What does this mean for a business strategy?**
 
 The contrast between the "stable" chocolate PPI and the "volatile" cocoa price is a key business insight.
 
--   **Cost Absorption:** It may be interpreted that while raw cocoa prices (the input) are currently exploding, manufacturers (the output) have historically maintained a more gradual price increase. This suggests they may be absorbing short-term volatility to protect their consumer market.
+-   **Cost Absorption:** Although raw cocoa prices have recently surged, manufacturers’ prices have historically increased more gradually. This suggests that producers may absorb short-term input volatility to maintain stability in the consumer market.
 -   **Predictable Budgeting:** For a distributor or retailer, the high suggests that chocolate PPI is much easier to forecast than raw cocoa prices. This aligns with a strategy of long-term contract pricing based on these steady industrial trends.
 -   **Margin Squeeze Risk:** However, the recent sharp spikes in raw cocoa (which explained only 42% of its own variation) could eventually force the PPI to break this steady linear trend, leading to more aggressive industrial price hikes in the near future.
 
@@ -1201,11 +1201,11 @@ ggplot(data = chocolate_producer_price, aes(x = observation_date, y = producer_p
 
 ##### **What does this mean for a business strategy?**
 
-The trend here is much more "linear" than raw cocoa ($R^2 \approx 0.74$), which suggests that once manufacturer prices go up, they stay up.
+The trend here is much more "linear" than raw cocoa (R² ≈ 0.74), which suggests that once manufacturer prices go up, they stay up.
 
 -   **Price "Stickiness":** While raw cocoa prices might eventually drop (as we've seen in some recent market corrections), the PPI often shows more resistance to falling. This aligns with a strategy where manufacturers protect their margins even if raw materials begin to ease.
 -   **Consumer Impact:** For an exporter or retailer, this rising PPI is a signal of "inflationary pressure." It may be interpreted that the cost of finished chocolate goods will remain high for the foreseeable year, even if the "bubble" in raw cocoa starts to deflate.
--   **Volume Risk:** As prices rise toward 200 PPI, there is a clear risk of **demand destruction**. Businesses might need to plan for lower sales volumes or explore "shrinkflation" tactics (smaller portions) to keep products accessible to consumers.
+-   **Volume Risk:** Volume Risk: As prices approach 200 PPI, the risk of demand contraction increases. Businesses may need to prepare for lower sales volumes or consider product adjustments such as smaller portion sizes, to maintain affordability and protect consumer demand.
 
 #### **Linear Trend and Variability: Is the industrial trend accelerating?**
 
@@ -1234,7 +1234,7 @@ ggplot(chocolate_producer_price, aes(x = factor(year(observation_date)), y = pro
 ##### **What does this mean for a business strategy?**
 
 -   **Risk of Margin Compression:** The sudden expansion of the 2024 and 2025 boxes suggests that manufacturers may be struggling to keep up with raw material spikes. It aligns with the idea that industrial margins are under more pressure now than at any point in the last decade.
--   **Predictability Loss:** The historical "flatness" of the PPI once allowed for easy long-term budgeting. The new data suggests a "regime change" where businesses must now account for significant month-to-month industrial price swings.
+-   **Loss of Predictability:** In the past, the relative stability of the PPI allowed for straightforward long-term budgeting. Recent data suggests a structural shift, where businesses must now plan for significant month-to-month price fluctuations.
 -   **Lagged Transmission:** While raw cocoa prices have recently seen some corrections, the PPI continues to show a "sticky" upward movement. It may be interpreted that industrial prices will take much longer to stabilize, even if commodity markets cool down.
 
 #### **Industrial Seasonality: Are Manufacturer Prices Seasonal?**
@@ -1242,6 +1242,34 @@ ggplot(chocolate_producer_price, aes(x = factor(year(observation_date)), y = pro
 To complete our seasonality comparison, I analyzed the monthly averages of the Chocolate Producer Price Index (PPI) between 2014 and 2024. This allows me to see if the "cheap months" for raw cocoa result in lower prices for finished chocolate products.
 
 ```{r}
+# Calculating monthly average Producer Price Index (2014-2024)
+chocolate_producer_price %>%
+  filter(observation_date > "2014-01-01" & observation_date < "2025-01-01") %>%
+  mutate(month = month(observation_date, label = TRUE)) %>%
+  group_by(month) %>%
+  summarise(avg_price = mean(producer_price_index, na.rm = TRUE)) %>%
+  arrange(avg_price) %>%
+  mutate(month = fct_inorder(month)) %>%
+  ggplot(aes(x = month, y = avg_price)) +
+  geom_col(fill = "steelblue", width = 0.7) +
+  geom_text(aes(label = round(avg_price, 1)), 
+            vjust = -0.5, size = 3, color = "#555555") +
+  coord_cartesian(ylim = c(100, 115)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_line(color = "#E5E5E5"),
+    plot.title = element_text(size = 14, face = "bold", margin = margin(b = 10)),
+    axis.text.y = element_text(size = 9)
+  ) +
+  labs(
+    title = "Average Producer Price Index by Month (2014-2024)",
+    subtitle = "Chocolate and related products",
+    x = NULL,
+    y = "Average PPI"
+  )
+
 # Calculating monthly average Producer Price Index (2014-2024)
 chocolate_producer_price %>%
   filter(observation_date > "2014-01-01" & observation_date < "2025-01-01") %>%
@@ -1267,11 +1295,11 @@ In this section, I analyzed the **Producer Price Index (PPI)** to understand how
 
 ##### **Key Strategic Insights**
 
--   **The End of "Price Stickiness":** For nearly a decade (2013–2022), manufacturer prices were incredibly stable ($R^2 = 0.74$), moving in a predictable, slow upward path. However, the statistical evidence suggests a "regime change" starting in **2023**. Manufacturers appear to have exhausted their ability to absorb costs, passing the raw cocoa price spikes directly to the industrial index.
--   **Predictability vs. Volatility:** Unlike raw cocoa, which is prone to sudden jumps and drops, industrial prices are "sticky." Once they rise, they tend to stay up. It could be interpreted that even if raw cocoa prices eventually cool down, the cost of finished chocolate will likely remain at these new, higher levels for the foreseeable future.
+-   **The End of "Price Stickiness":** Between 2013 and 2022, manufacturer prices remained relatively stable (R² = 0.74), following a gradual and predictable upward path. However, beginning in 2023, the data suggests a potential regime shift. Manufacturers appear to have reduced their capacity to absorb rising input costs, with raw cocoa price spikes increasingly reflected in the industrial price index.
+-   **Predictability vs. Volatility:** Unlike raw cocoa prices, which are subject to sharp fluctuations, industrial prices tend to be more rigid. Once they increase, they rarely adjust downward. This suggests that even if raw cocoa prices moderate in the future, finished chocolate prices may remain elevated for an extended period.
 -   **Zero Seasonal Advantage:** While raw cocoa has a clear "buy low" window in the first quarter, the industrial index shows **no significant seasonality**. The difference between the cheapest and most expensive months is less than **3%**.
 
-**Strategic Takeaway:** You cannot rely on "waiting for a cheaper month" to sell finished chocolate products, as seasonality does not exist in the PPI. Instead, focus on the fact that industrial prices are likely to stay high even if raw cocoa dips, necessitating a shift in long-term pricing and margin protection strategies.
+**Strategic Takeaway:** Waiting for seasonal price drops is ineffective when selling finished chocolate products, as the PPI shows no meaningful seasonality. Instead, businesses should plan around persistently high industrial prices, even if raw cocoa costs temporarily decline, and adjust long-term pricing and margin protection strategies accordingly.
 
 ### **Colombian Chocolate Exports**
 
@@ -1324,7 +1352,7 @@ ggplot(data = chocolate_exports_180632, aes(x = ref_period_id, y = primary_value
 
 ##### **What does this mean for a business strategy?**
 
--   **Market Opportunity:** The "flatness" of the export trend suggests there is room for growth. If Colombian manufacturers can leverage the "Premium/Fine Flavor" status of their cocoa, they might be able to push these regression lines upward in the coming years.
+-   **Market Opportunity:** The "flatness" of the export trend suggests a unique opportunity: Colombian exports appear relatively uninfluenced by global cocoa price trends. This indicates a level of stability, as export volumes have remained constant regardless of external market volatility.
 -   **Stability in Uncertainty:** Despite the massive price spikes in raw cocoa we saw in 2023–2024, the export values have remained relatively stable. This could be interpreted as a sign that Colombian exporters are maintaining their international commitments even under high-cost pressure.
 
 To better understand these dynamics, I will now proceed with a linear regression model to evaluate the relationship between time (*month_index*) and export value (*primary_value*) in both datasets.
@@ -1345,9 +1373,9 @@ summary(model_exp_180632)
 
 ##### **What do the statistical results suggest?**
 
--   **No Significant Linear Trend:** For both filled (p = 0.127) and unfilled (p = 0.536) chocolates, the p-values exceed the standard significance threshold (0.05). It suggests that the slight monthly changes (+ and - USD, respectively) are likely due to random chance rather than a consistent long-term direction.
+-   **No Significant Linear Trend:** For both filled (p = 0.127) and unfilled (p = 0.536) chocolates, the p-values exceed the standard significance threshold (0.05). It suggests that the slight monthly changes (+ 1877 and - 408 USD, respectively) are likely due to random chance rather than a consistent long-term direction.
 -   **Low Explanatory Power:** The **R² values** are near zero (0.02 and 0.04). The statistical evidence suggests that **time alone explains less than 2% of the variation** in export values. This aligns with the high dispersion I observed in the previous plots.
--   **Accepting the Null Hypothesis:** Since **the F-statistics** (2.36 and 038) are lower than **the critical value** (3.94), I must accept the null hypothesis: there is no significant linear time trend in these export values between 2016 and 2024.
+-   **Accepting the Null Hypothesis:** Since **the F-statistics (2.36 and 038)** are lower than **the critical value(3.94)**, I must accept the null hypothesis: there is no significant linear time trend in these export values between 2016 and 2024.
 
 ##### **What does this mean for a business strategy?**
 
@@ -1942,8 +1970,8 @@ In this section, I analyzed the deep connection between Colombian domestic cocoa
 
 ##### **Key Strategic Insights**
 
--   **Transmission:** The statistical evidence suggests that while Colombia is highly integrated into the global market ($R^2 = 94.5\%$), it doesn't replicate shocks 1-to-1. For every **\$1 USD** increase in global prices, the local price rises by approximately **\$0.90 USD**. This suggests a natural "damping" effect where the local market absorbs about **10%** of the external volatility.
--   **Instant Market Reaction:** My lag analysis reveals that price transmission is nearly immediate. The correlation is strongest at **Lag 0** ($r \approx 0.97$), meaning global price signals are reflected in Colombian prices within the same month. It aligns with a highly transparent market where information flows instantly.
+-   **Transmission:** The statistical evidence suggests that while Colombia is highly integrated into the global market ($R² = 94.5\%$), it doesn't replicate shocks 1-to-1. For every **\$1 USD** increase in global prices, the local price rises by approximately **\$0.90 USD**. This suggests a natural "damping" effect where the local market absorbs about **10%** of the external volatility.
+-   **Instant Market Reaction:** My lag analysis reveals that price transmission is nearly immediate. The correlation is strongest at **Lag 0** ($r ≈ 0.97$), meaning global price signals are reflected in Colombian prices within the same month. It aligns with a highly transparent market where information flows instantly.
 -   **The Volatility Buffer:** I found that the global market is significantly more "nervous" than the local one (Standard Deviation: **445 vs. 353**). This suggests that while Colombian prices follow the global trend, they do so with fewer abrupt monthly swings, offering a slightly more stable cost environment for domestic planning.
 -   **A Widening Competitive Gap:** Visual analysis shows a "decoupling" during extreme peaks in 2024. While global prices hit record highs, Colombian prices remained consistently lower. It could be interpreted that local supply factors act as a partial buffer, providing a competitive "discount" for those sourcing from Colombia during times of global crisis.
 
@@ -2083,7 +2111,7 @@ summary(model_lagged)
 
 ##### **Interpreting the results**
 
-The lagged regression confirms a strong and statistically significant relationship between global cocoa prices and the Chocolate Producer Price Index ($F = 30.52$; $p < 2.2e-16$), explaining approximately **44%** of the price variation (Adjusted $R^2 \approx 0.436$).
+The lagged regression confirms a strong and statistically significant relationship between global cocoa prices and the Chocolate Producer Price Index ($F = 30.52$; $p < 2.2e-16$), explaining approximately **44%** of the price variation (Adjusted $R² ≈ 0.436$).
 
 - **Meaningful Contemporaneous Effect:** The immediate impact is economically significant. A **$1,000 increase in the global cocoa price per metric ton** is associated with an increase of approximately **+4.6 PPI index points** (β₀ = 0.00461). The statistical evidence indicates that chocolate producer prices begin adjusting within the same month, suggesting a rapid cost pass-through mechanism.
 
@@ -2212,7 +2240,7 @@ lag_results
 
 ##### **What the statistical evidence suggests**
 
--   **Absence of Immediate Link:** I observed that the correlation at **Lag 0** is near zero ($r \approx -0.047$). This suggests that there is no strong contemporaneous relationship between global cocoa prices and Colombian chocolate exports.
+-   **Absence of Immediate Link:** I observed that the correlation at **Lag 0** is near zero ($r ≈ -0.047$). This suggests that there is no strong contemporaneous relationship between global cocoa prices and Colombian chocolate exports.
 -   **Short-term Pressure (Lags 1–2):** The statistical evidence shows a small negative correlation during the first two months. It could be interpreted that when global prices rise, export volumes may face a slight, immediate contraction, possibly due to higher raw material costs affecting competitiveness or order volumes.
 -   **Delayed Drift (Lags 4–6):** From **Lag 4** onward, the correlation shifts to slightly positive but remains very weak ($r < 0.06$). It aligns with the idea that there is no strong or consistent delayed price effect on exports.
 
@@ -2298,7 +2326,7 @@ This suggests that the export engine is not a simple "price-in, volume-out" mach
 
 #### **Exchange Rate Pass-Through on Local Pricing**
 
-To determine if currency fluctuations influence domestic costs, I modeled the Colombian cocoa price against the **TRM**. Unlike the export models, this relationship shows a clear statistical link ($p \approx 0.01$).
+To determine if currency fluctuations influence domestic costs, I modeled the Colombian cocoa price against the **TRM**. Unlike the export models, this relationship shows a clear statistical link ($p ≈ 0.01$).
 
 ```{r}
 # Visualizing the link between currency and local pricing
@@ -2397,7 +2425,7 @@ adf.test(diff(merged_economic_exports$trm_usd))
 
 ##### **What the ADF Results Suggest**
 
--   **Non-Stationarity in Levels:** I noticed that both the Colombian cocoa price ($p \approx 0.89$) and the TRM ($p \approx 0.35$) are non-stationary in their raw form. They follow stochastic trends, meaning they "wander" without returning to a stable average.
+-   **Non-Stationarity in Levels:** I noticed that both the Colombian cocoa price ($p ≈ 0.89$) and the TRM ($p ≈ 0.35$) are non-stationary in their raw form. They follow stochastic trends, meaning they "wander" without returning to a stable average.
 -   **Stationarity through Differencing:** After taking the first difference (I(1)), the p-values dropped to $0.014$ and $0.017$ respectively. This allows me to reject the null hypothesis of a unit root.
 -   **The I(1) Conclusion:** It could be interpreted that both variables are $I(1)$. They are unstable as raw levels but become "well-behaved" after one round of differencing.
 
@@ -2505,7 +2533,7 @@ summary(lm_diff_lag)
 
 ##### **What the results suggest**
 
--   **No Delayed Transmission:** I found that the lagged TRM is statistically insignificant ($p = 0.58$) and explains practically zero variation in the model ($R^2 \approx 0.003$). The statistical evidence suggests that exchange rate movements from the previous month have no predictive power over current performance.
+-   **No Delayed Transmission:** I found that the lagged TRM is statistically insignificant ($p = 0.58$) and explains practically zero variation in the model ($R² ≈ 0.003$). The statistical evidence suggests that exchange rate movements from the previous month have no predictive power over current performance.
 -   **Immediate Market Reflex:** It could be interpreted that the "economic memory" of this relationship is very short. If a currency shift is going to affect the cocoa market, it happens within the same 30-day window.
 -   **Decoupled Exports:** Just as I saw in my previous linear models, export values remain remarkably resistant to TRM influence, whether looking at current prices or lagged ones. This reinforces the idea that exports are driven by structural demand or pre-existing contracts rather than speculative currency windows.
 
