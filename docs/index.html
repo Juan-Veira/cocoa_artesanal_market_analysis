@@ -1863,7 +1863,7 @@ forecasting.</p>
 <ul>
 <li><strong>The Tidyverse Ecosystem:</strong> I Used for core data
 manipulation, cleaning, and visualization via <code>dplyr</code>,
-<code>tidyr</code>, and <code>ggplot2</code>.</li>
+<code>tidyr</code> and <code>ggplot2</code>.</li>
 <li><strong>Data Auditing &amp; Cleaning:</strong> I used
 <code>janitor</code> for consistent column naming and <code>skim</code>
 for comprehensive summary statistics to catch missing values early.</li>
@@ -2129,16 +2129,16 @@ refined data frames that provide a cleaner, more readable view of the
 dataset within the R environment.</p>
 <pre class="r"><code>head(raw_colombian_cocoa_price)</code></pre>
 <pre><code># A tibble: 6 × 8
-  raw_date  date       month_sum number_weeks avg_month trm_usd
-  &lt;chr&gt;     &lt;date&gt;         &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 7/1/2013  2013-07-01    15095             4     3774.   1902.
-2 8/1/2013  2013-08-01    20202.            5     4040.   1902.
-3 9/1/2013  2013-09-01    17515             4     4379.   1920.
-4 10/1/2013 2013-10-01    22938.            5     4588.   1885.
-5 11/1/2013 2013-11-01    18938.            4     4734.   1922.
-6 12/1/2013 2013-12-01    19550             4     4888.   1933.
-# ℹ 2 more variables: price_usd_metric_kilogram &lt;dbl&gt;,
-#   price_usd_metric_ton &lt;dbl&gt;</code></pre>
+  raw_date date       month_sum number_weeks avg_month trm_usd price_usd_metric_kil…¹
+  &lt;chr&gt;    &lt;date&gt;         &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;                  &lt;dbl&gt;
+1 7/1/2013 2013-07-01    15095             4     3774.   1902.                   1.98
+2 8/1/2013 2013-08-01    20202.            5     4040.   1902.                   2.12
+3 9/1/2013 2013-09-01    17515             4     4379.   1920.                   2.28
+4 10/1/20… 2013-10-01    22938.            5     4588.   1885.                   2.43
+5 11/1/20… 2013-11-01    18938.            4     4734.   1922.                   2.46
+6 12/1/20… 2013-12-01    19550             4     4888.   1933.                   2.53
+# ℹ abbreviated name: ¹​price_usd_metric_kilogram
+# ℹ 1 more variable: price_usd_metric_ton &lt;dbl&gt;</code></pre>
 <pre class="r"><code>head(raw_global_cocoa_price)</code></pre>
 <pre><code># A tibble: 6 × 2
   observation_date price_cocoa_usd_metric_ton
@@ -2172,10 +2172,10 @@ dataset within the R environment.</p>
 # ℹ 39 more variables: reporterDesc &lt;chr&gt;, flowCode &lt;chr&gt;, flowDesc &lt;chr&gt;,
 #   partnerCode &lt;dbl&gt;, partnerISO &lt;chr&gt;, partnerDesc &lt;chr&gt;, partner2Code &lt;dbl&gt;,
 #   partner2ISO &lt;chr&gt;, partner2Desc &lt;chr&gt;, classificationCode &lt;chr&gt;,
-#   classificationSearchCode &lt;chr&gt;, isOriginalClassification &lt;lgl&gt;,
-#   cmdCode &lt;dbl&gt;, cmdDesc &lt;chr&gt;, aggrLevel &lt;dbl&gt;, isLeaf &lt;lgl&gt;,
-#   customsCode &lt;chr&gt;, customsDesc &lt;chr&gt;, mosCode &lt;dbl&gt;, motCode &lt;dbl&gt;,
-#   motDesc &lt;chr&gt;, qtyUnitCode &lt;dbl&gt;, qtyUnitAbbr &lt;chr&gt;, qty &lt;dbl&gt;, …</code></pre>
+#   classificationSearchCode &lt;chr&gt;, isOriginalClassification &lt;lgl&gt;, cmdCode &lt;dbl&gt;,
+#   cmdDesc &lt;chr&gt;, aggrLevel &lt;dbl&gt;, isLeaf &lt;lgl&gt;, customsCode &lt;chr&gt;,
+#   customsDesc &lt;chr&gt;, mosCode &lt;dbl&gt;, motCode &lt;dbl&gt;, motDesc &lt;chr&gt;,
+#   qtyUnitCode &lt;dbl&gt;, qtyUnitAbbr &lt;chr&gt;, qty &lt;dbl&gt;, isQtyEstimated &lt;lgl&gt;, …</code></pre>
 <pre class="r"><code>head(raw_chocolate_exports_180632)</code></pre>
 <pre><code># A tibble: 6 × 47
   typeCode freqCode refPeriodId refYear refMonth period reporterCode reporterISO
@@ -2189,10 +2189,10 @@ dataset within the R environment.</p>
 # ℹ 39 more variables: reporterDesc &lt;chr&gt;, flowCode &lt;chr&gt;, flowDesc &lt;chr&gt;,
 #   partnerCode &lt;dbl&gt;, partnerISO &lt;chr&gt;, partnerDesc &lt;chr&gt;, partner2Code &lt;dbl&gt;,
 #   partner2ISO &lt;chr&gt;, partner2Desc &lt;chr&gt;, classificationCode &lt;chr&gt;,
-#   classificationSearchCode &lt;chr&gt;, isOriginalClassification &lt;lgl&gt;,
-#   cmdCode &lt;dbl&gt;, cmdDesc &lt;chr&gt;, aggrLevel &lt;dbl&gt;, isLeaf &lt;lgl&gt;,
-#   customsCode &lt;chr&gt;, customsDesc &lt;chr&gt;, mosCode &lt;dbl&gt;, motCode &lt;dbl&gt;,
-#   motDesc &lt;chr&gt;, qtyUnitCode &lt;dbl&gt;, qtyUnitAbbr &lt;chr&gt;, qty &lt;dbl&gt;, …</code></pre>
+#   classificationSearchCode &lt;chr&gt;, isOriginalClassification &lt;lgl&gt;, cmdCode &lt;dbl&gt;,
+#   cmdDesc &lt;chr&gt;, aggrLevel &lt;dbl&gt;, isLeaf &lt;lgl&gt;, customsCode &lt;chr&gt;,
+#   customsDesc &lt;chr&gt;, mosCode &lt;dbl&gt;, motCode &lt;dbl&gt;, motDesc &lt;chr&gt;,
+#   qtyUnitCode &lt;dbl&gt;, qtyUnitAbbr &lt;chr&gt;, qty &lt;dbl&gt;, isQtyEstimated &lt;lgl&gt;, …</code></pre>
 </div>
 <div id="view-column-names" class="section level3">
 <h3><strong>View column names</strong></h3>
@@ -2210,55 +2210,39 @@ characters or inconsistent naming conventions that might need to be
 <pre class="r"><code>colnames(raw_chocolate_producer_price)</code></pre>
 <pre><code>[1] &quot;observation_date&quot;     &quot;producer_price_index&quot;</code></pre>
 <pre class="r"><code>colnames(raw_chocolate_exports_180631)</code></pre>
-<pre><code> [1] &quot;typeCode&quot;                 &quot;freqCode&quot;                
- [3] &quot;refPeriodId&quot;              &quot;refYear&quot;                 
- [5] &quot;refMonth&quot;                 &quot;period&quot;                  
- [7] &quot;reporterCode&quot;             &quot;reporterISO&quot;             
- [9] &quot;reporterDesc&quot;             &quot;flowCode&quot;                
-[11] &quot;flowDesc&quot;                 &quot;partnerCode&quot;             
-[13] &quot;partnerISO&quot;               &quot;partnerDesc&quot;             
-[15] &quot;partner2Code&quot;             &quot;partner2ISO&quot;             
-[17] &quot;partner2Desc&quot;             &quot;classificationCode&quot;      
-[19] &quot;classificationSearchCode&quot; &quot;isOriginalClassification&quot;
-[21] &quot;cmdCode&quot;                  &quot;cmdDesc&quot;                 
-[23] &quot;aggrLevel&quot;                &quot;isLeaf&quot;                  
-[25] &quot;customsCode&quot;              &quot;customsDesc&quot;             
-[27] &quot;mosCode&quot;                  &quot;motCode&quot;                 
-[29] &quot;motDesc&quot;                  &quot;qtyUnitCode&quot;             
-[31] &quot;qtyUnitAbbr&quot;              &quot;qty&quot;                     
-[33] &quot;isQtyEstimated&quot;           &quot;altQtyUnitCode&quot;          
-[35] &quot;altQtyUnitAbbr&quot;           &quot;altQty&quot;                  
-[37] &quot;isAltQtyEstimated&quot;        &quot;netWgt&quot;                  
-[39] &quot;isNetWgtEstimated&quot;        &quot;grossWgt&quot;                
-[41] &quot;isGrossWgtEstimated&quot;      &quot;cifvalue&quot;                
-[43] &quot;fobvalue&quot;                 &quot;primaryValue&quot;            
-[45] &quot;legacyEstimationFlag&quot;     &quot;isReported&quot;              
-[47] &quot;isAggregate&quot;             </code></pre>
+<pre><code> [1] &quot;typeCode&quot;                 &quot;freqCode&quot;                 &quot;refPeriodId&quot;             
+ [4] &quot;refYear&quot;                  &quot;refMonth&quot;                 &quot;period&quot;                  
+ [7] &quot;reporterCode&quot;             &quot;reporterISO&quot;              &quot;reporterDesc&quot;            
+[10] &quot;flowCode&quot;                 &quot;flowDesc&quot;                 &quot;partnerCode&quot;             
+[13] &quot;partnerISO&quot;               &quot;partnerDesc&quot;              &quot;partner2Code&quot;            
+[16] &quot;partner2ISO&quot;              &quot;partner2Desc&quot;             &quot;classificationCode&quot;      
+[19] &quot;classificationSearchCode&quot; &quot;isOriginalClassification&quot; &quot;cmdCode&quot;                 
+[22] &quot;cmdDesc&quot;                  &quot;aggrLevel&quot;                &quot;isLeaf&quot;                  
+[25] &quot;customsCode&quot;              &quot;customsDesc&quot;              &quot;mosCode&quot;                 
+[28] &quot;motCode&quot;                  &quot;motDesc&quot;                  &quot;qtyUnitCode&quot;             
+[31] &quot;qtyUnitAbbr&quot;              &quot;qty&quot;                      &quot;isQtyEstimated&quot;          
+[34] &quot;altQtyUnitCode&quot;           &quot;altQtyUnitAbbr&quot;           &quot;altQty&quot;                  
+[37] &quot;isAltQtyEstimated&quot;        &quot;netWgt&quot;                   &quot;isNetWgtEstimated&quot;       
+[40] &quot;grossWgt&quot;                 &quot;isGrossWgtEstimated&quot;      &quot;cifvalue&quot;                
+[43] &quot;fobvalue&quot;                 &quot;primaryValue&quot;             &quot;legacyEstimationFlag&quot;    
+[46] &quot;isReported&quot;               &quot;isAggregate&quot;             </code></pre>
 <pre class="r"><code>colnames(raw_chocolate_exports_180632)</code></pre>
-<pre><code> [1] &quot;typeCode&quot;                 &quot;freqCode&quot;                
- [3] &quot;refPeriodId&quot;              &quot;refYear&quot;                 
- [5] &quot;refMonth&quot;                 &quot;period&quot;                  
- [7] &quot;reporterCode&quot;             &quot;reporterISO&quot;             
- [9] &quot;reporterDesc&quot;             &quot;flowCode&quot;                
-[11] &quot;flowDesc&quot;                 &quot;partnerCode&quot;             
-[13] &quot;partnerISO&quot;               &quot;partnerDesc&quot;             
-[15] &quot;partner2Code&quot;             &quot;partner2ISO&quot;             
-[17] &quot;partner2Desc&quot;             &quot;classificationCode&quot;      
-[19] &quot;classificationSearchCode&quot; &quot;isOriginalClassification&quot;
-[21] &quot;cmdCode&quot;                  &quot;cmdDesc&quot;                 
-[23] &quot;aggrLevel&quot;                &quot;isLeaf&quot;                  
-[25] &quot;customsCode&quot;              &quot;customsDesc&quot;             
-[27] &quot;mosCode&quot;                  &quot;motCode&quot;                 
-[29] &quot;motDesc&quot;                  &quot;qtyUnitCode&quot;             
-[31] &quot;qtyUnitAbbr&quot;              &quot;qty&quot;                     
-[33] &quot;isQtyEstimated&quot;           &quot;altQtyUnitCode&quot;          
-[35] &quot;altQtyUnitAbbr&quot;           &quot;altQty&quot;                  
-[37] &quot;isAltQtyEstimated&quot;        &quot;netWgt&quot;                  
-[39] &quot;isNetWgtEstimated&quot;        &quot;grossWgt&quot;                
-[41] &quot;isGrossWgtEstimated&quot;      &quot;cifvalue&quot;                
-[43] &quot;fobvalue&quot;                 &quot;primaryValue&quot;            
-[45] &quot;legacyEstimationFlag&quot;     &quot;isReported&quot;              
-[47] &quot;isAggregate&quot;             </code></pre>
+<pre><code> [1] &quot;typeCode&quot;                 &quot;freqCode&quot;                 &quot;refPeriodId&quot;             
+ [4] &quot;refYear&quot;                  &quot;refMonth&quot;                 &quot;period&quot;                  
+ [7] &quot;reporterCode&quot;             &quot;reporterISO&quot;              &quot;reporterDesc&quot;            
+[10] &quot;flowCode&quot;                 &quot;flowDesc&quot;                 &quot;partnerCode&quot;             
+[13] &quot;partnerISO&quot;               &quot;partnerDesc&quot;              &quot;partner2Code&quot;            
+[16] &quot;partner2ISO&quot;              &quot;partner2Desc&quot;             &quot;classificationCode&quot;      
+[19] &quot;classificationSearchCode&quot; &quot;isOriginalClassification&quot; &quot;cmdCode&quot;                 
+[22] &quot;cmdDesc&quot;                  &quot;aggrLevel&quot;                &quot;isLeaf&quot;                  
+[25] &quot;customsCode&quot;              &quot;customsDesc&quot;              &quot;mosCode&quot;                 
+[28] &quot;motCode&quot;                  &quot;motDesc&quot;                  &quot;qtyUnitCode&quot;             
+[31] &quot;qtyUnitAbbr&quot;              &quot;qty&quot;                      &quot;isQtyEstimated&quot;          
+[34] &quot;altQtyUnitCode&quot;           &quot;altQtyUnitAbbr&quot;           &quot;altQty&quot;                  
+[37] &quot;isAltQtyEstimated&quot;        &quot;netWgt&quot;                   &quot;isNetWgtEstimated&quot;       
+[40] &quot;grossWgt&quot;                 &quot;isGrossWgtEstimated&quot;      &quot;cifvalue&quot;                
+[43] &quot;fobvalue&quot;                 &quot;primaryValue&quot;             &quot;legacyEstimationFlag&quot;    
+[46] &quot;isReported&quot;               &quot;isAggregate&quot;             </code></pre>
 </div>
 <div id="variable-type-auditing" class="section level3">
 <h3><strong>Variable Type Auditing</strong></h3>
@@ -3375,10 +3359,10 @@ chocolate_exports_180631 %&gt;%
 chocolate_exports_180632 %&gt;%
   filter(net_wgt == 0)</code></pre>
 <pre><code># A tibble: 1 × 8
-  ref_period_id ref_year ref_month cmd_code primary_value net_wgt
-  &lt;date&gt;           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
-1 2018-07-01        2018         7   180632       505587.       0
-# ℹ 2 more variables: month_unit_price &lt;dbl&gt;, month_index &lt;dbl&gt;</code></pre>
+  ref_period_id ref_year ref_month cmd_code primary_value net_wgt month_unit_price
+  &lt;date&gt;           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;            &lt;dbl&gt;
+1 2018-07-01        2018         7   180632       505587.       0              Inf
+# ℹ 1 more variable: month_index &lt;dbl&gt;</code></pre>
 <p>During the summary check, an interesting anomaly appeared in the
 <strong>180632</strong> dataset. The minimum net weight was recorded as
 <strong>0</strong>, while the trade value was over
@@ -4605,14 +4589,14 @@ merged_cocoa_price &lt;-
 <div id="evaluating-the-influence-of-global-prices-on-exports" class="section level3">
 <h3><strong>Evaluating the Influence of Global Prices on
 Exports</strong></h3>
-<p>I will now merge merged_chocolate_exports with global_cocoa_price.
-This will allow me to identify whether the months with the highest
-export demand align with periods of favorable or unfavorable global
-cocoa prices.</p>
-<p>I merged the export data with global cocoa prices to investigate a
-key business question: <strong>Does global price volatility dictate when
-Colombia exports more chocolate?</strong> This helps me identify if
-high-demand months align with favorable price windows.</p>
+<p>I will now merge the <code>merged_chocolate_exports</code> dataset
+with <code>global_cocoa_price</code> to examine whether peak export
+months coincide with favorable or unfavorable global cocoa price
+levels.</p>
+<p>This analysis allows me to explore a key business question:
+<strong>Does global price volatility influence the timing of Colombia’s
+chocolate exports?</strong> It also helps determine whether high-demand
+months coincide with favorable price windows.</p>
 <pre class="r"><code># Merging exports with global cocoa prices
 merged_exports_and_cocoa &lt;-
   merge(
@@ -4626,10 +4610,10 @@ merged_exports_and_cocoa &lt;-
 <h3><strong>The Cost-to-Producer Connection (Cocoa
 vs. PPI)</strong></h3>
 <p>I combined global cocoa prices with the Producer Price Index (PPI) to
-see how shifts in raw material costs translate into production prices.
-It could be interpreted that the industry adjusts gradually, but this
-merge will show if major shocks cause immediate spikes or lagged
-effect.</p>
+assess how changes in raw material costs are transmitted to production
+prices. While the industry may adjust gradually under normal conditions,
+this merge allows me to evaluate whether major shocks lead to immediate
+pass-through effects or delayed price adjustments.</p>
 <pre class="r"><code># Analyzing the relationship between raw inputs and industrial output
 merged_cocoa_and_ppi &lt;- merge(
   x = global_cocoa_price,
@@ -4644,10 +4628,10 @@ merged_cocoa_and_ppi &lt;- merge(
 </div>
 <div id="building-the-economic-export-data" class="section level3">
 <h3><strong>Building the Economic Export Data</strong></h3>
-<p>Finally, I created the merged_economic_exports dataset. This combines
-export performance with the exchange rate (TRM) and cocoa prices. This
-table is allows me to observe how external economic factors correlate
-with real-world trade.</p>
+<p>Finally, I created the <code>merged_economic_exports</code> dataset,
+which combines export performance with the exchange rate (TRM) and cocoa
+prices. This integrated dataset allows me to examine how external
+economic variables relate to actual trade dynamics.</p>
 <pre class="r"><code># Final merge to observe exports, exchange rates, and prices together
 merged_economic_exports &lt;-
   merge(
@@ -4726,33 +4710,27 @@ multivariate models that require more system resources.</p></li>
 glance at the merged datasets. This step ensures that the structure is
 aligned for the complex analysis ahead and provides preliminary insights
 into the relationships between our key variables.</p>
-<div id="comparing-global-and-local-cocoa-prices" class="section level4">
-<h4><strong>Comparing Global and Local Cocoa Prices</strong></h4>
+<div id="comparing-global-and-local-cocoa-prices" class="section level3">
+<h3><strong>Comparing Global and Local Cocoa Prices</strong></h3>
 <p>By aligning these two datasets, I can now confirm a structural price
 gap that was not as evident when analyzing them separately.</p>
 <pre class="r"><code># Summary of the merged price relationship
 merged_cocoa_price %&gt;%
   select(date, colombian_price_usd_metric_ton, global_price_usd_metric_ton) %&gt;%
   summary()</code></pre>
-<pre><code>      date            colombian_price_usd_metric_ton
- Min.   :2013-07-01   Min.   :1616                  
- 1st Qu.:2016-05-08   1st Qu.:2006                  
- Median :2019-03-16   Median :2269                  
- Mean   :2019-03-17   Mean   :2677                  
- 3rd Qu.:2022-01-24   3rd Qu.:2666                  
- Max.   :2024-12-01   Max.   :8672                  
- global_price_usd_metric_ton
- Min.   : 1918              
- 1st Qu.: 2316              
- Median : 2530              
- Mean   : 3033              
- 3rd Qu.: 3077              
- Max.   :10412              </code></pre>
+<pre><code>      date            colombian_price_usd_metric_ton global_price_usd_metric_ton
+ Min.   :2013-07-01   Min.   :1616                   Min.   : 1918              
+ 1st Qu.:2016-05-08   1st Qu.:2006                   1st Qu.: 2316              
+ Median :2019-03-16   Median :2269                   Median : 2530              
+ Mean   :2019-03-17   Mean   :2677                   Mean   : 3033              
+ 3rd Qu.:2022-01-24   3rd Qu.:2666                   3rd Qu.: 3077              
+ Max.   :2024-12-01   Max.   :8672                   Max.   :10412              </code></pre>
 <p><strong>What does this suggest?</strong></p>
 <p>The merged data reveals that Colombian prices are consistently lower
-than the global benchmark. I noticed the Colombian median (2,269) is
-roughly 10 % below the global median (2,530), suggesting that Colombia
-maintains a competitive cost advantage in the raw material market.</p>
+than the global benchmark. I noticed the Colombian median
+<strong>(2,269)</strong> is roughly 10 % below the global median
+(2,530), suggesting that Colombia maintains a competitive cost advantage
+in the raw material market.</p>
 </div>
 <div id="export-value-vs.-global-price-volatility" class="section level3">
 <h3><strong>Export Value vs. Global Price Volatility</strong></h3>
@@ -4780,8 +4758,9 @@ exports; demand appears resilient even when costs rise.</p>
 <div id="industrial-response-ppi-vs.-raw-material-costs" class="section level3">
 <h3><strong>Industrial Response: PPI vs. Raw Material
 Costs</strong></h3>
-<p>This comparison allows me to see if the manufacturers’ output prices
-(PPI) keep pace with the volatile input costs (Global Cocoa).</p>
+<p>This comparison allows me to assess whether manufacturers’ output
+prices (PPI) adjust in line with volatile input costs (global cocoa
+prices).</p>
 <pre class="r"><code># Summary of PPI and Global Cocoa Price
 merged_cocoa_and_ppi %&gt;%
   select(observation_date, producer_price_index, global_price_usd_metric_ton) %&gt;%
@@ -4809,20 +4788,20 @@ rate (TRM) interacts with our other variables.</p>
 merged_economic_exports %&gt;%
   select(ref_period_id, primary_value, trm_usd, global_price_usd_metric_ton) %&gt;%
   summary()</code></pre>
-<pre><code> ref_period_id        primary_value        trm_usd    
- Min.   :2016-01-01   Min.   : 235245   Min.   :2766  
- 1st Qu.:2017-12-24   1st Qu.:1115414   1st Qu.:2997  
- Median :2019-12-16   Median :1408679   Median :3411  
- Mean   :2019-12-16   Mean   :1412678   Mean   :3532  
- 3rd Qu.:2021-12-08   3rd Qu.:1623965   3rd Qu.:3910  
- Max.   :2023-12-01   Max.   :2505933   Max.   :4927  
- global_price_usd_metric_ton
- Min.   :1918               
- 1st Qu.:2237               
- Median :2388               
- Mean   :2497               
- 3rd Qu.:2591               
- Max.   :4254               </code></pre>
+<pre><code> ref_period_id        primary_value        trm_usd     global_price_usd_metric_ton
+ Min.   :2016-01-01   Min.   : 235245   Min.   :2766   Min.   :1918               
+ 1st Qu.:2017-12-24   1st Qu.:1115414   1st Qu.:2997   1st Qu.:2237               
+ Median :2019-12-16   Median :1408679   Median :3411   Median :2388               
+ Mean   :2019-12-16   Mean   :1412678   Mean   :3532   Mean   :2497               
+ 3rd Qu.:2021-12-08   3rd Qu.:1623965   3rd Qu.:3910   3rd Qu.:2591               
+ Max.   :2023-12-01   Max.   :2505933   Max.   :4927   Max.   :4254               </code></pre>
+<p>The summary statistics suggest a consistent export performance, with
+a median value of <strong>$1.41M</strong>, despite a TRM that moved
+significantly between <strong>$2,766</strong> and
+<strong>$4,927</strong>. While global prices averaged
+<strong>$2,497</strong> per metric ton, they reached a peak of
+<strong>$4,254</strong>, yet the data aligns with the possibility that
+Colombian exports remain resilient to these external shifts.</p>
 </div>
 </div>
 <div id="merge-explorations" class="section level2">
@@ -5068,8 +5047,7 @@ ggplot(ts_data_aggregated, aes(x = factor(year(ref_period_id)), y = monthly_tota
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.
 This warning is displayed once every 8 hours.
-Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-generated.</code></pre>
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <p><img role="img" src="data:image/png;base64,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" width="768" /></p>
 <div id="what-the-data-suggests" class="section level5">
 <h5><strong>What the data suggests</strong></h5>
@@ -6490,14 +6468,14 @@ r = 0  | 9.58 17.85 19.96 24.60
 Eigenvectors, normalised to first column:
 (These are the cointegration relations)
 
-                                  colombian_price_usd_metric_ton.l2
-colombian_price_usd_metric_ton.l2                          1.000000
-trm_usd.l2                                                -1.613301
-constant                                                3130.403419
-                                    trm_usd.l2     constant
-colombian_price_usd_metric_ton.l2     1.000000    1.0000000
-trm_usd.l2                            0.206798   -0.3295369
-constant                          -3065.869780 -523.9415120
+                                  colombian_price_usd_metric_ton.l2   trm_usd.l2
+colombian_price_usd_metric_ton.l2                          1.000000     1.000000
+trm_usd.l2                                                -1.613301     0.206798
+constant                                                3130.403419 -3065.869780
+                                      constant
+colombian_price_usd_metric_ton.l2    1.0000000
+trm_usd.l2                          -0.3295369
+constant                          -523.9415120
 
 Weights W:
 (This is the loading matrix)
@@ -6631,8 +6609,8 @@ results3 &lt;- sapply(lags, function(lag) {
   )
 })
 results3</code></pre>
-<pre><code>[1] -0.449780500  0.056937363  0.030723558 -0.078174253  0.042973668
-[6] -0.007941484  0.109796711</code></pre>
+<pre><code>[1] -0.449780500  0.056937363  0.030723558 -0.078174253  0.042973668 -0.007941484
+[7]  0.109796711</code></pre>
 <p>I noticed that the only meaningful correlation occurs at <strong>Lag
 0 (-0.45)</strong>. Once a one-month delay is introduced, the
 relationship essentially vanishes, with values hovering near zero. This
@@ -6779,10 +6757,8 @@ Matrix products: default
   LAPACK version 3.12.1
 
 locale:
-[1] LC_COLLATE=English_American Samoa.utf8 
-[2] LC_CTYPE=English_American Samoa.utf8   
-[3] LC_MONETARY=English_American Samoa.utf8
-[4] LC_NUMERIC=C                           
+[1] LC_COLLATE=English_American Samoa.utf8  LC_CTYPE=English_American Samoa.utf8   
+[3] LC_MONETARY=English_American Samoa.utf8 LC_NUMERIC=C                           
 [5] LC_TIME=English_American Samoa.utf8    
 
 time zone: America/Bogota
@@ -6792,11 +6768,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] DBI_1.2.3       janitor_2.2.1   urca_1.3-4      tseries_0.10-58
- [5] forecast_8.24.0 scales_1.4.0    magrittr_2.0.4  lubridate_1.9.4
- [9] forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4     purrr_1.0.4    
-[13] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_4.0.0  
-[17] tidyverse_2.0.0
+ [1] DBI_1.2.3       janitor_2.2.1   urca_1.3-4      tseries_0.10-58 forecast_8.24.0
+ [6] scales_1.4.0    magrittr_2.0.4  lubridate_1.9.4 forcats_1.0.0   stringr_1.5.1  
+[11] dplyr_1.1.4     purrr_1.0.4     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   
+[16] ggplot2_4.0.0   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
  [1] gtable_0.3.6       xfun_0.52          bslib_0.9.0        lattice_0.22-6    

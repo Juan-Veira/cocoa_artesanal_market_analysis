@@ -33,6 +33,9 @@ output:
 knitr::opts_chunk$set(
   comment='', indent='  ', message=FALSE
 )
+
+# Increase console output width to prevent premature wrapping
+options(width = 85)
 ```
 
 
@@ -151,7 +154,7 @@ To ensure the project is scalable and reproducible, I utilized a specialized sui
 
 ### **The Toolkit**
 
--   **The Tidyverse Ecosystem:** I Used for core data manipulation, cleaning, and visualization via `dplyr`, `tidyr`, and `ggplot2`.
+-   **The Tidyverse Ecosystem:** I Used for core data manipulation, cleaning, and visualization via `dplyr`, `tidyr` and `ggplot2`.
 -   **Data Auditing & Cleaning:** I used `janitor` for consistent column naming and `skim` for comprehensive summary statistics to catch missing values early.
 -   **Time-Series Framework:** Because this analysis tracks cocoa prices and trade over time, I leveraged the **tidyverts** framework (`tsibble`, `feasts`, and `forecast`) to handle seasonal decomposition and trend analysis.
 -   **Database Connectivity:** I used DBI as the database interface to handle the connection between the raw data storage and the R environment, ensuring an efficient data pipeline.
@@ -967,6 +970,7 @@ colombian_cocoa_price %>%
   summarise(avg_price = mean(price_usd_metric_ton, na.rm = TRUE)) %>%
   arrange(avg_price)
 
+
 ```
 
 The results suggest that the most cost-effective window for purchasing cocoa in Colombia tends to occur during the first quarter of the year:
@@ -1443,9 +1447,9 @@ merged_cocoa_price <-
 
 ### **Evaluating the Influence of Global Prices on Exports**
 
-I will now merge merged_chocolate_exports with global_cocoa_price. This will allow me to identify whether the months with the highest export demand align with periods of favorable or unfavorable global cocoa prices.
+I will now merge the `merged_chocolate_exports` dataset with `global_cocoa_price` to examine whether peak export months coincide with favorable or unfavorable global cocoa price levels.
 
-I merged the export data with global cocoa prices to investigate a key business question: **Does global price volatility dictate when Colombia exports more chocolate?** This helps me identify if high-demand months align with favorable price windows.
+This analysis allows me to explore a key business question: **Does global price volatility influence the timing of Colombia’s chocolate exports?** It also helps determine whether high-demand months coincide with favorable price windows.
 
 ```{r}
 # Merging exports with global cocoa prices
@@ -1460,7 +1464,7 @@ merged_exports_and_cocoa <-
 
 ### **The Cost-to-Producer Connection (Cocoa vs. PPI)**
 
-I combined global cocoa prices with the Producer Price Index (PPI) to see how shifts in raw material costs translate into production prices. It could be interpreted that the industry adjusts gradually, but this merge will show if major shocks cause immediate spikes or lagged effect.
+I combined global cocoa prices with the Producer Price Index (PPI) to assess how changes in raw material costs are transmitted to production prices. While the industry may adjust gradually under normal conditions, this merge allows me to evaluate whether major shocks lead to immediate pass-through effects or delayed price adjustments.
 
 ```{r}
 # Analyzing the relationship between raw inputs and industrial output
@@ -1478,7 +1482,7 @@ merged_cocoa_and_ppi <- merge(
 
 ### **Building the Economic Export Data**
 
-Finally, I created the merged_economic_exports dataset. This combines export performance with the exchange rate (TRM) and cocoa prices. This table is allows me to observe how external economic factors correlate with real-world trade.
+Finally, I created the `merged_economic_exports` dataset, which combines export performance with the exchange rate (TRM) and cocoa prices. This integrated dataset allows me to examine how external economic variables relate to actual trade dynamics.
 
 ```{r}
 # Final merge to observe exports, exchange rates, and prices together
@@ -1525,7 +1529,7 @@ ls()
 
 Before diving deeper into the correlation phase, I am taking a first glance at the merged datasets. This step ensures that the structure is aligned for the complex analysis ahead and provides preliminary insights into the relationships between our key variables.
 
-#### **Comparing Global and Local Cocoa Prices**
+### **Comparing Global and Local Cocoa Prices**
 
 By aligning these two datasets, I can now confirm a structural price gap that was not as evident when analyzing them separately.
 
@@ -1538,7 +1542,7 @@ merged_cocoa_price %>%
 
 **What does this suggest?**
 
-The merged data reveals that Colombian prices are consistently lower than the global benchmark. I noticed the Colombian median (2,269) is roughly 10 % below the global median (2,530), suggesting that Colombia maintains a competitive cost advantage in the raw material market.
+The merged data reveals that Colombian prices are consistently lower than the global benchmark. I noticed the Colombian median **(2,269)** is roughly 10 % below the global median (2,530), suggesting that Colombia maintains a competitive cost advantage in the raw material market.
 
 ### **Export Value vs. Global Price Volatility**
 
@@ -1557,7 +1561,7 @@ At first glance, both the Primary Value and Global Cocoa Price show growth. Howe
 
 ### **Industrial Response: PPI vs. Raw Material Costs**
 
-This comparison allows me to see if the manufacturers' output prices (PPI) keep pace with the volatile input costs (Global Cocoa).
+This comparison allows me to assess whether manufacturers’ output prices (PPI) adjust in line with volatile input costs (global cocoa prices).
 
 ```{r}
 # Summary of PPI and Global Cocoa Price
@@ -1580,6 +1584,8 @@ merged_economic_exports %>%
   select(ref_period_id, primary_value, trm_usd, global_price_usd_metric_ton) %>%
   summary()
 ```
+
+The summary statistics suggest a consistent export performance, with a median value of **$1.41M**, despite a TRM that moved significantly between **$2,766** and **$4,927**. While global prices averaged **$2,497** per metric ton, they reached a peak of **$4,254**, yet the data aligns with the possibility that Colombian exports remain resilient to these external shifts.
 
 ## **Merge explorations**
 
