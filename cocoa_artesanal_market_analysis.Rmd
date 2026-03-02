@@ -1574,7 +1574,7 @@ merged_cocoa_and_ppi %>%
 
 While both the Producer Price Index and Global Cocoa Price are trending upward, I observed that cocoa prices are growing at a much faster rate than the PPI. It may be interpreted that the industry is absorbing part of the raw material cost increases rather than passing them entirely through to the final product.
 
-### **The Economic Framework - Exports, TRM, and Prices**
+### **The Economic Framework - Exports, TRM and Prices**
 
 Finally, I reviewed the master economic data to see how the exchange rate (TRM) interacts with our other variables.
 
@@ -1597,18 +1597,43 @@ To identify recurring demand cycles, I calculated the average export value by mo
 
 ```{r}
 # Identifying months with highest average export values
-merged_chocolate_exports %>%
+monthly_exports <- merged_chocolate_exports %>%
   mutate(ref_month = month(ref_period_id, label = TRUE)) %>%
   group_by(ref_month) %>%
   summarise(avg_primary_value = mean(primary_value, na.rm = TRUE)) %>%
   arrange(desc(avg_primary_value))
+
+# Display the summary
+monthly_exports
+
+# Visualize monthly export patterns (arranged by value)
+ggplot(monthly_exports, aes(x = reorder(ref_month, -avg_primary_value), y = avg_primary_value)) +
+  geom_col(fill = "steelblue", alpha = 0.8) +
+  geom_text(aes(label = paste0("$", scales::number(avg_primary_value / 1e6, accuracy = 0.01), "M")), 
+            vjust = -0.5, size = 3) +
+  scale_y_continuous(labels = scales::comma, 
+                     expand = expansion(mult = c(0, 0.1))) +
+  labs(
+    title = "Average Chocolate Export Value by Month",
+    subtitle = "Ranked from highest to lowest export value",
+    x = "Month",
+    y = "Average Export Value (USD)",
+    caption = "Source: Colombian chocolate export data"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(color = "gray40", size = 11),
+    axis.text.x = element_text(angle = 0),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank()
+  )
 ```
 
 ##### **What the Monthly Averages Suggest**
 
 -   **Late-Year Surge:** The highest average values concentrate in **October (\~\$1.73M)**, **August (\~\$1.65M)**, and **September (\~\$1.54M)**.
--   **Directional Hint:** This ranking aligns with the year-end spikes observed in the STL model, suggesting a build-up for the global holiday season.
--   **Limited Predictive Power:** It is key to note that while these averages provide a "directional hint," the pattern is not robust enough to confirm a strict, guaranteed seasonal cycle. The statistical evidence suggests that broader economic forces rather than the calendar alone heavily influence market behavior.
+-   **Limited Predictive Power:** It is important to note that while these averages provide a general directional signal, the pattern is not strong enough to confirm a consistent seasonal cycle. The evidence suggests that broader economic forces, rather than the calendar alone, play a greater role in shaping market behavior.
 
 #### **Time Series Decomposition: Unveiling the Hidden Cycles**
 
@@ -1645,6 +1670,7 @@ decomp_df <- as.data.frame(ts_decomp$time.series) %>%
   pivot_longer(-date, names_to = "component", values_to = "value") %>%
   mutate(component = factor(component, levels = c("data", "seasonal", "trend", "remainder")))
 
+```{r, fig.height=8, fig.width=8}
 # Build the STL plot
 ggplot(decomp_df, aes(x = date, y = value, colour = component)) +
   geom_line(data = ~ filter(.x, component != "remainder"), linewidth = 0.5) +
@@ -1697,7 +1723,7 @@ With this framework in place, I can now derive the following insights from the d
 
 #### **Quantifying the Seasonal Signal: Seasonal Strength**
 
-While the STL plot showed a visible "pulse," I needed to determine if that pulse is strong enough to drive a reliable business forecast. I calculated the **Seasonal Strength** metric, which essentially measures the proportion of variability explained by the seasonal component relative to the random noise (the remainder).
+While the STL plot showed a visible seasonal pattern, I needed to determine whether it was strong enough to support a reliable business forecast. To assess this, I calculated the **Seasonal Strength** metric, which measures how much of the overall variation is explained by the seasonal component compared to random fluctuations.
 
 -   **Strong Seasonality:** F_seasonal \> 0.6
 -   **Weak Seasonality:** F_seasonal \< 0.3
@@ -1717,8 +1743,9 @@ F_seasonal
 
 ##### **What does this metric suggest?**
 
--   **Dominance of Noise:** With a score of **0.205**, the seasonal strength is statistically weak. It could be interpreted that while a holiday-driven pattern exists, it is frequently "drowned out" by irregular, month-to-month volatility.
--   **Volatile Exports:** It aligns with the idea that Colombian chocolate exports do not follow a "set-and-forget" calendar. The "noise" component is nearly four times more influential than the seasonal cycle.
+-   **Dominance of Noise:** With a score of **0.205**, the seasonal strength is statistically weak. While a holiday-driven pattern may exist, it is often overshadowed by irregular month-to-month volatility.
+
+-   **Volatile Exports:** This finding suggests that Colombian chocolate exports do not follow a predictable, calendar-based cycle. The irregular component is nearly four times more influential than the seasonal pattern.
 
 ##### **What does this mean for a business strategy?**
 
@@ -1748,8 +1775,7 @@ ggplot(ts_data_aggregated, aes(x = factor(year(ref_period_id)), y = monthly_tota
 ##### **What the data suggests**
 
 -   **Persistent Fluctuations:** I noticed that exports bounce aggressively between **\$800k** and **\$2.5M**. The market remains highly volatile across the entire 2016–2024 period, with the "spread" (the height of the boxes) often being quite large.
--   **Seasonality vs. Shocks:** While a seasonal pattern exists, it appears to be consistently "drowned out" by external shocks. The statistical evidence suggests that things like global price surges, large-scale contracts, and supply chain disruptions have a much greater impact on the final numbers than the time of year.
--   **The Dominance of Noise:** In other words, seasonality acts as a background, but the "music" of the market is primarily composed of unpredictable economic conditions. This aligns with the low **Seasonal Strength (0.205)** calculated earlier.
+-   **The Dominance of Noise:** In practical terms, seasonality acts as a background factor, while market dynamics are largely driven by unpredictable economic conditions. This interpretation is consistent with the low **Seasonal Strength (0.205)** calculated earlier.
 
 ##### **What does this mean for a business strategy?**
 
@@ -1929,26 +1955,6 @@ The statistical evidence proves that Colombia is a **price-taker** in the global
 
 To complete our understanding of the price "echo," I plotted the correlation values across all six lags. This visualization allows us to see precisely how the global signal decays as it moves through the Colombian domestic market
 
-##### **Descriptive volatility comparison: “Who moves more?”**
-
-To compare short-term volatility between Colombian and global cocoa prices, I compute first differences for each series and compare their standard deviations. This descriptive approach captures the magnitude of month-to-month price changes and allows me to identify which market exhibits stronger short-run fluctuations.
-
-A higher standard deviation indicates greater volatility, meaning the series experiences sharper monthly movements.
-
-```{r}
-merged_cocoa_price %>%
-  mutate(
-    diff_col = colombian_price_usd_metric_ton - lag(colombian_price_usd_metric_ton, 1),
-    diff_global = global_price_usd_metric_ton - lag(global_price_usd_metric_ton, 1)
-  ) %>%
-  summarise(
-    sd_col = sd(diff_col, na.rm = TRUE),
-    sd_global = sd(diff_global, na.rm = TRUE)
-  )
-```
-
-The results show that global cocoa prices have a higher standard deviation of monthly changes than Colombian prices (474 vs. 389). This suggests that the global market experiences larger and more abrupt price swings, while Colombian prices adjust more gradually. In other words, the global market “moves more,” and Colombia appears to partially absorb these shocks with smaller month-to-month adjustments.
-
 ##### **Descriptive Volatility Comparison: "Who Moves More?"**
 
 To compare short-term volatility, I calculated the first differences (month-to-month change) for both Colombian and global prices. By comparing their standard deviations, I can determine which market experiences sharper, more abrupt fluctuations.
@@ -1968,7 +1974,7 @@ merged_cocoa_price %>%
 
 ##### **What the volatility suggests**
 
--   **Colombian "Market Absorption":** The results show that global cocoa prices have a higher standard deviation of monthly changes than Colombian prices ($445$ vs $353$. This suggests that the global market experiences larger and more abrupt price swings, while Colombian prices adjust more gradually. In other words, the global market “moves more,” and Colombia appears to partially absorb these shocks with smaller month-to-month adjustments.
+-   **Colombian "Market Absorption":** The results show that global cocoa prices have a higher standard deviation of monthly changes than Colombian prices ($445$ vs $353$). This suggests that the global market experiences larger and more abrupt price swings, while Colombian prices adjust more gradually. In other words, the global market “moves more,” and Colombia appears to partially absorb these shocks with smaller month-to-month adjustments.
 
 #### **Executive Summary: Local vs. Global Price**
 
