@@ -2033,7 +2033,7 @@ ggplot(merged_cocoa_and_ppi, aes(x = observation_date)) +
 ##### **What the visualization suggests**
 
 -   **The High-Volatility Sync:** It could be interpreted that extreme increases in raw cocoa prices are quickly passed through to producer prices, as seen in the sharp, simultaneous rise during the 2023–2025 period.
--   **Gradual Adjustments:** Outside of crises, the relationship appears more tempered. The statistical evidence suggests that PPI adjustments are often slower, likely influenced by cost-absorption strategies, existing inventory buffers, and fixed-price supply contracts.
+-   **Gradual Adjustments:** Outside of crisis periods, the relationship appears more moderate. The evidence indicates that PPI adjustments tend to occur more gradually, reflecting factors such as cost-absorption strategies, inventory buffers, and fixed-price supply contracts.
 
 #### **Baseline Regression: Quantifying the Impact on Industrial Costs**
 
@@ -2053,7 +2053,7 @@ qf(0.95, df1 = 1, df2 = 160)
 ##### **What the model suggests**
 
 -   **Statistically Significant Driver**: The t-value (**11.05**) and the extremely small p-value (**\< 2e-16**) indicate that global cocoa prices are a highly significant predictor of the PPI.
--   **Magnitude of Impact**: The coefficient suggests that for every **\$1,000 USD** increase in the global cocoa price per metric ton, the PPI increases by approximately **5.58 index points**. While the user analysis suggests a slightly higher sensitivity (6.2 points), the statistical evidence remains clear: a substantial portion of raw material costs is pushed forward to the producer level.
+-   **Magnitude of Impact**: The coefficient suggests that for every **\$1,000 USD** increase in the global cocoa price per metric ton, the PPI increases by approximately **5.58 index points**. While the user analysis suggests a slightly higher sensitivity **(6.2 points)**, the statistical evidence remains clear: a substantial portion of raw material costs is pushed forward to the producer level.
 -   **Explanatory Power**: The model’s Adjusted R-squared (**0.437**) indicates that approximately **44%** of the variation in the Chocolate PPI can be explained by movements in the global cocoa market.
 
 ##### **Strategic Insight**
@@ -2078,8 +2078,7 @@ results2
 
 ##### **What the statistical evidence suggests**
 
--   **Gradual Price Transmission:** I observed that the correlation coefficients are remarkably stable across the first three months (Lags 0–2), hovering between 0.64 and 0.66. It could be interpreted that there isn’t one "silver bullet" month where the price transmits; instead, the industry absorbs global shocks gradually.
--   **The "Slow-Motion" Transmission:** I noticed that the correlations for Lags 0, 1, and 2 are very similar ($0.66$ to $0.64$). The statistical evidence suggests that price transmission is a continuous process. This matches our previous observation in the time-series plot, where the PPI follows the general "shape" of the cocoa surge but with a much smoother trajectory.
+-   **Gradual Price Transmission:** The correlation coefficients remain stable across the first three months (Lags 0–2), ranging from 0.66 to 0.63. This pattern indicates that price transmission does not concentrate in a single month; instead, the adjustment process unfolds gradually over time.
 -   **Decay of Influence:** Beyond **Lag 3**, the correlation drops below **0.60**. This suggests that by the fourth month, the initial global price signal begins to lose its predictive power as new market conditions and logistical realities take precedence.
 
 ##### **Strategic Insight**
@@ -2099,8 +2098,8 @@ In this model, I included three time-shifted versions of the global cocoa price 
 
 The role of each variable is as follows:
 
--   $\beta_{Global}$: The immediate impact on the Chocolate PPI within the same month.
--   $\beta_{Lag1}$ to $\beta_{Lag3}$: The delayed adjustments occurring one, two, and three months after the initial international price shock.
+-   **$\beta_{Global}$**: The immediate impact on the Chocolate PPI within the same month.
+-   **$\beta_{Lag1}$** to $\beta_{Lag3}$: The delayed adjustments occurring one, two, and three months after the initial international price shock.
 
 ```{r}
 # Creating the time-shifted variables
@@ -2126,27 +2125,25 @@ summary(model_lagged)
 
 The lagged regression confirms a strong and statistically significant relationship between global cocoa prices and the Chocolate Producer Price Index ($F = 30.52$; $p < 2.2e-16$), explaining approximately **44%** of the price variation (Adjusted $R² ≈ 0.436$).
 
-- **Meaningful Contemporaneous Effect:** The immediate impact is economically significant. A **$1,000 increase in the global cocoa price per metric ton** is associated with an increase of approximately **+4.6 PPI index points** (β₀ = 0.00461). The statistical evidence indicates that chocolate producer prices begin adjusting within the same month, suggesting a rapid cost pass-through mechanism.
-
--   **Gradual Pass-Through:** From my analysis, price transmission is not purely immediate. While the contemporaneous coefficient is significant, it could be interpreted as a gradual process rather than a one-off shock.
--   **Market Persistence:** The results suggest that firms may adjust partially at first and continue updating prices as cost pressures persist. The residual standard error **(8.97 or \~9 index points)** indicates a solid model fit while acknowledging that other market factors such as labor, energy, or fixed contracts influence the remaining pricing dynamics.
+- **Meaningful Contemporaneous Effect:** The immediate impact is economically significant. A $1,000 increase in the global cocoa price per metric ton is associated with an increase of approximately **+4.6 PPI index points** (β₀ = 0.00461). The statistical evidence indicates that chocolate producer prices begin adjusting within the same month, suggesting a rapid cost pass-through mechanism.
+- **Gradual Pass-Through:** The analysis shows that price transmission is not purely immediate. Although the contemporaneous coefficient is statistically significant, the adjustment appears to unfold gradually rather than as a one-time shock. In addition, the lag coefficients indicate that the relationship is not strictly linear. Between Lag 0 and Lag 2, the coefficient fluctuates between -0.0011 and 0.0046.
+- **Market Persistence:** The results indicate that firms adjust prices gradually, implementing partial changes at first and continuing revisions as cost pressures persist. The residual standard error **(8.97, or approximately 9 index points)** reflects a solid model fit, while recognizing that additional factors such as labor costs, energy prices, or fixed contracts continue to influence pricing dynamics.
 
 ##### **Strategic Insight**
 
-The statistical evidence suggests that the industry reacts to the "now," but the presence of these lags (even if non-significant in a linear sense) aligns with the gradual adjustments observed. For an industrial strategy, this means that a price spike today creates a "tail" of cost pressure that lasts for at least a full quarter.
+The statistical evidence indicates that the industry responds primarily to current price conditions. However, the presence of lag effects even if not statistically significant in a linear specification is consistent with the gradual adjustment process observed.
 
 #### **Executive Summary: Industrial Interaction**
 
-In this section, I analyzed the interaction between global cocoa prices and the **Chocolate Producer Price Index (PPI)**. The goal was to understand how raw material costs translate into industrial pricing and identify the "speed" at which the industry reacts to international shocks.
+In this section, I examined the relationship between global cocoa prices and the **Chocolate Producer Price Index (PPI)**. The objective was to understand how changes in raw material costs translate into industrial pricing and to measure the speed at which the industry responds to international price shocks.
 
 ##### **Key Strategic Insights**
 
--   **The Break in Insulation:** Historically, the industrial index was "insulated" from small raw material swings. However, the statistical evidence suggests a major shift in **2023–2025**. For every **\$1,000 USD** increase in the global cocoa price, the PPI rose by approximately **5.58 index points**. It could be interpreted that the industry has reached a "breaking point" where manufacturers can no longer absorb costs and must pass them directly into the industrial price.
--   **The Three-Month Pulse:** My lag analysis reveals that price transmission is not an instant "shock" but a **gradual process**. I noticed that the correlation between cocoa prices and the PPI remains remarkably stable ( to ) for the first **three months** (Lags 0–2). This suggests that the industry uses a "rolling adjustment" strategy, likely driven by the timing of fixed-price contracts and inventory cycles.
+-   **The Break in Insulation:** Historically, the industrial index appeared relatively insulated from moderate raw material fluctuations. However, the data from 2023–2025 indicate a structural shift. For every **$1,000 USD** increase in global cocoa prices, the PPI increased by approximately **5.58 index points**.It could be interpreted that the industry has reached a “breaking point” where manufacturers can no longer absorb costs and must pass them directly into the industrial price.
 -   **44% Cost-Push Link:** The regression model confirms that approximately **44%** of the movement in the Chocolate PPI is explained solely by the price of cocoa beans. While this is a high level of influence, the remaining **56%** of price variation is likely tied to other industrial inputs such as labor, energy, sugar, and packaging.
 -   **A Predicted "Tail" of Inflation:** Because the transmission is gradual, a price spike in raw cocoa today creates a "tail" of cost pressure that lasts for a full quarter. The statistical evidence suggests that even if cocoa prices drop tomorrow, the industrial index (PPI) will continue to reflect those previous highs for at least **90 days**.
 
-**Strategic Takeaway:** The industry operates with a **quarter-long delay**. For a business, this means that the first three months after a global price spike are a "critical window" to renegotiate supply agreements or adjust retail pricing before the full weight of the cost increase is locked into the industrial index. Success depends on acting within this 90-day window rather than waiting for the "perfect" month.
+**Strategic Takeaway:** The industry operates with an adjustment period of approximately one quarter. For businesses, this means that the first three months after a global price increase represent a critical window to renegotiate supply agreements or adjust retail pricing before higher costs are fully reflected in the industrial index. Acting within this 90-day window is more effective than waiting for a single optimal month.
 
 ### **Chocolate Exports and Global Cocoa Price**
 
