@@ -1839,8 +1839,7 @@ cor(
 
 ##### **What does this suggest?**
 
--   **Near-Perfect Alignment:** A coefficient of **0.97** confirms a very strong positive relationship. It suggests that Colombian and global cocoa prices move almost in lockstep.
--   **Price Integration:** The statistical evidence aligns with the idea that the Colombian cocoa market is not an isolated island; it is deeply integrated into the global commodity ecosystem.
+-   **Near-Perfect Alignment:** A coefficient of **0.97** indicates a very strong positive relationship. This suggests that Colombian and global cocoa prices move almost in lockstep, as previously observed in the plot.
 -   **Predictive Potential:** This high correlation provides a solid foundation for further modeling. It could be interpreted that global price movements are an excellent predictor for local price adjustments.
 
 #### **Linear Regression: Quantifying the Global Influence**
@@ -1867,7 +1866,7 @@ The statistical evidence suggests that Colombian cocoa is not only highly reacti
 
 #### **Scatter Plot Analysis: The Price Transmission Mechanism**
 
-The scatter plot confirms a clear linear relationship, where Colombian prices track global benchmarks on a near one-to-one basis.
+A scatter plot further clarifies this relationship by showing that Colombian prices move closely in line with global benchmarks, following an almost one-to-one pattern.
 
 ```{r}
 # Visualizing the density and trend of the price relationship
@@ -1892,18 +1891,20 @@ merged_cocoa_price %>%
 
 ##### **Strategic Insight**
 
-For stakeholders, this plot proves that while you cannot escape global price trends, the Colombian market provides a slightly more "tempered" environment.
+For stakeholders, this plot shows that while global price trends strongly influence the Colombian market, local prices tend to move in a slightly more moderated manner.
 
 #### **Lag Correlation: Deciphering the Timing of Global Shocks**
 
-To address the key question **do global cocoa prices move first, and does Colombia react afterward?** I have implemented a lag-correlation analysis. While the simple correlation (r$≈0.97$) confirms a tight long-term link, it does not reveal the direction or speed of price transmission. The **Cross-Correlation Function (CCF)** allows me to identify the "echo" effect by testing if global prices today are a better predictor of Colombian prices several months into the future.
+To address the key question — **do global cocoa prices move first, and does Colombia react afterward?** — I conducted a lag-correlation analysis. While the simple correlation (r$≈0.97$) confirms a strong long-term relationship, it does not explain the direction or speed of price transmission.
 
-##### **The Interpretative Framework: Mapping Market Synchronization**
+To explore this further, I used the **Cross-Correlation Function (CCF)**, which tests whether current global prices are a stronger predictor of Colombian prices in the months that follow.
 
-Before analyzing the results, I must define how the lag-correlation coefficient serves as a diagnostic tool for the Colombian cocoa supply chain:
+##### **The Interpretative Framework**
 
--   **+1.0 / -1.0:** Represents a perfect alignment (direct or inverse) where local prices mirror movements after a specific time gap.
--   **0.0:** Indicates no delayed relationship exists between the two variables.
+Before analyzing the results, it is important to define how the lag-correlation coefficient functions as a diagnostic tool for the Colombian cocoa supply chain, as this is the indicator being evaluated.
+
+-   **+1.0 / -1.0:** Indicates perfect alignment (positive or negative), meaning local prices replicate global movements after a specific time lag.
+-   **0.0:** Indicates that no delayed relationship exists between the two variables.
 
 **In practical terms for the Colombian market:**
 
@@ -1915,7 +1916,7 @@ This approach allows us to assess whether Colombia is fully synchronized with gl
 
 ##### **Analysis of the Price Transmission Speed**
 
-With the framework established, I tested the relationship across a six-month window. This duration is critical because, in the commodity world, price shocks typically lose their predictive power after a quarter as local supply-demand factors take over.
+With the framework established, I tested the relationship across a six-month window. In commodity markets, price shocks typically lose predictive power after one quarter, as local supply and demand dynamics become the primary drivers of price movements.
 
 ```{r}
 # Lag testing up to 6 months
@@ -1951,13 +1952,13 @@ data.frame(lags = lags, corr_values = results) %>%
 
 #### **Strategic Takeaway**
 
-The statistical evidence proves that Colombia is a **price-taker** in the global cocoa market with an extremely fast transmission speed. For an exporter, this means that if global prices spike in January, the window to buy "cheaper" local cocoa is practically non-existent; by February (Lag 1), the alignment is almost perfect.
-
-To complete our understanding of the price "echo," I plotted the correlation values across all six lags. This visualization allows us to see precisely how the global signal decays as it moves through the Colombian domestic market
+The statistical evidence indicates that Colombia is highly responsive to global price movements in the cocoa market, with a very rapid transmission speed. For exporters, this means that when global prices rise in January, the opportunity to purchase relatively cheaper local cocoa is minimal; by February (Lag 1), price alignment is already nearly complete.
 
 ##### **Descriptive Volatility Comparison: "Who Moves More?"**
 
-To compare short-term volatility, I calculated the first differences (month-to-month change) for both Colombian and global prices. By comparing their standard deviations, I can determine which market experiences sharper, more abrupt fluctuations.
+To compare short-term volatility between Colombian and global cocoa prices, I computed the first differences of each series and compared their standard deviations. This descriptive approach captures the magnitude of month-to-month price changes and helps identify which market exhibits stronger short-run fluctuations.
+
+A higher standard deviation indicates greater volatility, meaning the series experiences sharper monthly movements.
 
 ```{r}
 # Calculating standard deviation of monthly price changes
@@ -1984,7 +1985,7 @@ In this section, I analyzed the deep connection between Colombian domestic cocoa
 
 -   **Transmission:** The statistical evidence suggests that while Colombia is highly integrated into the global market ($R² = 94.5\%$), it doesn't replicate shocks 1-to-1. For every **\$1 USD** increase in global prices, the local price rises by approximately **\$0.90 USD**. This suggests a natural "damping" effect where the local market absorbs about **10%** of the external volatility.
 -   **Instant Market Reaction:** My lag analysis reveals that price transmission is nearly immediate. The correlation is strongest at **Lag 0** ($r ≈ 0.97$), meaning global price signals are reflected in Colombian prices within the same month. It aligns with a highly transparent market where information flows instantly.
--   **The Volatility Buffer:** I found that the global market is significantly more "nervous" than the local one (Standard Deviation: **445 vs. 353**). This suggests that while Colombian prices follow the global trend, they do so with fewer abrupt monthly swings, offering a slightly more stable cost environment for domestic planning.
+-   **The Volatility Buffer:** The results show that the global market is significantly more volatile than the local market (standard deviation: 445 vs. 353). This indicates that while Colombian prices follow the global trend, they do so with fewer abrupt monthly fluctuations, providing a relatively more stable cost environment for domestic planning.
 -   **A Widening Competitive Gap:** Visual analysis shows a "decoupling" during extreme peaks in 2024. While global prices hit record highs, Colombian prices remained consistently lower. It could be interpreted that local supply factors act as a partial buffer, providing a competitive "discount" for those sourcing from Colombia during times of global crisis.
 
 **Strategic Takeaway:** Colombia functions as a **stabilized mirror** of the global cocoa market. Because transmission is instant, there is no "time window" to wait for local prices to adjust after a global spike. However, since the local market absorbs some of the shock and moves less aggressively, it remains a more predictable sourcing environment than the international spot market.
