@@ -1603,9 +1603,6 @@ monthly_exports <- merged_chocolate_exports %>%
   summarise(avg_primary_value = mean(primary_value, na.rm = TRUE)) %>%
   arrange(desc(avg_primary_value))
 
-# Display the summary
-monthly_exports
-
 # Visualize monthly export patterns (arranged by value)
 ggplot(monthly_exports, aes(x = reorder(ref_month, -avg_primary_value), y = avg_primary_value)) +
   geom_col(fill = "steelblue", alpha = 0.8) +
@@ -1628,6 +1625,9 @@ ggplot(monthly_exports, aes(x = reorder(ref_month, -avg_primary_value), y = avg_
     panel.grid.major.x = element_blank(),
     panel.grid.minor = element_blank()
   )
+
+# Display the summary
+monthly_exports
 ```
 
 ##### **What the Monthly Averages Suggest**
@@ -1836,6 +1836,12 @@ cor(
   use = "complete.obs"
 )
 ```
+
+Before looking at the results, it is important to understand how to interpret the correlation values:
+
+* **+1 (Strong Positive):** Both variables move in the same direction.
+* **-1 (Strong Negative):** The variables move in opposite directions.
+* **0 (No Relationship):** There is no clear relationship between the variables.
 
 ##### **What does this suggest?**
 
@@ -2065,6 +2071,7 @@ The results confirm a robust price transmission effect from international cocoa 
 To move beyond visual association and determine if cocoa prices lead movements in the chocolate PPI, I performed a lagged correlation analysis. This test evaluates whether past cocoa price shocks transmit into producer prices with a notable delay or if the industry reacts in real-time.
 
 ```{r}
+lags <- 0:6
 # Testing correlation between PPI and lagged Global Cocoa Prices
 results2 <- sapply(lags, function(lag2) {
   cor(
@@ -2151,7 +2158,7 @@ I will now analyze the merge of `merged_chocolate_exports` with `global_cocoa_pr
 
 #### **Regression Models: Quantifying the Sensitivity of Exports**
 
-To test the strength of the relationship I observed visually, I fitted a linear regression model. This allows me to determine exactly how many dollars Colombian chocolate exports change for every one-dollar shift in global cocoa prices.
+To test the strength of the relationship observed in the visual analysis, I fitted a linear regression model. This approach quantifies how many dollars Colombian chocolate exports change for every one-dollar movement in global cocoa prices.
 
 ```{r}
 # Visualizing the (lack of) linear relationship
@@ -2182,7 +2189,7 @@ qf(0.95, df1 = 1, df2 = 94)
 Based on the statistical evidence and the visual distribution of the data, I can observe the following:
 
 -   **No Statistical Link:** I noticed that the coefficient for the cocoa price is not significant ($p = 0.64$), which is visually represented by the almost perfectly flat regression line in the plot. It could be interpreted that the price variable acts essentially as "noise" in this specific model.
--   **Model Performance:** The F-statistic (**0.21**) is far below the critical threshold of **3.94**. This suggests that the model does not perform better than a random guess, as it fails to establish a reliable connection between global prices and export values.
+-   **Model Performance:** The F-statistic (**0.21**) is below the critical threshold of **3.94**. This suggests that the model does not perform better than a random guess, as it fails to establish a reliable connection between global prices and export values.
 -   **Zero Explanatory Power:** With an Adjusted R-squared of **-0.008** and a Multiple R-squared of practically zero (**0.2%**), the results suggest that global cocoa price movements explain almost none of the variation in chocolate exports.
 -   **High Uncertainty:** The high residual standard error (approx. **\$413,000**) suggests a massive amount of variability in export values; this aligns with the high dispersion of data points observed in the plot.
 
@@ -2229,7 +2236,7 @@ ggplot(merged_exports_and_cocoa, aes(x = ref_period_id)) +
 
 At first glance, the relationship isn’t immediately clear. The statistical evidence reveals a fascinating divergence:
 
--   **The Integration Gap:** Unlike the near-perfect 0.97 correlation between global and domestic *prices*, chocolate *exports* do not consistently rise or fall in sync with cocoa price shifts.
+-   **The Integration Gap:** Unlike the near-perfect 0.97 correlation observed between global and domestic cocoa prices, chocolate exports do not consistently move in tandem with shifts in cocoa prices.
 -   **The 2023-2024 Paradox:** Even during the historic cocoa price surge of 2023 and 2024, Colombian chocolate exports do not mirror these movements. In fact, while prices grow, the export volume in USD remained relatively stable or even dipped at times.
 
 #### **Correlation & Lags - Does price lead exports?**
@@ -2237,10 +2244,14 @@ At first glance, the relationship isn’t immediately clear. The statistical evi
 I examined the relationship across a 6-month window to determine if global price shocks act as a leading indicator for Colombian export volumes.
 
 ```{r}
-lag_results <- sapply(lags, function(l) {
+# Test lags from 0 to 6 months
+lags <- 0:6
+
+# Calculate correlation between current cocoa price and lagged export values
+lag_results <- sapply(lags, function(lag) {
   cor(
     merged_exports_and_cocoa$price_cocoa_usd_metric_ton,
-    dplyr::lag(merged_exports_and_cocoa$primary_value, l),
+    dplyr::lag(merged_exports_and_cocoa$primary_value, lag),
     use = "complete.obs"
   )
 })
@@ -2256,7 +2267,7 @@ lag_results
 
 ##### **Strategic Conclusion**
 
-Overall, these results suggest that global cocoa prices do not clearly “lead” Colombian export dynamics in a predictable way. For an exporter, this is actually a interesting finding. Ot implies that Colombian chocolate exports are driven more by external demand cycles, seasonality, or commercial relationships than by the daily fluctuations of the commodity market.
+Overall, these results indicate that global cocoa prices do not clearly lead Colombian export dynamics in a predictable way. For exporters, this is an interesting finding. It suggests that Colombian chocolate exports are driven more by external demand cycles, seasonality, or commercial relationships than by short-term fluctuations in the commodity market.
 
 #### **Executive Summary: Exports vs Global Cocoa Price**
 
@@ -2264,18 +2275,18 @@ In this section, I analyzed whether the value of Colombian chocolate exports is 
 
 ##### **Key Strategic Insights**
 
--   **A Complete Decoupling:** The statistical evidence suggests that there is **no meaningful link** between global cocoa prices and Colombian export values ($p = 0.64$). In fact, global price movements explain practically **0%** of the variation in exports. It could be interpreted that the "raw material market" and the "finished product market" operate on two different frequencies.
--   **The 2024 Paradox:** I noticed that even during the historic price surges of 2023 and 2024, export values remained relatively flat or even dipped. This aligns with the idea that high commodity prices do not automatically translate into higher export earnings for finished goods; instead, they may even create short-term pressure on order volumes.
--   **Absence of Leading Indicators:** My lag analysis confirmed that global prices do not "predict" future exports. Whether looking at a one-month or six-month delay, the correlation remains near zero. This suggests that price shocks in the bean market do not act as a reliable "early warning" for shifts in chocolate shipment values.
+-   **A Complete Decoupling:** The statistical evidence indicates no meaningful relationship between global cocoa prices and Colombian export values ($p = 0.64$). In practical terms, global price movements explain virtually none of the variation in export performance. This pattern suggests that the raw material market and the finished product market operate under different dynamics.
+-   **The 2024 Paradox:** I observed that even during the historic price surges of 2023 and 2024, export values remained relatively stable or, in some cases, declined. This pattern supports the idea that higher commodity prices do not automatically translate into increased export revenues for finished good.
+-   **Absence of Leading Indicators:** My lag analysis shows that global prices do not predict future exports. Whether we look at a one-month or six-month delay, the correlation stays close to zero. This means that price shocks in the cocoa market are not a reliable early signal of changes in chocolate export volumes.
 -   **High Dispersion (The "Noise" Factor):** I observed a high residual error (approx. **\$413,000**), which visually appears as high dispersion in the data. This indicates that export performance is likely shaped by **structural factors** such as fixed international contracts, seasonal holiday demand, and trade agreements rather than the daily fluctuations of the commodity market.
 
-**Strategic Takeaway:** Colombian chocolate exports are **price-independent**. For a stakeholder, this means that a "global price boom" is not a strategy for export growth. Instead, success in the international market appears to depend on **demand-side dynamics** and commercial relationships. Your export strategy should focus on marketing and seasonal cycles rather than waiting for favorable global price shifts.
+**Strategic Takeaway:** Colombian chocolate exports appear largely **independent** of global cocoa prices. For stakeholders, this means that a global price boom is not a reliable strategy for export growth. Instead, success in international markets seems to depend more on **demand conditions** and commercial relationships. Export strategies should therefore focus on marketing efforts and seasonal demand rather than relying on favorable global price movements.
 
 ### **Economic Analysis**
 
 #### **Does the exchange rate drive the price of cocoa?**
 
-One of the most important questions is whether the dollar's strength is the main driver of cocoa prices in Colombia. To explore this, I calculated the correlation between the exchange rate (TRM) and the price in USD with the cor() function.
+Another interesting question is whether the dollar's strength is the main driver of cocoa prices in Colombia. To explore this, I calculated the correlation between the exchange rate (TRM) and the price in USD with the cor() function.
 
 ```{r}
 # Calculating Correlation
@@ -2284,14 +2295,6 @@ cor(colombian_cocoa_price$price_usd_metric_ton,
   use = "complete.obs"
 )
 ```
-
-Understanding that:
-
--   **+1 (Strong Positive):** The variables move together in the same direction.
-
--   **-1 (Strong Negative):** They move in opposite directions.
-
--   **0 (No Relationship):** The variables don't seem to affect each other at all.
 
 The resulting correlation of **0.26** indicates what could be described as a **weak positive relationship**.
 
@@ -2330,13 +2333,13 @@ qf(0.95, df1 = 1, df2 = 94)
 
 ##### **Analytical Pivot**
 
-At this point in my analysis, I realized that simple linear regressions were hitting a dead end. Whether looking at global prices or the TRM, these one-to-one linear relationships failed to provide useful insights into why chocolate exports fluctuate.
+At this stage of the analysis, I realized that simple linear regressions were reaching their limits. When testing global prices or the TRM, these one-to-one relationships did not provide meaningful explanations for the fluctuations in chocolate exports.
 
-This suggests that the export engine is not a simple "price-in, volume-out" machine. To get a clearer picture, I must move beyond linear assessments and implement a more robust framework that considers how these variables interact or if they require specific pre-conditions (like stationarity) to be valid.
+This indicates that exports do not behave as a simple “price in, volume out” system. To gain clearer insights, I moved beyond basic linear models and applied a more robust approach that considers how variables interact and whether certain conditions—such as stationarity—are required for valid analysis.
 
 #### **Exchange Rate Pass-Through on Local Pricing**
 
-To determine if currency fluctuations influence domestic costs, I modeled the Colombian cocoa price against the **TRM**. Unlike the export models, this relationship shows a clear statistical link ($p ≈ 0.01$).
+To understand whether exchange rate movements influence domestic cocoa pricing, I examined the relationship between the Colombian cocoa price and the TRM. This analysis helps determine whether currency fluctuations translate into changes in local commodity prices.
 
 ```{r}
 # Visualizing the link between currency and local pricing
@@ -2370,16 +2373,18 @@ The TRM coefficient ($0.1758$) suggests that a weakening peso amplifies local co
 -   **+100 COP in TRM** **+17.6 USD/ton**
 -   **+1,000 COP in TRM** **+176 USD/ton**
 
+This result suggests an exchange-rate pass-through effect. When the TRM rises (the peso weakens), Colombian cocoa prices also increase in USD terms, indicating that currency depreciation contributes to higher export-oriented commodity prices.
+
 ##### **What the model suggests**
 
--   **Visual Trend vs. Statistical Noise:** While the regression line shows an upward slope, the wide dispersion of points suggests that the TRM alone is a weak predictor of price levels.
--   **Outlier Influence:** I noticed several high-price clusters around the 4,000 TRM mark that sit far above the trend line. These outliers could be interpreted as periods where global shocks or local supply shortages overrode the exchange rate.
--   **Significant Signal:** The F-test ($6.96 > 3.94$) confirms that the exchange rate plays a meaningful role in domestic pricing. It aligns with the idea of an exchange-rate pass-through where local sellers adjust their USD-equivalent prices as the peso depreciates.
--   **Limited Explanatory Power:** Despite its significance, the is only **0.068**. This suggests that while the TRM matters, it explains approximately **7%** of the price variation. The statistical evidence implies the TRM is a contributor, but certainly not the dominant force behind local price movements.
+
+* **Visual Trend vs. Statistical Noise:** Although the regression line shows an upward trend, the wide spread of the points indicates that the TRM alone is a weak predictor of cocoa price levels.
+* **Significant Signal:** The **F-test (6.96 > 3.94)** confirms that the exchange rate has a statistically significant relationship with domestic prices. This supports the idea of an **exchange-rate pass-through**, where sellers adjust USD-equivalent prices as the peso weakens.
+* **Limited Explanatory Power:** Despite this statistical significance, the **R² is only 0.068**, meaning the TRM explains roughly **7% of the variation** in cocoa prices. This suggests that while the exchange rate contributes to price movements, it is far from the main driver.
 
 ##### **The Pivot: Why Linear Regression is No Longer Enough**
 
-At this stage, I have observed a consistent pattern: whether analyzing exports or local prices, linear models on "raw" data levels are only capturing fragments of the story ( values are consistently low or near-zero). It could be interpreted that the variables are "drifting" together due to time-based trends rather than direct causation, a phenomenon known as **spurious regression**.
+At this stage of the analysis, I observed a consistent pattern: whether examining exports or local prices, linear models using the raw data levels only capture a small part of the relationship (**R² values remain low or close to zero**). This suggests that the variables may be moving together due to underlying time trends rather than a direct causal relationship a phenomenon known as **spurious regression**.
 
 #### **Multiple Regression: Challenging the "One-to-One" Logic**
 
@@ -2398,30 +2403,30 @@ qf(0.95, df1 = 2, df2 = 93)
 
 ##### **What the model suggests**
 
--   **Structural Independence:** I observed that neither the exchange rate nor the global price shows statistical significance ($p > 0.34$). The statistical evidence suggests that even when combined, these "big" economic levers do not explain why Colombian chocolate exports fluctuate.
+-   **Structural Independence:** > I found that neither the exchange rate ($**p > 0.34**$) nor the global cocoa price is statistically significant ($**p > 0.48**$). The results suggest that even when combined, these major economic variables do not explain the fluctuations in Colombian chocolate exports.
 -   **Low Predictive Accuracy:** The of **1.2%** is remarkably low. It could be interpreted that the TRM and global price together account for only a tiny fraction of the variation in export values. The F-statistic remains far below the critical value of **3.10**, indicating the model is not statistically reliable for this specific data.
 
 ##### **Analytical Pivot: Moving Beyond Linear Assumptions**
 
-At this point, I realized that the "simple" approach was hitting a wall. If the exchange rate and global price don't explain exports linearly, however, the failure of the Multiple Regression isn't a "bad" result it's a signal. It tells that the export engine isn't a simple "price-in, volume-out" machine. It forces to look for deeper, structural insights.
+At this point, I realized the “simple” approach had reached its limit. If the exchange rate and global price do not explain exports in a linear way, then the failure of the Multiple Regression is not a bad result—it’s a signal. It shows that exports do not work like a simple “price-in, volume-out” machine. Instead, it suggests that we need to look for deeper, structural factors behind export behavior.
 
 #### **Differencing: Removing Trends to Work with Movements**
 
-At this stage, I have moved from analyzing "raw levels" to analyzing "movements." My previous models showed a weak link, likely because the variables were "drifting" together over time a phenomenon that can lead to spurious regressions.
+At this stage, I shifted from analyzing **raw levels** to analyzing **movements over time**. The earlier models showed a weak relationship, likely because the variables were **drifting together over time**, which can produce misleading results known as **spurious regressions**.
 
 To ensure my analysis reflects meaningful economic relationships rather than shared drift, I implemented a differencing model. By focusing on the change from one month to the next, I can stabilize the statistical properties of the data.
 
-Before differencing, I must verify the state of the variables:
+Before applying differencing, it is necessary to check the state of the variables:
 
--   **Level variable:** The raw, original data (e.g., the actual price today).
--   **Stationary variable:** Data whose statistical properties, like mean and variance, remain stable over time.
+*   **Level variable:** The raw, original data (e.g., the actual price today).
+*   **Stationary variable:** Data whose statistical properties, like mean and variance, remain stable over time.
 
-I use the Augmented Dickey-Fuller (ADF) Test to evaluate this:
+To evaluate this, I use the Augmented Dickey-Fuller (ADF) test:
 
--   **p-value \< 0.05:** The series is stationary → reject H₀.
--   **p-value \> 0.05:** The series is non-stationary and requires differencing → fail to reject H₀.
+*   **p-value \< 0.05:** The series is stationary → reject H₀.
+*   **p-value \> 0.05:** The series is non-stationary and requires differencing → fail to reject H₀.
 
-If the series is non-stationary, differencing becomes essential before continuing with modeling.
+If a series is non-stationary, differencing is required before continuing with the modeling process.
 
 ```{r}
 # Testing the raw levels
@@ -2435,11 +2440,13 @@ adf.test(diff(merged_economic_exports$trm_usd))
 
 ##### **What the ADF Results Suggest**
 
--   **Non-Stationarity in Levels:** I noticed that both the Colombian cocoa price ($p ≈ 0.89$) and the TRM ($p ≈ 0.35$) are non-stationary in their raw form. They follow stochastic trends, meaning they "wander" without returning to a stable average.
--   **Stationarity through Differencing:** After taking the first difference (I(1)), the p-values dropped to $0.014$ and $0.017$ respectively. This allows me to reject the null hypothesis of a unit root.
--   **The I(1) Conclusion:** It could be interpreted that both variables are $I(1)$. They are unstable as raw levels but become "well-behaved" after one round of differencing.
+##### **What the ADF Results Suggest**
 
-This result is crucial for model validity. Since working with non-stationary variables in levels can generate spurious regressions, the fact that both series become stationary after differencing confirms that the differenced regression framework is statistically appropriate and provides a reliable basis to analyze short-run dynamics between TRM and cocoa prices.
+* **Non-stationarity in levels:** Both the Colombian cocoa price (*p ≈ 0.89*) and the TRM (*p ≈ 0.35*) are non-stationary in their raw form. Their values follow stochastic trends, meaning they drift over time rather than returning to a stable average.
+* **Stationarity after differencing:** After applying the first difference, the p-values drop to *0.014* and *0.017*. This allows the null hypothesis of a unit root to be rejected.
+* **The I(1) conclusion:** Both variables can be considered **I(1)**, meaning they are **integrated of order one**. In practice, this means the series are non-stationary in their original levels but become stationary after taking the **first difference**.
+
+This result is crucial for model validity. Working with non-stationary variables in levels can lead to **spurious regressions**, where variables appear related simply because they share similar trends over time. Since both series become stationary after differencing, using a **differenced regression framework** is statistically appropriate. This ensures the model analyzes **real short-run movements** between the TRM and cocoa prices rather than misleading relationships driven by shared trends.
 
 #### **Johansen Trace Test: Do Colombian Cocoa Prices and TRM have a "Locked" Relationship?**
 
@@ -2515,8 +2522,10 @@ After discovering that the exchange rate and cocoa prices share a significant "r
 I calculated the correlation between monthly changes in the TRM and changes in Colombian cocoa prices across a six-month window.
 
 ```{r}
-# Testing lags 0 to 6
-lags <- 0:6 
+# Test lags from 0 to 6 months
+lags <- 0:6
+
+# This identifies if price changes predict future exports with a time delay
 results3 <- sapply(lags, function(lag) {
   cor(
     diff(merged_economic_exports$colombian_price_usd_metric_ton),
