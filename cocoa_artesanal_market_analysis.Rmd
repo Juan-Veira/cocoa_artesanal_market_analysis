@@ -852,7 +852,7 @@ qf(0.95, df1 = 1, df2 = 136)
 The results of the model suggest a very clear story, but one that requires a careful look at the details:
 
 -   **Evidence of Growth:** The **t-value $(t = 5.510)$** and the extremely small **p-value $(p = 1.74e-07)$** indicate a highly significant trend. It appears that time is positively associated with cocoa prices. In practical terms, the model suggests that prices have been increasing by approximately **USD 14.83 per month**.
--   **The Power of the Model:** The **F-statistic $(f = 30.36)$** is much higher than the **critical value $(~ 3.91)$**, which provides strong evidence that this model fits the data better than a simple average would. It supports our earlier observations that local prices are rising over time, which aligns with global inflationary pressures.
+-   **The Power of the Model:** The **F-statistic $(f = 30.36)$** is much higher than the **critical value ($\approx 3.91$)**, which provides strong evidence that this model fits the data better than a simple average would. It supports our earlier observations that local prices are rising over time, which aligns with global inflationary pressures.
 -   **The Missing Pieces:** However, the **R-squared value of 0.1825** is quite revealing. It suggests that **time alone explains only about 18% of the variation** in Colombian cocoa prices.
 
 ##### **How should I interpret these findings?**
@@ -2434,7 +2434,6 @@ adf.test(diff(merged_economic_exports$colombian_price_usd_metric_ton))
 adf.test(diff(merged_economic_exports$trm_usd))
 ```
 
-##### **What the ADF Results Suggest**
 
 ##### **What the ADF Results Suggest**
 
