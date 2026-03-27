@@ -2819,8 +2819,7 @@ SELECT
   price_usd_metric_ton
 FROM ranked
 WHERE r_number = 1 AND year IS NOT NULL
-ORDER BY year
-</code></pre>
+ORDER BY year</code></pre>
 <div class="knitsql-table">
 <table>
 <caption>Displaying records 1 - 10</caption>
@@ -2935,8 +2934,7 @@ SELECT
 FROM comparison
 WHERE CAST(refyear AS INTEGER) &lt; 2025
 GROUP BY refyear
-ORDER BY CAST(refyear AS INTEGER) DESC;
-</code></pre>
+ORDER BY CAST(refyear AS INTEGER) DESC;</code></pre>
 <div class="knitsql-table">
 <table>
 <caption>Displaying records 1 - 10</caption>
@@ -3140,8 +3138,7 @@ FROM ranked
 WHERE r_number &lt;= 3
 GROUP BY month
 ORDER BY times_top3_demand DESC
-LIMIT 3
-</code></pre>
+LIMIT 3</code></pre>
 <div class="knitsql-table">
 <table>
 <caption>3 records</caption>
