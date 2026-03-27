@@ -2,3 +2,4 @@
 .RData
 .Rproj.user/
 .Ruserdata/
+.cocoa_artesanal_market_analysis.pdf
