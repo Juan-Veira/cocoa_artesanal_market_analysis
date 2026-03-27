@@ -3255,8 +3255,7 @@ interpreted as a right-skewed distribution, where the average is being
 pulled upward by a few extreme price spikes rather than a steady,
 uniform increase.</p></li>
 <li><p><strong>Massive Volatility:</strong> The range is truly striking,
-moving from a minimum of <span class="math inline">\(860,7\)</span> to a
-historical maximum of <span class="math inline">\(10,412\)</span>
+moving from a minimum of 860,7 to a historical maximum of 10,412
 USD/ton.</p></li>
 <li><p><strong>The “12x” Factor:</strong> Seeing that the highest price
 is roughly twelve times the lowest point suggests that the global market
@@ -3295,20 +3294,17 @@ chocolate_producer_price %&gt;%
 <h4><strong>What do the indices suggest?</strong></h4>
 <ul>
 <li><p><strong>Consistent Growth:</strong> Starting with a base value of
-<strong><span class="math inline">\(100.0\)</span></strong>, the index
-has climbed to a maximum of <strong><span class="math inline">\(141.2\)</span></strong>. This suggests a steady
-upward trend in the costs or selling prices at the producer
-level.</p></li>
+<strong>100.0</strong>, the index has climbed to a maximum of
+<strong>141.2</strong>. This suggests a steady upward trend in the costs
+or selling prices at the producer level.</p></li>
 <li><p><strong>Recent Acceleration:</strong> From this summary I noticed
 that a consistent upward trend in the chocolate price, starting with
-Minimum value of <strong><span class="math inline">\(100.0\)</span></strong> and reaching a maximum of
-<strong><span class="math inline">\(141.2\)</span></strong>.
-Interestingly, prices in the third quartile have increased by 21.4% (3rd
-Qu.:121.4), indicating that price acceleration has occurred primarily in
-the most recent years.</p></li>
+Minimum value of <strong>100.0</strong> and reaching a maximum of
+<strong>141.2</strong>. Interestingly, prices in the third quartile have
+increased by 21.4% (3rd Qu.:121.4), indicating that price acceleration
+has occurred primarily in the most recent years.</p></li>
 <li><p><strong>Symmetry in Trends:</strong> Unlike the raw cocoa prices,
-the mean <strong><span class="math inline">\(111.1\)</span></strong> and
-the median <strong><span class="math inline">\(106.7\)</span></strong>
+the mean <strong>111.1</strong> and the median <strong>106.7</strong>
 are relatively close. This could be interpreted as a more controlled and
 less volatile growth pattern compared to the raw commodity
 market.</p></li>
@@ -3360,10 +3356,10 @@ chocolate_exports_180632 %&gt;%
 # ℹ 1 more variable: month_index &lt;dbl&gt;</code></pre>
 <p>During the summary check, an interesting anomaly appeared in the
 <strong>180632</strong> dataset. The minimum net weight was recorded as
-<strong><span class="math inline">\(0\)</span></strong>, while the trade
-value was over <strong>$50,000</strong>. This resulted in an “Infinite”
-unit price, which could be interpreted as a data entry error or a
-missing value in the original reporting.</p>
+<strong>0</strong>, while the trade value was over
+<strong>$50,000</strong>. This resulted in an “Infinite” unit price,
+which could be interpreted as a data entry error or a missing value in
+the original reporting.</p>
 </div>
 <div id="how-did-i-address-the-missing-data" class="section level4">
 <h4><strong>How did I address the missing data?</strong></h4>
@@ -3437,10 +3433,10 @@ triple the mean value of unfilled products
 (<strong>$0.36M</strong>).</p></li>
 <li><p><strong>Volume Disparity:</strong> The net weight follows a
 similar pattern, where the average volume for filled products
-(<strong><span class="math inline">\(243,259 kg\)</span></strong>) far
-exceeds that of unfilled items (<strong><span class="math inline">\(49,464 kg\)</span></strong>). This suggests that
-the production and logistics infrastructure in Colombia is likely more
-focused on the 180631 category.</p></li>
+(<strong>243,259 kg</strong>) far exceeds that of unfilled items
+(<strong>49,464 kg</strong>). This suggests that the production and
+logistics infrastructure in Colombia is likely more focused on the
+180631 category.</p></li>
 </ul>
 </div>
 <div id="why-is-this-distinction-important" class="section level5">
@@ -3495,22 +3491,23 @@ qf(0.95, df1 = 1, df2 = 136)</code></pre>
 <p>The results of the model suggest a very clear story, but one that
 requires a careful look at the details:</p>
 <ul>
-<li><strong>Evidence of Growth:</strong> The <strong>t-value (<span class="math inline">\(t = 5.510\)</span>)</strong> and the extremely
-small <strong>p-value (<span class="math inline">\(p =
-1.74e-07\)</span>)</strong> indicate a highly significant trend. It
+<li><strong>Evidence of Growth:</strong> The <strong>t-value <span class="math inline">\((t = 5.510)\)</span></strong> and the extremely
+small <strong>p-value <span class="math inline">\((p =
+1.74e-07)\)</span></strong> indicate a highly significant trend. It
 appears that time is positively associated with cocoa prices. In
 practical terms, the model suggests that prices have been increasing by
 approximately <strong>USD 14.83 per month</strong>.</li>
 <li><strong>The Power of the Model:</strong> The <strong>F-statistic
-(<span class="math inline">\(f = 30.36\)</span>)</strong> is much higher
-than the <strong>critical value (~ <span class="math inline">\(3.91\)</span>)</strong>, which provides strong
-evidence that this model fits the data better than a simple average
-would. It supports our earlier observations that local prices are rising
-over time, which aligns with global inflationary pressures.</li>
+<span class="math inline">\((f = 30.36)\)</span></strong> is much higher
+than the <strong>critical value <span class="math inline">\((~
+3.91)\)</span></strong>, which provides strong evidence that this model
+fits the data better than a simple average would. It supports our
+earlier observations that local prices are rising over time, which
+aligns with global inflationary pressures.</li>
 <li><strong>The Missing Pieces:</strong> However, the <strong>R-squared
-value of <span class="math inline">\(0.1825\)</span></strong> is quite
-revealing. It suggests that <strong>time alone explains only about 18%
-of the variation</strong> in Colombian cocoa prices.</li>
+value of 0.1825</strong> is quite revealing. It suggests that
+<strong>time alone explains only about 18% of the variation</strong> in
+Colombian cocoa prices.</li>
 </ul>
 </div>
 <div id="how-should-i-interpret-these-findings" class="section level5">
@@ -3778,11 +3775,11 @@ market, the global price shows a clear and statistically significant
 increase. The model suggests that global prices rose, on average, by
 approximately <strong>USD 6.49 per month</strong> over the period.</li>
 <li><strong>Higher Explanatory Power:</strong> Interestingly, the
-<strong>R-squared value of <span class="math inline">\(0.4465\)</span></strong> is notably higher than
-what I found for the Colombian market (which was <span class="math inline">\(0.18\)</span>). This suggests that <strong>time
-explains about 44.6% of global price movement</strong>, indicating a
-slightly more “steady” long-term climb than the local Colombian
-price.</li>
+<strong>R-squared value of 0.4465</strong> is notably higher than what I
+found for the Colombian market (which was 0.18). This suggests that
+<strong>time explains about 44.6% of global price movement</strong>,
+indicating a slightly more “steady” long-term climb than the local
+Colombian price.</li>
 <li><strong>Persistent Volatility:</strong> Despite the stronger trend,
 the residual standard error remains high. It could be interpreted that
 global prices are also heavily shaped by external “shocks” such as
@@ -4058,18 +4055,17 @@ qf(0.95, df1 = 1, df2 = 161)</code></pre>
 <h5><strong>What does the industrial data suggest?</strong></h5>
 <ul>
 <li><strong>A Highly Predictable Trend:</strong> The <strong>R-squared
-values</strong> (<span class="math inline">\(R^2 = 0.738\)</span>) is
+values</strong> <span class="math inline">\((R^2 = 0.738)\)</span> is
 the highest we have seen so far. It suggests that time explains nearly
 <strong>74% of the variation</strong> in chocolate producer prices.
 Unlike raw cocoa, which is prone to sudden shocks, the industrial index
 moves in a much more linear and stable upward path.</li>
 <li><strong>Strong Statistical Support:</strong> An <strong>F-statistic
-of <span class="math inline">\(438.3\)</span></strong> (far exceeding
-the critical value of <span class="math inline">\(3.90\)</span>) and a
-(<span class="math inline">\(p = 2e-16\)</span>) provide strong evidence
-of a consistent monthly increase of approximately <strong><span class="math inline">\(0.22\)</span> units</strong>.</li>
+of 438.3</strong> (far exceeding the critical value of 3.90) and a <span class="math inline">\((p = 2e-16)\)</span> provide strong evidence of a
+consistent monthly increase of approximately <strong>0.22
+units</strong>.</li>
 <li><strong>Low Residual Noise:</strong> The low <strong>residual
-standard error (<span class="math inline">\(s = 6.11\)</span>)</strong>
+standard error <span class="math inline">\((s = 6.11)\)</span></strong>
 could be interpreted as a sign of price “stickiness.” It aligns with the
 idea that manufacturers don’t change their prices as rapidly as the raw
 commodity market fluctuates.</li>
@@ -4122,13 +4118,13 @@ ggplot(data = chocolate_producer_price, aes(x = observation_date, y = producer_p
 <ul>
 <li><strong>A Decade of Predictability (2013–2022):</strong> For nearly
 ten years, the PPI remained relatively stable, fluctuating gently around
-the <strong><span class="math inline">\(100\)</span> – <span class="math inline">\(115\)</span> range</strong>. It suggests that
-manufacturers were able to keep their prices consistent, likely through
-long-term contracts and hedging.</li>
+the <strong>100 – 115 range</strong>. It suggests that manufacturers
+were able to keep their prices consistent, likely through long-term
+contracts and hedging.</li>
 <li><strong>The Breakpoint in 2023:</strong> Starting in 2023, the plot
 shows a sharp upward trend that breaks away from the historical norm. By
-early 2025, the index climbed <strong>well above <span class="math inline">\(150\)</span></strong>, marking an unprecedented
-rise in industrial costs.</li>
+early 2025, the index climbed <strong>well above 150</strong>, marking
+an unprecedented rise in industrial costs.</li>
 <li><strong>Cost Transmission:</strong> This sharp escalation
 <strong>parallels the cocoa price surge</strong> almost perfectly. It
 could be interpreted that the “absorption capacity” of manufacturers has
@@ -4138,7 +4134,7 @@ of raw cocoa directly into their production prices.</li>
 </div>
 <div id="what-does-this-mean-for-a-business-strategy-5" class="section level5">
 <h5><strong>What does this mean for a business strategy?</strong></h5>
-<p>The trend here is much more “linear” than raw cocoa (<span class="math inline">\(R^2 ≈ 0.74\)</span>), which suggests that once
+<p>The trend here is much more “linear” than raw cocoa <span class="math inline">\((R^2 ≈ 0.74)\)</span>, which suggests that once
 manufacturer prices go up, they stay up.</p>
 <ul>
 <li><strong>Price “Stickiness”:</strong> While raw cocoa prices might
@@ -4310,7 +4306,7 @@ breaking point.</p>
 <h5><strong>Key Strategic Insights</strong></h5>
 <ul>
 <li><strong>The End of “Price Stickiness”:</strong> Between 2013 and
-2022, manufacturer prices remained relatively stable (<span class="math inline">\(R^2 = 0.74\)</span>), following a gradual and
+2022, manufacturer prices remained relatively stable <span class="math inline">\((R^2 = 0.74)\)</span>, following a gradual and
 predictable upward path. However, beginning in 2023, the data suggests a
 potential regime shift. Manufacturers appear to have reduced their
 capacity to absorb rising input costs, with raw cocoa price spikes
@@ -4470,21 +4466,20 @@ F-statistic: 0.3858 on 1 and 94 DF,  p-value: 0.536</code></pre>
 <div id="what-do-the-statistical-results-suggest" class="section level5">
 <h5><strong>What do the statistical results suggest?</strong></h5>
 <ul>
-<li><strong>No Significant Linear Trend:</strong> For both filled (<span class="math inline">\(p = 0.127\)</span>) and unfilled (<span class="math inline">\(p = 0.536\)</span>) chocolates, the p-values
-exceed the standard significance threshold (<span class="math inline">\(0.05\)</span>). It suggests that the slight
-monthly changes (+ <span class="math inline">\(1877\)</span> and - <span class="math inline">\(408\)</span> USD, respectively) are likely due to
+<li><strong>No Significant Linear Trend:</strong> For both filled <span class="math inline">\((p = 0.127)\)</span> and unfilled <span class="math inline">\((p = 0.536)\)</span> chocolates, the p-values
+exceed the standard significance threshold <span class="math inline">\((0.05)\)</span>. It suggests that the slight
+monthly changes (+ 1877 and - 408 USD, respectively) are likely due to
 random chance rather than a consistent long-term direction.</li>
 <li><strong>Low Explanatory Power:</strong> The <strong>R-squared
-values</strong> are near zero (<span class="math inline">\(0.02\)</span>
-and <span class="math inline">\(0.04\)</span>). The statistical evidence
+values</strong> are near zero (0.02 and 0.04). The statistical evidence
 suggests that <strong>time alone explains less than 2% of the
 variation</strong> in export values. This aligns with the high
 dispersion I observed in the previous plots.</li>
 <li><strong>Accepting the Null Hypothesis:</strong> Since <strong>the
-F-statistics (<span class="math inline">\(2.36\)</span> and <span class="math inline">\(038\)</span>)</strong> are lower than <strong>the
-critical value (<span class="math inline">\(3.94\)</span>)</strong>, I
-must accept the null hypothesis: there is no significant linear time
-trend in these export values between 2016 and 2024.</li>
+F-statistics (2.36 and 038)</strong> are lower than <strong>the critical
+value (3.94)</strong>, I must accept the null hypothesis: there is no
+significant linear time trend in these export values between 2016 and
+2024.</li>
 </ul>
 </div>
 <div id="what-does-this-mean-for-a-business-strategy-9" class="section level5">
@@ -4727,10 +4722,10 @@ merged_cocoa_price %&gt;%
  Max.   :2024-12-01   Max.   :8672                   Max.   :10412              </code></pre>
 <p><strong>What does this suggest?</strong></p>
 <p>The merged data reveals that Colombian prices are consistently lower
-than the global benchmark. I noticed the Colombian median
-<strong>(2,269)</strong> is roughly 10 % below the global median
-(2,530), suggesting that Colombia maintains a competitive cost advantage
-in the raw material market.</p>
+than the global benchmark. I noticed the <strong>Colombian median
+(2,269)</strong> is roughly 10 % below the <strong>Global median
+(2,530)</strong>, suggesting that Colombia maintains a competitive cost
+advantage in the raw material market.</p>
 </div>
 <div id="export-value-vs.-global-price-volatility" class="section level3">
 <h3><strong>Export Value vs. Global Price Volatility</strong></h3>
@@ -5009,8 +5004,8 @@ Strength</strong> metric, which measures how much of the overall
 variation is explained by the seasonal component compared to random
 fluctuations.</p>
 <ul>
-<li><strong>Strong Seasonality:</strong> F_seasonal &gt; <span class="math inline">\(0.6\)</span></li>
-<li><strong>Weak Seasonality:</strong> F_seasonal &lt; <span class="math inline">\(0.3\)</span></li>
+<li><strong>Strong Seasonality:</strong> F_seasonal &gt; 0.6</li>
+<li><strong>Weak Seasonality:</strong> F_seasonal &lt; 0.3</li>
 </ul>
 <p>Using the data from my decomposition:</p>
 <pre class="r"><code># Extracting components
@@ -5026,10 +5021,9 @@ F_seasonal</code></pre>
 <h5><strong>What does this metric suggest?</strong></h5>
 <ul>
 <li><p><strong>Dominance of Noise:</strong> With a score of
-<strong><span class="math inline">\(0.205\)</span></strong>, the
-seasonal strength is statistically weak. While a holiday-driven pattern
-may exist, it is often overshadowed by irregular month-to-month
-volatility.</p></li>
+<strong>0.205</strong>, the seasonal strength is statistically weak.
+While a holiday-driven pattern may exist, it is often overshadowed by
+irregular month-to-month volatility.</p></li>
 <li><p><strong>Volatile Exports:</strong> This finding suggests that
 Colombian chocolate exports do not follow a predictable, calendar-based
 cycle. The irregular component is nearly four times more influential
@@ -5085,7 +5079,8 @@ often being quite large.</li>
 <li><strong>The Dominance of Noise:</strong> In practical terms,
 seasonality acts as a background factor, while market dynamics are
 largely driven by unpredictable economic conditions. This interpretation
-is consistent with the low <strong>Seasonal Strength (<span class="math inline">\(0.205\)</span>)</strong> calculated earlier.</li>
+is consistent with the low <strong>Seasonal Strength (0.205)</strong>
+calculated earlier.</li>
 </ul>
 </div>
 <div id="what-does-this-mean-for-a-business-strategy-12" class="section level5">
@@ -5120,11 +5115,12 @@ being the strongest months. This aligns with the global holiday
 gift-giving cycle, suggesting that Colombian finished products are
 well-integrated into international seasonal demand.</li>
 <li><strong>The Dominance of “Noise”:</strong> While the holiday pulse
-exists, it is statistically “weak” (strength score of <strong><span class="math inline">\(0.205\)</span></strong>). This indicates that
-irregular factors such as one-off large contracts, shipping disruptions,
-or global price shocks are nearly four times more influential than the
-calendar. The statistical evidence suggests that a “good December” can
-easily be neutralized by unpredictable market noise.</li>
+exists, it is statistically “weak” (strength score of
+<strong>0.205</strong>). This indicates that irregular factors such as
+one-off large contracts, shipping disruptions, or global price shocks
+are nearly four times more influential than the calendar. The
+statistical evidence suggests that a “good December” can easily be
+neutralized by unpredictable market noise.</li>
 <li><strong>A Cooling Trend (2023-2024):</strong> After years of steady
 movement, I noticed the trend component began to dip significantly in
 late 2022. It could be interpreted that the export market for finished
@@ -5225,10 +5221,9 @@ between the variables.</li>
 <h5><strong>What does this suggest?</strong></h5>
 <ul>
 <li><strong>Near-Perfect Alignment:</strong> A coefficient of
-<strong><span class="math inline">\(0.97\)</span></strong> indicates a
-very strong positive relationship. This suggests that Colombian and
-global cocoa prices move almost in lockstep, as previously observed in
-the plot.</li>
+<strong>0.97</strong> indicates a very strong positive relationship.
+This suggests that Colombian and global cocoa prices move almost in
+lockstep, as previously observed in the plot.</li>
 <li><strong>Predictive Potential:</strong> This high correlation
 provides a solid foundation for further modeling. It could be
 interpreted that global price movements are an excellent predictor for
@@ -5269,29 +5264,26 @@ F-statistic:  2365 on 1 and 136 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div id="what-the-model-suggests" class="section level5">
 <h5><strong>What the model suggests</strong></h5>
 <ul>
-<li><strong>Highly Significant Predictor:</strong> The t-value (<span class="math inline">\(t = 48.63\)</span>) and the p-value (<span class="math inline">\(p &lt; 2e-16\)</span>) confirm that the global
+<li><strong>Highly Significant Predictor:</strong> The t-value <span class="math inline">\((t = 48.63)\)</span> and the p-value <span class="math inline">\((p &lt; 2e-16)\)</span> confirm that the global
 price is a statistically dominant driver of local prices.</li>
-<li><strong>Explanatory Power:</strong> An Adjusted R-squared of (<span class="math inline">\(R^2 = 0.9452\)</span>) indicates that
+<li><strong>Explanatory Power:</strong> An Adjusted R-squared of <span class="math inline">\((R^2 = 0.9452)\)</span> indicates that
 approximately <strong>94.5%</strong> of the variation in Colombian cocoa
 prices is explained by global market movements.</li>
-<li><strong>Transmission Magnitude:</strong> The slope coefficient
-(<span class="math inline">\(\beta = 0.90\)</span>) suggests that for
-every <strong>$1 USD</strong> increase in the global price per metric
-ton, the Colombian price increases by roughly <strong>$0.90
-USD</strong>. It could be interpreted that the local market absorbs
-approximately <strong>10%</strong> of global volatility, likely due to
-domestic logistics, long-term contracts, or local supply-demand
-buffers.</li>
+<li><strong>Transmission Magnitude:</strong> The slope coefficient <span class="math inline">\((\beta = 0.90)\)</span> suggests that for every
+<strong>$1 USD</strong> increase in the global price per metric ton, the
+Colombian price increases by roughly <strong>$0.90 USD</strong>. It
+could be interpreted that the local market absorbs approximately
+<strong>10%</strong> of global volatility, likely due to domestic
+logistics, long-term contracts, or local supply-demand buffers.</li>
 </ul>
 </div>
 <div id="strategic-insight" class="section level5">
 <h5><strong>Strategic Insight</strong></h5>
 <p>The statistical evidence suggests that Colombian cocoa is not only
 highly reactive to the global market but also slightly more stable. This
-<strong><span class="math inline">\(0.90\)</span></strong> transmission
-rate indicates that while local prices will inevitably rise, they do so
-with a small “damping” effect that could benefit manufacturers during
-extreme global spikes.</p>
+<strong>0.90</strong> transmission rate indicates that while local
+prices will inevitably rise, they do so with a small “damping” effect
+that could benefit manufacturers during extreme global spikes.</p>
 </div>
 </div>
 <div id="scatter-plot-analysis-the-price-transmission-mechanism" class="section level4">
@@ -5357,11 +5349,11 @@ lag-correlation coefficient functions as a diagnostic tool for the
 Colombian cocoa supply chain, as this is the indicator being
 evaluated.</p>
 <ul>
-<li><strong>+<span class="math inline">\(1.0\)</span> / -<span class="math inline">\(1.0\)</span>:</strong> Indicates perfect alignment
-(positive or negative), meaning local prices replicate global movements
-after a specific time lag.</li>
-<li><strong><span class="math inline">\(0.0\)</span>:</strong> Indicates
-that no delayed relationship exists between the two variables.</li>
+<li><strong>+1.0 / -1.0:</strong> Indicates perfect alignment (positive
+or negative), meaning local prices replicate global movements after a
+specific time lag.</li>
+<li><strong>0.0:</strong> Indicates that no delayed relationship exists
+between the two variables.</li>
 </ul>
 <p><strong>In practical terms for the Colombian market:</strong></p>
 <ul>
@@ -5416,7 +5408,7 @@ data.frame(lags = lags, corr_values = results) %&gt;%
 <ul>
 <li><strong>Instant Transmission:</strong> I observed that <strong>Lag
 0</strong> and <strong>Lag 1</strong> show the strongest correlations
-(<span class="math inline">\(≈0.97\)</span>). This suggests that global
+<span class="math inline">\((≈ 0.97)\)</span>. This suggests that global
 price shocks reach Colombian cocoa prices almost immediately, with the
 signal remaining practically unchanged for the first 30 days.</li>
 <li><strong>High Persistence:</strong> The effect remains highly
@@ -5425,12 +5417,11 @@ slightly (<span class="math inline">\(0.97 \rightarrow 0.95\)</span>).
 It could be interpreted that the “echo” of a global price shift is
 remarkably stable in the short term.</li>
 <li><strong>The “Fading Echo” (Lag 3+):</strong> By <strong>Lag
-3</strong>, I noticed a more significant drop to <strong><span class="math inline">\(0.91\)</span></strong> (and eventually
-<strong><span class="math inline">\(0.80\)</span></strong> by Lag 6).
-This could be interpreted as the point where the initial global “shock”
-begins to lose its grip, allowing local dynamics such as Colombian
-harvest peaks or internal logistics to play a larger role in determining
-the price.</li>
+3</strong>, I noticed a more significant drop to <strong>0.91</strong>
+(and eventually <strong>0.80</strong> by Lag 6). This could be
+interpreted as the point where the initial global “shock” begins to lose
+its grip, allowing local dynamics such as Colombian harvest peaks or
+internal logistics to play a larger role in determining the price.</li>
 </ul>
 </div>
 </div>
@@ -5470,8 +5461,7 @@ merged_cocoa_price %&gt;%
 <ul>
 <li><strong>Colombian “Market Absorption”:</strong> The results show
 that global cocoa prices have a higher standard deviation of monthly
-changes than Colombian prices (<span class="math inline">\(445\)</span>
-vs <span class="math inline">\(353\)</span>). This suggests that the
+changes than Colombian prices (445 vs 353). This suggests that the
 global market experiences larger and more abrupt price swings, while
 Colombian prices adjust more gradually. In other words, the global
 market “moves more,” and Colombia appears to partially absorb these
@@ -5489,7 +5479,7 @@ the local level.</p>
 <h5><strong>Key Strategic Insights</strong></h5>
 <ul>
 <li><strong>Transmission:</strong> The statistical evidence suggests
-that while Colombia is highly integrated into the global market (<span class="math inline">\(R^2 = 94.5\%\)</span>), it doesn’t replicate
+that while Colombia is highly integrated into the global market <span class="math inline">\((R^2 = 94.5\%)\)</span>, it doesn’t replicate
 shocks 1-to-1. For every <strong>$1 USD</strong> increase in global
 prices, the local price rises by approximately <strong>$0.90
 USD</strong>. This suggests a natural “damping” effect where the local
@@ -5497,13 +5487,13 @@ market absorbs about <strong>10%</strong> of the external
 volatility.</li>
 <li><strong>Instant Market Reaction:</strong> My lag analysis reveals
 that price transmission is nearly immediate. The correlation is
-strongest at <strong>Lag 0</strong> (<span class="math inline">\(r ≈
-0.97\)</span>), meaning global price signals are reflected in Colombian
+strongest at <strong>Lag 0</strong> <span class="math inline">\((r ≈
+0.97)\)</span>, meaning global price signals are reflected in Colombian
 prices within the same month. It aligns with a highly transparent market
 where information flows instantly.</li>
 <li><strong>The Volatility Buffer:</strong> The results show that the
 global market is significantly more volatile than the local market
-(standard deviation: <span class="math inline">\(445\)</span> vs. <span class="math inline">\(353\)</span>). This indicates that while Colombian
+(standard deviation: 445 vs. 353). This indicates that while Colombian
 prices follow the global trend, they do so with fewer abrupt monthly
 fluctuations, providing a relatively more stable cost environment for
 domestic planning.</li>
@@ -5624,19 +5614,19 @@ qf(0.95, df1 = 1, df2 = 160)</code></pre>
 <div id="what-the-model-suggests-1" class="section level5">
 <h5><strong>What the model suggests</strong></h5>
 <ul>
-<li><strong>Statistically Significant Driver</strong>: The t-value
-(<span class="math inline">\(t = 11.05\)</span>) and the extremely small
-p-value (<span class="math inline">\(p &lt; 2e-16\)</span>) indicate
+<li><strong>Statistically Significant Driver</strong>: The t-value <span class="math inline">\((t = 11.05)\)</span> and the extremely small
+p-value <span class="math inline">\((p &lt; 2e-16)\)</span> indicate
 that global cocoa prices are a highly significant predictor of the
 PPI.</li>
 <li><strong>Magnitude of Impact</strong>: The coefficient suggests that
 for every <strong>$1,000 USD</strong> increase in the global cocoa price
-per metric ton, the PPI increases by approximately <strong><span class="math inline">\(5.58\)</span> index points</strong>. While the
-user analysis suggests a slightly higher sensitivity <strong>(<span class="math inline">\(6.2\)</span> points)</strong>, the statistical
-evidence remains clear: a substantial portion of raw material costs is
-pushed forward to the producer level.</li>
+per metric ton, the PPI increases by approximately <strong>5.58 index
+points</strong>. While the user analysis suggests a slightly higher
+sensitivity <strong>(6.2 points)</strong>, the statistical evidence
+remains clear: a substantial portion of raw material costs is pushed
+forward to the producer level.</li>
 <li><strong>Explanatory Power</strong>: The model’s Adjusted R-squared
-(<span class="math inline">\(R^2 = 0.437\)</span>) indicates that
+<span class="math inline">\((R^2 = 0.437)\)</span> indicates that
 approximately <strong>44%</strong> of the variation in the Chocolate PPI
 can be explained by movements in the global cocoa market.</li>
 </ul>
@@ -5675,7 +5665,7 @@ results2</code></pre>
 <ul>
 <li><strong>Gradual Price Transmission:</strong> The correlation
 coefficients remain stable across the first three months (Lags 0–2),
-ranging from <span class="math inline">\(0.66\)</span> to <span class="math inline">\(0.63\)</span>. This pattern indicates that price
+ranging from 0.66 to 0.63. This pattern indicates that price
 transmission does not concentrate in a single month; instead, the
 adjustment process unfolds gradually over time.</li>
 <li><strong>Decay of Influence:</strong> Beyond <strong>Lag 3</strong>,
@@ -5768,15 +5758,15 @@ F-statistic: 30.52 on 4 and 149 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h5><strong>Interpreting the results</strong></h5>
 <p>The lagged regression confirms a strong and statistically significant
 relationship between global cocoa prices and the Chocolate Producer
-Price Index (<span class="math inline">\(F = 30.52\)</span>; <span class="math inline">\(p &lt; 2.2e-16\)</span>), explaining approximately
+Price Index <span class="math inline">\((F = 30.52\)</span>; <span class="math inline">\(p &lt; 2.2e-16)\)</span>, explaining approximately
 <strong>44%</strong> of the price variation (Adjusted <span class="math inline">\(R^2 ≈ 0.436\)</span>).</p>
 <ul>
 <li><strong>Meaningful Contemporaneous Effect:</strong> The immediate
 impact is economically significant. A $1,000 increase in the global
 cocoa price per metric ton is associated with an increase of
 approximately <strong><span class="math inline">\(+4.6\)</span> PPI
-index points</strong> (<span class="math inline">\(β₀ =
-0.00461\)</span>). The statistical evidence indicates that chocolate
+index points</strong> <span class="math inline">\((β₀ =
+0.00461)\)</span>. The statistical evidence indicates that chocolate
 producer prices begin adjusting within the same month, suggesting a
 rapid cost pass-through mechanism.</li>
 <li><strong>Gradual Pass-Through:</strong> The analysis shows that price
@@ -5784,11 +5774,12 @@ transmission is not purely immediate. Although the contemporaneous
 coefficient is statistically significant, the adjustment appears to
 unfold gradually rather than as a one-time shock. In addition, the lag
 coefficients indicate that the relationship is not strictly linear.
-Between Lag 0 and Lag 2, the coefficient fluctuates between <span class="math inline">\(-0.0011\)</span> and <span class="math inline">\(0.0046\)</span>.</li>
+Between Lag 0 and Lag 2, the coefficient fluctuates between -0.0011 and
+0.0046.</li>
 <li><strong>Market Persistence:</strong> The results indicate that firms
 adjust prices gradually, implementing partial changes at first and
 continuing revisions as cost pressures persist. The residual standard
-error (<span class="math inline">\(8.97\)</span>, or approximately <span class="math inline">\(9\)</span> index points) reflects a solid model
+error (8.97, or approximately 9 index points) reflects a solid model
 fit, while recognizing that additional factors such as labor costs,
 energy prices, or fixed contracts continue to influence pricing
 dynamics.</li>
@@ -5816,10 +5807,10 @@ industry responds to international price shocks.</p>
 industrial index appeared relatively insulated from moderate raw
 material fluctuations. However, the data from 2023–2025 indicate a
 structural shift. For every <strong>$1,000 USD</strong> increase in
-global cocoa prices, the PPI increased by approximately <strong><span class="math inline">\(5.58\)</span> index points</strong>.It could be
-interpreted that the industry has reached a “breaking point” where
-manufacturers can no longer absorb costs and must pass them directly
-into the industrial price.</li>
+global cocoa prices, the PPI increased by approximately <strong>5.58
+index points</strong>.It could be interpreted that the industry has
+reached a “breaking point” where manufacturers can no longer absorb
+costs and must pass them directly into the industrial price.</li>
 <li><strong>44% Cost-Push Link:</strong> The regression model confirms
 that approximately <strong>44%</strong> of the movement in the Chocolate
 PPI is explained solely by the price of cocoa beans. While this is a
@@ -5864,12 +5855,13 @@ merged_exports_and_cocoa %&gt;%
   scale_x_continuous(labels = scales::label_dollar()) +
   scale_y_continuous(labels = scales::label_dollar(suffix = &quot; US&quot;)) +
   labs(
-    title = &quot;Exports Value vs Global Cocoa Prices&quot;,
+    title = &quot;Comparison of Export Values and Cocoa Market Prices&quot;,
+  subtitle = &quot;The distribution suggests a weak linear alignment between these variables.&quot;,    
     x = &quot;Export Value (USD)&quot;,
-    y = &quot;Global Price (USD/MT)&quot;
+    y = &quot;Global Cocoa Price (USD/MT)&quot;
   ) +
   theme_minimal()</code></pre>
-<p><img role="img" src="data:image/png;base64,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" width="768" /></p>
+<p><img role="img" src="data:image/png;base64,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" width="768" /></p>
 <pre class="r"><code># Running the regression
 lm_value &lt;- lm(primary_value ~ price_cocoa_usd_metric_ton, data = merged_exports_and_cocoa)
 summary(lm_value)</code></pre>
@@ -5900,19 +5892,18 @@ qf(0.95, df1 = 1, df2 = 94)</code></pre>
 data, I can observe the following:</p>
 <ul>
 <li><strong>No Statistical Link:</strong> I noticed that the coefficient
-for the cocoa price is not significant (<span class="math inline">\(p =
-0.64\)</span>), which is visually represented by the almost perfectly
+for the cocoa price is not significant <span class="math inline">\((p =
+0.64)\)</span>, which is visually represented by the almost perfectly
 flat regression line in the plot. It could be interpreted that the price
 variable acts essentially as “noise” in this specific model.</li>
-<li><strong>Model Performance:</strong> The F-statistic (<span class="math inline">\(F = 0.21\)</span>) is below the critical threshold
-of <span class="math inline">\(3.94\)</span>. This suggests that the
-model does not perform better than a random guess, as it fails to
-establish a reliable connection between global prices and export
-values.</li>
+<li><strong>Model Performance:</strong> The F-statistic <span class="math inline">\((F = 0.21)\)</span> is below the critical
+threshold of 3.94. This suggests that the model does not perform better
+than a random guess, as it fails to establish a reliable connection
+between global prices and export values.</li>
 <li><strong>Zero Explanatory Power:</strong> With an Adjusted R-squared
-of (<span class="math inline">\(R^2 = -0.008\)</span>) and a Multiple
-R-squared of practically zero (<span class="math inline">\(R^2 =
-0.2\%\)</span>), the results suggest that global cocoa price movements
+of <span class="math inline">\((R^2 = -0.008)\)</span> and a Multiple
+R-squared of practically zero <span class="math inline">\((R^2 =
+0.2\%)\)</span>, the results suggest that global cocoa price movements
 explain almost none of the variation in chocolate exports.</li>
 <li><strong>High Uncertainty:</strong> The high residual standard error
 (approx. <strong>$413,000</strong>) suggests a massive amount of
@@ -5973,9 +5964,10 @@ ggplot(merged_exports_and_cocoa, aes(x = ref_period_id)) +
 <p>At first glance, the relationship isn’t immediately clear. The
 statistical evidence reveals a fascinating divergence:</p>
 <ul>
-<li><strong>The Integration Gap:</strong> Unlike the near-perfect <span class="math inline">\(0.97\)</span> correlation observed between global
-and domestic cocoa prices, chocolate exports do not consistently move in
-tandem with shifts in cocoa prices.</li>
+<li><strong>The Integration Gap:</strong> Unlike the near-perfect 0.97
+correlation observed between global and domestic cocoa prices, chocolate
+exports do not consistently move in tandem with shifts in cocoa
+prices.</li>
 <li><strong>The 2023-2024 Paradox:</strong> Even during the historic
 cocoa price surge of 2023 and 2024, Colombian chocolate exports do not
 mirror these movements. In fact, while prices grow, the export volume in
@@ -6007,7 +5999,7 @@ lag_results</code></pre>
 <h5><strong>What the statistical evidence suggests</strong></h5>
 <ul>
 <li><strong>Absence of Immediate Link:</strong> I observed that the
-correlation at <strong>Lag 0</strong> is near zero (<span class="math inline">\(r ≈ -0.047\)</span>). This suggests that there is
+correlation at <strong>Lag 0</strong> is near zero <span class="math inline">\((r ≈ -0.047)\)</span>. This suggests that there is
 no strong contemporaneous relationship between global cocoa prices and
 Colombian chocolate exports.</li>
 <li><strong>Short-term Pressure (Lags 1–2):</strong> The statistical
@@ -6017,7 +6009,7 @@ face a slight, immediate contraction, possibly due to higher raw
 material costs affecting competitiveness or order volumes.</li>
 <li><strong>Delayed Drift (Lags 4–6):</strong> From <strong>Lag
 4</strong> onward, the correlation shifts to slightly positive but
-remains very weak (<span class="math inline">\(r &lt; 0.06\)</span>). It
+remains very weak <span class="math inline">\((r &lt; 0.06)\)</span>. It
 aligns with the idea that there is no strong or consistent delayed price
 effect on exports.</li>
 </ul>
@@ -6044,7 +6036,7 @@ if the two markets move independently.</p>
 <ul>
 <li><strong>A Complete Decoupling:</strong> The statistical evidence
 indicates no meaningful relationship between global cocoa prices and
-Colombian export values (<span class="math inline">\(p = 0.64\)</span>).
+Colombian export values <span class="math inline">\((p = 0.64)\)</span>.
 In practical terms, global price movements explain virtually none of the
 variation in export performance. This pattern suggests that the raw
 material market and the finished product market operate under different
@@ -6093,8 +6085,8 @@ cor(colombian_cocoa_price$price_usd_metric_ton,
   use = &quot;complete.obs&quot;
 )</code></pre>
 <pre><code>[1] 0.2603149</code></pre>
-<p>The resulting correlation of <strong><span class="math inline">\(0.26\)</span></strong> indicates what could be
-described as a <strong>weak positive relationship</strong>.</p>
+<p>The resulting correlation of <strong>0.26</strong> indicates what
+could be described as a <strong>weak positive relationship</strong>.</p>
 </div>
 <div id="what-could-this-finding-mean" class="section level4">
 <h4><strong>What could this finding mean?</strong></h4>
@@ -6166,13 +6158,12 @@ qf(0.95, df1 = 1, df2 = 94)</code></pre>
 <ul>
 <li><strong>Statistical Non-Significance:</strong> I noticed that the
 model shows no statistically significant relationship. The F-statistic
-is far below the critical threshold of <strong><span class="math inline">\(3.94\)</span></strong>, and the p-values for both
-the TRM (<span class="math inline">\(0.341\)</span>) and the Global
-Price (<span class="math inline">\(0.487\)</span>) are well above the
-limit.</li>
+is far below the critical threshold of <strong>3.94</strong>, and the
+p-values for both the TRM (0.341) and the Global Price (0.487) are well
+above the limit.</li>
 <li><strong>Negligible Explanatory Power:</strong> The Adjusted
-R-squared is negative (<span class="math inline">\(R^2 =
--0.009\)</span>), which confirms that adding the exchange rate to the
+R-squared is negative <span class="math inline">\((R^2 =
+-0.009)\)</span>, which confirms that adding the exchange rate to the
 global price does not improve our ability to predict export behavior.
 The model explains virtually none of the variation.</li>
 <li><strong>Independence from Currency:</strong> It could be interpreted
@@ -6243,9 +6234,9 @@ qf(0.95, df1 = 1, df2 = 94)</code></pre>
 <pre><code>[1] 3.942303</code></pre>
 <div id="interpretation-of-the-results" class="section level5">
 <h5><strong>Interpretation of the Results</strong></h5>
-<p>The TRM coefficient (<span class="math inline">\(0.1758\)</span>)
-suggests that a weakening peso amplifies local cocoa prices in USD
-terms. I can interpret this more intuitively as:</p>
+<p>The TRM coefficient (0.1758) suggests that a weakening peso amplifies
+local cocoa prices in USD terms. I can interpret this more intuitively
+as:</p>
 <ul>
 <li><strong>+100 COP in TRM</strong> <strong>+17.6 USD/ton</strong></li>
 <li><strong>+1,000 COP in TRM</strong> <strong>+176
@@ -6263,16 +6254,16 @@ export-oriented commodity prices.</p>
 regression line shows an upward trend, the wide spread of the points
 indicates that the TRM alone is a weak predictor of cocoa price
 levels.</li>
-<li><strong>Significant Signal:</strong> The <strong>F-test (<span class="math inline">\(6.96\)</span> &gt; <span class="math inline">\(3.94\)</span>)</strong> confirms that the exchange
-rate has a statistically significant relationship with domestic prices.
-This supports the idea of an <strong>exchange-rate
-pass-through</strong>, where sellers adjust USD-equivalent prices as the
-peso weakens.</li>
+<li><strong>Significant Signal:</strong> The <strong>F-test (6.96 &gt;
+3.94)</strong> confirms that the exchange rate has a statistically
+significant relationship with domestic prices. This supports the idea of
+an <strong>exchange-rate pass-through</strong>, where sellers adjust
+USD-equivalent prices as the peso weakens.</li>
 <li><strong>Limited Explanatory Power:</strong> Despite this statistical
-significance, the <strong>R-squared is only <span class="math inline">\(0.068\)</span></strong>, meaning the TRM explains
-roughly <strong>7% of the variation</strong> in cocoa prices. This
-suggests that while the exchange rate contributes to price movements, it
-is far from the main driver.</li>
+significance, the <strong>R-squared is only 0.068</strong>, meaning the
+TRM explains roughly <strong>7% of the variation</strong> in cocoa
+prices. This suggests that while the exchange rate contributes to price
+movements, it is far from the main driver.</li>
 </ul>
 </div>
 <div id="the-pivot-why-linear-regression-is-no-longer-enough" class="section level5">
@@ -6325,16 +6316,16 @@ qf(0.95, df1 = 2, df2 = 93)</code></pre>
 <h5><strong>What the model suggests</strong></h5>
 <ul>
 <li><strong>Structural Independence:</strong> I found that neither the
-exchange rate (<span class="math inline">\(p &gt; 0.34\)</span>) nor the
-global cocoa price is statistically significant (<span class="math inline">\(p &gt; 0.48\)</span>). The results suggest that
+exchange rate <span class="math inline">\((p &gt; 0.34)\)</span> nor the
+global cocoa price is statistically significant <span class="math inline">\((p &gt; 0.48)\)</span>. The results suggest that
 even when combined, these major economic variables do not explain the
 fluctuations in Colombian chocolate exports.</li>
 <li><strong>Low Predictive Accuracy:</strong> The of
 <strong>1.2%</strong> is remarkably low. It could be interpreted that
 the TRM and global price together account for only a tiny fraction of
 the variation in export values. The F-statistic remains far below the
-critical value of <strong><span class="math inline">\(3.10\)</span></strong>, indicating the model is
-not statistically reliable for this specific data.</li>
+critical value of <strong>3.10</strong>, indicating the model is not
+statistically reliable for this specific data.</li>
 </ul>
 </div>
 <div id="analytical-pivot-moving-beyond-linear-assumptions" class="section level5">
@@ -6414,13 +6405,14 @@ alternative hypothesis: stationary</code></pre>
 <h5><strong>What the ADF Results Suggest</strong></h5>
 <ul>
 <li><strong>Non-stationarity in levels:</strong> Both the Colombian
-cocoa price (<strong><span class="math inline">\(p ≈
-0.89\)</span></strong>) and the TRM (<strong><span class="math inline">\(p ≈ 0.35\)</span></strong>) are non-stationary in
+cocoa price <strong><span class="math inline">\((p ≈
+0.89)\)</span></strong> and the TRM <strong><span class="math inline">\((p ≈ 0.35\)</span>)</strong> are non-stationary in
 their raw form. Their values follow stochastic trends, meaning they
 drift over time rather than returning to a stable average.</li>
 <li><strong>Stationarity after differencing:</strong> After applying the
-first difference, the p-values drop to <strong><span class="math inline">\(0.014\)</span></strong> and <strong><span class="math inline">\(0.017\)</span></strong>. This allows the null
-hypothesis of a unit root to be rejected.</li>
+first difference, the p-values drop to <strong>0.014</strong> and
+<strong>0.017</strong>. This allows the null hypothesis of a unit root
+to be rejected.</li>
 <li><strong>The I(1) conclusion:</strong> Both variables can be
 considered <strong>(I(1))</strong>, meaning they are <strong>integrated
 of order one</strong>. In practice, this means the series are
@@ -6506,14 +6498,13 @@ trm_usd.d                         4.258562e-18</code></pre>
 <h5><strong>What the Johansen Results Suggest</strong></h5>
 <ul>
 <li><strong>Failure to reject the null:</strong> The trace statistics
-(<span class="math inline">\(9.58\)</span> for <span class="math inline">\(r = 0\)</span> and <span class="math inline">\(2.29\)</span> for <span class="math inline">\(r
-\le 1\)</span>) are both <strong>below the 5% critical values</strong>
-(<span class="math inline">\(19.96\)</span> and <span class="math inline">\(9.24\)</span>). Because the test statistics do not
-exceed the critical thresholds, the null hypotheses cannot be
-rejected.</li>
+(9.58 for r = 0 and 2.29 for <span class="math inline">\(r \le
+1\)</span>) are both <strong>below the 5% critical values</strong>
+(19.96 and 9.24). Because the test statistics do not exceed the critical
+thresholds, the null hypotheses cannot be rejected.</li>
 <li><strong>No evidence of cointegration:</strong> Since the null
-hypothesis of <strong>no cointegration (<span class="math inline">\(r =
-0\)</span>)</strong> cannot be rejected, the results suggest that
+hypothesis of <strong>no cointegration <span class="math inline">\((r =
+0)\)</span></strong> cannot be rejected, the results suggest that
 <strong>TRM and Colombian cocoa prices do not share a stable long-run
 equilibrium relationship</strong>. While the series may move in similar
 directions at times, they are not statistically tied together in the
@@ -6585,15 +6576,16 @@ F-statistic: 23.59 on 1 and 93 DF,  p-value: 4.814e-06</code></pre>
 <h5><strong>What the Model Suggests</strong></h5>
 <ul>
 <li><strong>A significant negative relationship:</strong> The model
-shows a statistically significant coefficient of <strong><span class="math inline">\(-0.47\)</span></strong> (<span class="math inline">\(p &lt; 0.001\)</span>). This suggests that when
-the <strong>TRM increases</strong> from one month to the next (peso
+shows a statistically significant coefficient of <strong>-0.47</strong>
+<span class="math inline">\((p &lt; 0.001)\)</span>. This suggests that
+when the <strong>TRM increases</strong> from one month to the next (peso
 depreciation), the <strong>Colombian cocoa price tends to decline during
 the same period</strong>.</li>
 <li><strong>Moderate explanatory power:</strong> The <strong>R-squared
-of <span class="math inline">\(0.20\)</span></strong> indicates that
-about <strong>20% of the monthly variation in cocoa prices</strong> is
-explained by changes in the exchange rate. While other factors clearly
-influence prices, the TRM still plays a meaningful role.</li>
+of 0.20</strong> indicates that about <strong>20% of the monthly
+variation in cocoa prices</strong> is explained by changes in the
+exchange rate. While other factors clearly influence prices, the TRM
+still plays a meaningful role.</li>
 <li><strong>Short-run dynamics:</strong> The result highlights a
 <strong>short-term adjustment mechanism</strong>. In practice, movements
 in the exchange rate appear to influence how local cocoa prices adjust
@@ -6643,11 +6635,11 @@ results3</code></pre>
 <pre><code>[1] -0.449780500  0.056937363  0.030723558 -0.078174253  0.042973668 -0.007941484
 [7]  0.109796711</code></pre>
 <p>I observed that the only meaningful correlation appears at
-<strong>Lag 0 (<span class="math inline">\(-0.45\)</span>)</strong>.
-When a one-month lag is introduced, the relationship largely disappears,
-with correlations close to zero. This suggests that the market reacts
-<strong>very quickly to exchange rate movements</strong>, with most of
-the adjustment occurring immediately rather than with a delay.</p>
+<strong>Lag 0 (-0.45)</strong>. When a one-month lag is introduced, the
+relationship largely disappears, with correlations close to zero. This
+suggests that the market reacts <strong>very quickly to exchange rate
+movements</strong>, with most of the adjustment occurring immediately
+rather than with a delay.</p>
 <p>With this initial insight, the next step is to examine the
 <strong>lag structure more carefully</strong> to confirm whether the
 response is truly immediate or if any delayed effects emerge.</p>
@@ -6685,9 +6677,9 @@ F-statistic: 0.2992 on 1 and 92 DF,  p-value: 0.5857</code></pre>
 <h5><strong>What the results suggest</strong></h5>
 <ul>
 <li><strong>No Delayed Transmission:</strong> I found that the lagged
-TRM is statistically insignificant (<span class="math inline">\(p =
-0.58\)</span>) and explains practically zero variation in the model
-(<span class="math inline">\(R^2 ≈ 0.003\)</span>). The statistical
+TRM is statistically insignificant <span class="math inline">\((p =
+0.58)\)</span> and explains practically zero variation in the model
+<span class="math inline">\((R^2 ≈ 0.003)\)</span>. The statistical
 evidence suggests that exchange rate movements from the previous month
 have no predictive power over current performance.</li>
 <li><strong>Immediate Market Reflex:</strong> It could be interpreted
