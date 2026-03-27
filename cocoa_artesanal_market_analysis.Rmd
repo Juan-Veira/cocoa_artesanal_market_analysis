@@ -2419,8 +2419,8 @@ Before applying differencing, it is necessary to check the state of the variable
 
 To evaluate this, I use the Augmented Dickey-Fuller (ADF) test:
 
--   **p-value \< $0.05$:** The series is stationary → reject H₀.
--   **p-value \> $0.05$:** The series is non-stationary and requires differencing → fail to reject H₀.
+-   **p-value \< 0.05:** The series is stationary → reject H₀.
+-   **p-value \> 0.05:** The series is non-stationary and requires differencing → fail to reject H₀.
 
 If a series is non-stationary, differencing is required before continuing with the modeling process.
 
