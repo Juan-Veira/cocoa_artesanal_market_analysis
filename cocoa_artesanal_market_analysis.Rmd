@@ -2156,9 +2156,10 @@ merged_exports_and_cocoa %>%
   scale_x_continuous(labels = scales::label_dollar()) +
   scale_y_continuous(labels = scales::label_dollar(suffix = " US")) +
   labs(
-    title = "Exports Value vs Global Cocoa Prices",
+    title = "Comparison of Export Values and Cocoa Market Prices",
+  subtitle = "The distribution suggests a weak linear alignment between these variables.",    
     x = "Export Value (USD)",
-    y = "Global Price (USD/MT)"
+    y = "Global Cocoa Price (USD/MT)"
   ) +
   theme_minimal()
 
