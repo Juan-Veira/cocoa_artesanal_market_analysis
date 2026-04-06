@@ -1,3 +1,21 @@
+***
+**TLTR (summary):**
+
+1. **What business problem was I solving?**
+
+Understanding how global cocoa market dynamics impact a Colombian chocolate business to support better strategic decisions.
+
+2. **What was the biggest data cleaning challenge I faced?**
+
+Standardizing inconsistent datasets (formats, scales, and sources) to ensure reliable and comparable analysis.
+
+3. **What is the one actionable recommendation I would give a CEO?**
+
+Align procurement strategy with seasonal price patterns and global market signals to improve margins and reduce risk.
+
+***
+
+
 # **Cocoa Artesanal: Colombian and Global Cocoa Market Analysis with R and SQL**
 
 ### **Introduction**
@@ -80,4 +98,4 @@ A multiple regression analysis on the **Exchange Rate (TRM)** and **Export Value
 ### **Project Files**
 
 * **Analysis Script:** `cocoa_artesanal_market_analysis.Rmd` (Includes R and SQL integration)
-* **Executive Presentation:** [Cocoa Artesanal - Market Strategic Presentation]()
+* **Executive Presentation:** [Cocoa Artesanal - Market Strategic Presentation](https://docs.google.com/presentation/d/1Ky3EF1JdychHBuRP0t4RVjJtLIAAu0nnDUZdfav7fac/present?start=true&slide=id.gc6f83aa91_0_79)
